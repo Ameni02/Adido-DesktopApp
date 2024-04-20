@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.Affichercart"
+            prefHeight="400.0" prefWidth="600.0"
+            style="-fx-background-color: #f0f0f0;">
+
+    <VBox alignment="CENTER" spacing="10">
+
+        <Label text="Shopping Cart" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+        <!-- TableView for displaying cart items -->
+        <TableView fx:id="cartTable" prefWidth="400" style="-fx-background-color: #ffffff;">
+            <columns>
+                <TableColumn text="Product" prefWidth="150"/>
+                <TableColumn text="Quantity" prefWidth="75"/>
+                <TableColumn text="Price" prefWidth="75"/>
+            </columns>
+        </TableView>
+
+        <!-- Buttons -->
+        <HBox spacing="10">
+
+            <!-- Clear All Button -->
+            <Button text="Clear All" onAction="#clearAllClicked" style="-fx-font-size: 16px; -fx-background-color: #f44336; -fx-text-fill: white;"/>
+            <Button text="Go Back Shopping" onAction="#goBackShoppingClicked" style="-fx-font-size: 16px; -fx-background-color: #2196F3; -fx-text-fill: white;"/>
+            <!-- Checkout Button -->
+            <Button fx:id="checkoutButton" text="Checkout" onAction="#checkoutClicked" style="-fx-font-size: 16px; -fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        </HBox>
+
+        <!-- Spacer -->
+        <Region VBox.vgrow="ALWAYS"/>
+
+        <!-- Total Label -->
+        <HBox alignment="CENTER_RIGHT">
+            <Label text="Total: $" style="-fx-font-size: 18px;"/>
+            <Label fx:id="totalLabel" style="-fx-font-size: 18px;"/>
+        </HBox>
+
+        <!-- Taxes Label -->
+        <HBox alignment="CENTER_RIGHT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="Shipping: $" style="-fx-font-size: 16px;"/>
+            <Label fx:id="taxesLabel" style="-fx-font-size: 16px;"/>
+        </HBox>
+
+        <!-- Spacer -->
+        <Region VBox.vgrow="ALWAYS"/>
+
+    </VBox>
+
+</AnchorPane>

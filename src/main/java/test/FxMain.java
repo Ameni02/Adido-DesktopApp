@@ -12,10 +12,14 @@ public class FxMain extends Application {
         launch();
     }
 
+    public static FXMLLoader loadFXML(String s) {
+        return null;
+    }
+
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass()
-                .getResource("/Ajoutcommande.fxml"));
+                .getResource("/itemProduct.fxml"));
         Parent parent = loader.load();
 
         Scene scene = new Scene(parent);

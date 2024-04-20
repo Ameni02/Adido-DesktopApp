@@ -10,7 +10,7 @@ import java.util.List;
 import models.Ecommerce.Commande;
 import utils.DBConnection;
 
-public class ServiceCommande implements CRUD<Commande> {
+public class ServiceCommande implements CommandeInterface<Commande> {
 
     private Connection cnx;
 

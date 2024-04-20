@@ -10,7 +10,7 @@ import java.util.List;
 import models.Ecommerce.Panier;
 import utils.DBConnection;
 
-public class ServicePanier implements CRUD<Panier> {
+public class ServicePanier implements PanierInterface<Panier> {
 
     private Connection cnx;
 
@@ -19,7 +19,7 @@ public class ServicePanier implements CRUD<Panier> {
     }
 
     @Override
-    public void insertOne(Panier panier) throws SQLException {
+    public void addToCart(Panier panier) throws SQLException {
         String req = "INSERT INTO `panier`(`idPanier`, `id`, `quantity`, `prixTotal`, `productName`) VALUES (?,?,?,?,?)";
         try (PreparedStatement ps = cnx.prepareStatement(req)) {
             ps.setInt(1, panier.getIdPanier());
@@ -36,26 +36,10 @@ public class ServicePanier implements CRUD<Panier> {
     }
 
     @Override
-    public void updateOne(Panier panier) throws SQLException {
-        String req = "UPDATE `panier` SET `quantity`=?, `prixTotal`=?, `productName`=? WHERE `idPanier`=?";
-        try (PreparedStatement ps = cnx.prepareStatement(req)) {
-            ps.setInt(1, panier.getQuantity());
-            ps.setInt(2, panier.getPrixTotal());
-            ps.setString(3, panier.getProductName());
-            ps.setInt(4, panier.getIdPanier());
-            ps.executeUpdate();
-            System.out.println("Panier Updated !");
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            throw ex;
-        }
-    }
-
-    @Override
-    public void deleteOne(Panier panier) throws SQLException {
+    public void deleteOne(int panier) throws SQLException {
         String req = "DELETE FROM `panier` WHERE `idPanier`=?";
         try (PreparedStatement ps = cnx.prepareStatement(req)) {
-            ps.setInt(1, panier.getIdPanier());
+            ps.setInt(1, panier);
             ps.executeUpdate();
             System.out.println("Panier Deleted !");
         } catch (SQLException ex) {
@@ -65,13 +49,7 @@ public class ServicePanier implements CRUD<Panier> {
     }
 
     @Override
-    public void deleteOne(String commande) throws SQLException {
-
-    }
-
-
-    @Override
-    public List<Panier> selectAll() throws SQLException {
+    public List<Panier> selectAll(String Id) throws SQLException {
         List<Panier> panierList = new ArrayList<>();
         String req = "SELECT * FROM `panier`";
         try (Statement st = cnx.createStatement();

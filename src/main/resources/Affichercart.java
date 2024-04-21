@@ -7,11 +7,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import models.Ecommerce.Panier;
-import services.ServiceCommande;
 import services.ServicePanier;
 
 import java.io.IOException;
@@ -22,7 +22,7 @@ import java.util.Objects;
 public class Affichercart {
 
     @FXML
-    private VBox cartItems;
+    private TableView<Panier> cartItemsTable;
 
     @FXML
     private Button checkoutButton;
@@ -42,22 +42,16 @@ public class Affichercart {
     @FXML
     private Label totalLabel;
 
-    private  ServicePanier sp = new ServicePanier();
+    private ServicePanier sp = new ServicePanier();
 
     @FXML
     void checkoutClicked(ActionEvent event) {
         try {
-
-
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Ajoutcommande.fxml")));
             checkoutButton.getScene().setRoot(root);
-
-
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        catch (IOException e) {
-            System.err.println(e.getMessage());
-        }
-
     }
 
     @FXML
@@ -68,53 +62,39 @@ public class Affichercart {
     @FXML
     void goBackShoppingClicked(ActionEvent event) {
         try {
-            // Load the "" FXML file
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ShopProduit.fxml"));
             Parent root = loader.load();
-
-            // Create a new stage
             Stage stage = new Stage();
-
-            // Set the scene on the stage
             Scene scene = new Scene(root);
             stage.setScene(scene);
-
-            // Show the stage
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-            // Handle the exception if loading fails
         }
     }
 
-
     public void initialize() {
         try {
-            // Call initialize method to populate cart items
             populateCartItems();
         } catch (SQLException ex) {
             ex.printStackTrace();
-            // Handle the exception if needed
         }
     }
 
     private void populateCartItems() throws SQLException {
-        // Retrieve cart items from the database using the injected ServicePanier instance
+        TableColumn<Panier, String> productNameCol = new TableColumn<>("Product Name");
+        productNameCol.setCellValueFactory(cellData -> cellData.getValue().productNameProperty());
+
+        TableColumn<Panier, String> productQuantityCol = new TableColumn<>("Quantity");
+        productQuantityCol.setCellValueFactory(cellData -> cellData.getValue().quantityProperty().asString());
+
+        TableColumn<Panier, String> productPriceCol = new TableColumn<>("Price");
+        productPriceCol.setCellValueFactory(cellData -> cellData.getValue().prixTotalProperty().asString());
+
+        cartItemsTable.getColumns().addAll(productNameCol, productQuantityCol, productPriceCol);
+
         List<Panier> cartItemList = sp.selectAll("userId");
-
-        // Iterate over cart items and add them to the UI
-        for (Panier item : cartItemList) {
-            HBox itemBox = new HBox();
-            Label productNameLabel = new Label(item.getProductName());
-            Label productQuantityLabel = new Label("Quantity: " + item.getQuantity());
-            Label productPriceLabel = new Label("Price: $" + item.getPrixTotal());
-            itemBox.getChildren().addAll(productNameLabel, productQuantityLabel, productPriceLabel);
-            cartItems.getChildren().add(itemBox);
-        }
-
-        // Update total and taxes labels if needed
-        // totalLabel.setText(...);
-        // taxesLabel.setText(...);
+        cartItemsTable.getItems().addAll(cartItemList);
     }
 
     public void setServicePanier(ServicePanier servicePanier) {
@@ -125,5 +105,3 @@ public class Affichercart {
 
     }
 }
-
-

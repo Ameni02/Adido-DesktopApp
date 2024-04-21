@@ -1,23 +1,31 @@
 package controllers;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.ScrollPane;
+import javafx.stage.Stage;
 import models.Image;
 import models.product;
 import services.Serviceproduct;
+import test.FxMain;
+
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 
 public class ShopProduit  {
 
+    public Button cartButton;
     @FXML
     private ImageView ProductImage;
 
@@ -88,5 +96,20 @@ public class ShopProduit  {
         }
     }
 
+    @FXML
+    public void viewCart(ActionEvent actionEvent) {
 
+        try {
+
+
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/affichercart.fxml")));
+            cartButton.getScene().setRoot(root);
+
+
+        }
+        catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+
+    }
 }

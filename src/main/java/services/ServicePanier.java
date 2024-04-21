@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import javafx.scene.control.Alert;
 import models.Ecommerce.Panier;
 import utils.DBConnection;
 
@@ -20,14 +22,19 @@ public class ServicePanier implements PanierInterface<Panier> {
 
     @Override
     public void addToCart(Panier panier) throws SQLException {
-        String req = "INSERT INTO `panier`(`idPanier`, `id`, `quantity`, `prixTotal`, `productName`) VALUES (?,?,?,?,?)";
+        String req = "INSERT INTO `panier`(`id`, `quantity`, `prix_total`, `product_name`,`idUser` ) VALUES (?,?,?,?,?)";
         try (PreparedStatement ps = cnx.prepareStatement(req)) {
-            ps.setInt(1, panier.getIdPanier());
-            ps.setInt(2, panier.getId());
-            ps.setInt(3, panier.getQuantity());
-            ps.setInt(4, panier.getPrixTotal());
-            ps.setString(5, panier.getProductName());
+            ps.setInt(1, panier.getId());
+            ps.setInt(2, panier.getQuantity());
+            ps.setInt(3, panier.getPrixTotal());
+            ps.setString(4, panier.getProductName());
+            ps.setInt(5, 1);
             ps.executeUpdate();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("Product successfully added to the shopping cart.");
+            alert.showAndWait();
             System.out.println("Panier Added !");
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -56,11 +63,13 @@ public class ServicePanier implements PanierInterface<Panier> {
              ResultSet rs = st.executeQuery(req)) {
             while (rs.next()) {
                 Panier p = new Panier(
-                        rs.getInt("idPanier"),
+                        rs.getInt("id_panier"),
                         rs.getInt("id"),
                         rs.getInt("quantity"),
-                        rs.getInt("prixTotal"),
-                        rs.getString("productName")
+                        rs.getInt("prix_total"),
+                        rs.getString("product_name")
+
+
                 );
                 panierList.add(p);
             }
@@ -70,4 +79,24 @@ public class ServicePanier implements PanierInterface<Panier> {
         }
         return panierList;
     }
-}
+
+    @Override
+    public int retrieveOneProduct(String nom) throws SQLException {
+        int productId = 0;
+
+        // Query the database to retrieve the ID corresponding to the provided name
+        String query = "SELECT id FROM product WHERE nomproduct = ?";
+        try (PreparedStatement statement = cnx.prepareStatement(query)) {
+            statement.setString(1, nom);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    productId = resultSet.getInt("id");
+                }
+            }
+        }
+
+        return productId;
+    }
+
+
+    }

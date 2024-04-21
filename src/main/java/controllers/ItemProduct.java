@@ -1,13 +1,17 @@
 package controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import models.Ecommerce.Panier;
+import services.ServicePanier;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class ItemProduct extends VBox {
     @FXML
@@ -52,5 +56,12 @@ public class ItemProduct extends VBox {
             // Handle the case where imagePath is null or empty
             System.out.println("Invalid image path provided.");
         }
+    }
+
+    @FXML
+    public void addtocart(ActionEvent actionEvent) throws SQLException {
+        ServicePanier sp = new ServicePanier();
+        Panier panier = new Panier(2, sp.retrieveOneProduct(nameLabel.getText()), 1, Math.round(Float.parseFloat(priceLabel.getText())), nameLabel.getText());
+        sp.addToCart(panier);
     }
 }

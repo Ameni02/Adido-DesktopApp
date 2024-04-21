@@ -136,11 +136,15 @@
                            </font>
                         </Label>
                         <Pane prefHeight="66.0" prefWidth="359.0" />
-                        <Label prefHeight="66.0" prefWidth="135.0" text="Cart" textFill="#948f8f">
-                           <font>
-                              <Font name="Corbel" size="18.0" />
-                           </font>
-                        </Label>
+                        <Button fx:id="cartButton" onAction="#viewCart" prefHeight="40.0" prefWidth="40.0">
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../java/image/carticon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -7,15 +8,17 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Affichercart">
+<AnchorPane prefHeight="478.0" prefWidth="726.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Affichercart">
 
     <VBox alignment="CENTER" spacing="20">
 
         <!-- Shopping Cart Title -->
         <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Your Shopping Cart" />
+         <!-- Clear All Button -->
+         <Button onAction="#clearAllClicked" style="-fx-font-size: 16px; -fx-background-color: #f44336; -fx-text-fill: white;" text="Clear All" />
 
         <!-- Shopping cart items -->
-        <VBox spacing="10" style="-fx-padding: 20px; -fx-background-color: #ffffff; -fx-border-width: 1px; -fx-border-color: #cccccc; -fx-border-radius: 5px;">
+        <VBox prefHeight="125.0" prefWidth="884.0" spacing="10" style="-fx-padding: 20px; -fx-background-color: #ffffff; -fx-border-width: 1px; -fx-border-color: #cccccc; -fx-border-radius: 5px;">
             <!-- Each item in the cart -->
             <VBox fx:id="cartItems" spacing="5">
                 <!-- Product details -->
@@ -24,8 +27,6 @@
                     <HBox spacing="10">
                         <Label fx:id="productQuantityLabel" style="-fx-text-fill: #666666;" />
                         <Label fx:id="productPriceLabel" style="-fx-text-fill: #666666;" />
-                        <!-- Delete button -->
-                        <Button onAction="#removeItemClicked" style="-fx-font-size: 12px; -fx-background-color: #ff6666; -fx-text-fill: white;" text="Remove" />
                     </HBox>
 
                 </HBox>
@@ -33,12 +34,20 @@
         </VBox>
 
         <!-- Buttons -->
-        <HBox spacing="20">
-            <!-- Clear All Button -->
-            <Button onAction="#clearAllClicked" style="-fx-font-size: 16px; -fx-background-color: #f44336; -fx-text-fill: white;" text="Clear All" />
-            <Button onAction="#goBackShoppingClicked" style="-fx-font-size: 16px; -fx-background-color: #2196F3; -fx-text-fill: white;" text="Continue Shopping" />
-            <!-- Checkout Button -->
-            <Button fx:id="checkoutButton" onAction="#checkoutClicked" style="-fx-font-size: 16px; -fx-background-color: #4CAF50; -fx-text-fill: white;" text="Proceed to Checkout" />
+        <HBox prefHeight="38.0" prefWidth="884.0" spacing="20">
+         <children>
+               <Button onAction="#goBackShoppingClicked" prefHeight="38.0" prefWidth="334.0" style="-fx-font-size: 16px; -fx-background-color: #2196F3; -fx-text-fill: white;" text="Continue Shopping">
+               <HBox.margin>
+                  <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
+               </HBox.margin>
+            </Button>
+               <!-- Checkout Button -->
+               <Button fx:id="checkoutButton" onAction="#checkoutClicked" prefHeight="38.0" prefWidth="366.0" style="-fx-font-size: 16px; -fx-background-color: #4CAF50; -fx-text-fill: white;" text="Proceed to Checkout">
+               <HBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="40.0" top="20.0" />
+               </HBox.margin>
+            </Button>
+         </children>
         </HBox>
 
         <!-- Total and Taxes -->

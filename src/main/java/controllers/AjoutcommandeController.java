@@ -12,6 +12,7 @@ import services.ServiceCommande;
 
 import java.sql.Date;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -76,18 +77,65 @@ public class AjoutcommandeController {
         Date date = Date.valueOf(tfdate.getValue());
         String etat = tfetat.getText();
         String info = tfinfo.getText();
-        int phone = Integer.parseInt(tfphone.getText());
+        int phone;
 
-        if (adresse.isEmpty() || etat.isEmpty() ) {
-            // Afficher une alerte si un champ obligatoire est vide
+        // Check if any of the fields are empty
+        if (adresse.isEmpty() || date == null || etat.isEmpty() || info.isEmpty() || tfphone.getText().isEmpty()) {
+            // Handle empty fields
+            // You can show an error message or highlight the empty fields to the user
+            // For example, you can use JavaFX Alert to show an error message dialog
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur de saisie");
+            alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Veuillez remplir tous les champs obligatoires.");
+            alert.setContentText("Please fill in all fields.");
             alert.showAndWait();
             return;
         }
-
+        Date currentDate = new Date(System.currentTimeMillis());
+        if (date.compareTo(currentDate) >= 0) {
+            // Handle invalid date (date is before today)
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter a valid date.");
+            alert.showAndWait();
+            return;
+        }
+        // Validate address input
+        if (adresse.length() <= 3) {
+            // Handle invalid address (address is not more than 3 characters)
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter a valid address .");
+            alert.showAndWait();
+            return;
+        }
+        if (!etat.equals("confirmed") && !etat.equals("in process") && !etat.equals("shipped")) {
+            // Handle invalid status
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter 'confirmed', 'in process', or 'shipped' for the status.");
+            alert.showAndWait();
+            return;
+        }
+        // Validate phone number input
+        try {
+            phone = Integer.parseInt(tfphone.getText());
+            // Check if phone number has exactly 8 digits
+            if (tfphone.getText().length() != 8) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
+            // Handle invalid phone number format or length
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter a valid  phone number.");
+            alert.showAndWait();
+            return;
+        }
 
         Commande commande = new Commande(0, date, etat, "", adresse, phone, info);
 
@@ -119,12 +167,71 @@ public class AjoutcommandeController {
     @FXML
     void update(ActionEvent event) {
 
+
         String adresse = tfadresse.getText();
         Date date = Date.valueOf(tfdate.getValue());
         String etat = tfetat.getText();
         String info = tfinfo.getText();
-        int phone = Integer.parseInt(tfphone.getText());
         int idComm = Integer.parseInt(idcommandf.getText());
+        int phone;
+
+        // Check if any of the fields are empty
+        if (adresse.isEmpty() || date == null || etat.isEmpty() || info.isEmpty() || tfphone.getText().isEmpty()) {
+            // Handle empty fields
+            // You can show an error message or highlight the empty fields to the user
+            // For example, you can use JavaFX Alert to show an error message dialog
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill in all fields.");
+            alert.showAndWait();
+            return;
+        }
+        Date currentDate = new Date(System.currentTimeMillis());
+        if (date.compareTo(currentDate) >= 0) {
+            // Handle invalid date (date is before today)
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter a valid date.");
+            alert.showAndWait();
+            return;
+        }
+        // Validate address input
+        if (adresse.length() <= 3) {
+            // Handle invalid address (address is not more than 3 characters)
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter a valid address .");
+            alert.showAndWait();
+            return;
+        }
+        if (!etat.equals("confirmed") && !etat.equals("in process") && !etat.equals("shipped")) {
+            // Handle invalid status
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter 'confirmed', 'in process', or 'shipped' for the status.");
+            alert.showAndWait();
+            return;
+        }
+        // Validate phone number input
+        try {
+            phone = Integer.parseInt(tfphone.getText());
+            // Check if phone number has exactly 8 digits
+            if (tfphone.getText().length() != 8) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
+            // Handle invalid phone number format or length
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter a valid  phone number.");
+            alert.showAndWait();
+            return;
+        }
         Commande commande = new Commande(idComm, date, etat, "", adresse, phone, info);
         ServiceCommande ss = new ServiceCommande();
         try{Show(); ss.updateOne(commande); } catch (SQLException e) {   throw new RuntimeException(e); }

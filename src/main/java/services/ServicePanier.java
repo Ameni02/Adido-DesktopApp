@@ -98,5 +98,14 @@ public class ServicePanier implements PanierInterface<Panier> {
         return productId;
     }
 
-
+    public void clearAll() throws SQLException {
+        String req = "DELETE FROM `panier`";
+        try (PreparedStatement ps = cnx.prepareStatement(req)) {
+            ps.executeUpdate();
+            System.out.println("All items in the cart have been cleared.");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }
+    }
     }

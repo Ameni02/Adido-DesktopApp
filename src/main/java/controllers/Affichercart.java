@@ -1,11 +1,14 @@
 package controllers;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -49,7 +52,7 @@ public class Affichercart {
         try {
 
 
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Ajoutcommande.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/commanddetails.fxml")));
             checkoutButton.getScene().setRoot(root);
 
 
@@ -62,8 +65,42 @@ public class Affichercart {
 
     @FXML
     void clearAllClicked(ActionEvent event) {
+        // This method is called when the clear all button is clicked
+            // Create a confirmation dialog
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText(null);
+            alert.setContentText("Are you sure you want to clear all items from the cart?");
 
-    }
+            // Show the confirmation dialog and wait for user response
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    try {
+                        // User clicked OK, so clear all items from the cart
+                        sp.clearAll();
+                        // Optionally, you can show a success message or update UI
+                        System.out.println("All items in the cart have been cleared.");
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                        // Handle any exceptions, show error message, etc.
+                    }
+                }
+            });
+        try {
+
+
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/affichercart.fxml")));
+            checkoutButton.getScene().setRoot(root);
+
+
+        }
+        catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+
+        }
+
+
 
     @FXML
     void goBackShoppingClicked(ActionEvent event) {

@@ -12,33 +12,34 @@
 
 <AnchorPane prefHeight="591.0" prefWidth="821.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjoutcommandeController">
     <children>
-        <Label layoutX="40.0" layoutY="46.0" text="Date Commande " />
-        <Label layoutX="40.0" layoutY="81.0" text="etat Commande " />
-        <Label layoutX="40.0" layoutY="118.0" text="Adresse " />
-        <Label layoutX="40.0" layoutY="161.0" text="Phone Number" />
-        <Label layoutX="40.0" layoutY="200.0" text="Additional information" />
-        <TextField fx:id="tfetat" layoutX="186.0" layoutY="77.0" />
-        <TextField fx:id="tfadresse" layoutX="186.0" layoutY="114.0" />
-        <TextField fx:id="tfphone" layoutX="186.0" layoutY="157.0" />
-        <TextArea fx:id="tfinfo" layoutX="186.0" layoutY="200.0" prefHeight="86.0" prefWidth="150.0" />
-        <DatePicker fx:id="tfdate" layoutX="186.0" layoutY="42.0">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets></DatePicker>
-        <Button fx:id="btnadd" layoutX="626.0" layoutY="534.0" mnemonicParsing="false" onAction="#ajoutcommandeController" prefHeight="26.0" prefWidth="120.0" text="Ajouter Commande" />
-      <Button fx:id="btnupdate" layoutX="536.0" layoutY="534.0" mnemonicParsing="false" onAction="#update" prefHeight="26.0" prefWidth="81.0" text="Update" />
-      <Label layoutX="40.0" layoutY="11.0" text="id commande" />
-      <TextField fx:id="idcommandf" layoutX="186.0" layoutY="7.0" />
-      <Button fx:id="btndelete" layoutX="476.0" layoutY="534.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
-      <TableView fx:id="listcommande" layoutX="402.0" layoutY="24.0" prefHeight="274.0" prefWidth="389.0">
-        <columns>
-          <TableColumn fx:id="idcommande" prefWidth="49.59991455078125" text="idcommande" />
-          <TableColumn fx:id="datecommande" minWidth="0.0" prefWidth="42.39996337890625" text="Date commande" />
-            <TableColumn fx:id="adresse" prefWidth="85.60000610351562" text="Adresse commande" />
-            <TableColumn fx:id="etatcommande" prefWidth="64.0" text="Etat commande" />
-            <TableColumn fx:id="phonenumber" prefWidth="68.00006103515625" text="Phone " />
-            <TableColumn fx:id="addinfo" prefWidth="80.7999267578125" text="Information" />
-        </columns>
-      </TableView>
+        <Label layoutX="39.0" layoutY="154.0" text="Date Commande " />
+        <Label layoutX="39.0" layoutY="189.0" text="État Commande " />
+        <Label layoutX="39.0" layoutY="226.0" text="Adresse " />
+        <Label layoutX="39.0" layoutY="269.0" text="Phone Number" />
+        <Label layoutX="39.0" layoutY="308.0" text="Additional Information" />
+        <TextField fx:id="tfetat" layoutX="185.0" layoutY="185.0" />
+        <TextField fx:id="tfadresse" layoutX="185.0" layoutY="222.0" />
+        <TextField fx:id="tfphone" layoutX="185.0" layoutY="265.0" />
+        <TextArea fx:id="tfinfo" layoutX="185.0" layoutY="308.0" prefHeight="86.0" prefWidth="150.0" />
+        <DatePicker fx:id="tfdate" layoutX="185.0" layoutY="150.0">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </DatePicker>
+        <Button fx:id="btnadd" layoutX="626.0" layoutY="534.0" mnemonicParsing="false" onAction="#ajoutcommandeController" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Ajouter Commande" />
+        <Button fx:id="btnupdate" layoutX="536.0" layoutY="534.0" mnemonicParsing="false" onAction="#update" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: #2196F3; -fx-text-fill: white;" text="Update" />
+        <Label layoutX="39.0" layoutY="119.0" text="ID Commande" />
+        <TextField fx:id="idcommandf" layoutX="185.0" layoutY="115.0" />
+        <Button fx:id="btndelete" layoutX="476.0" layoutY="534.0" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: #F44336; -fx-text-fill: white;" text="Delete" />
+        <TableView fx:id="listcommande" layoutX="411.0" layoutY="32.0" prefHeight="472.0" prefWidth="390.0">
+            <columns>
+                <TableColumn fx:id="idcommande" prefWidth="49.59991455078125" text="ID Commande" />
+                <TableColumn fx:id="datecommande" minWidth="0.0" prefWidth="42.39996337890625" text="Date Commande" />
+                <TableColumn fx:id="adresse" prefWidth="85.60000610351562" text="Adresse Commande" />
+                <TableColumn fx:id="etatcommande" prefWidth="64.0" text="État Commande" />
+                <TableColumn fx:id="phonenumber" prefWidth="68.00006103515625" text="Phone " />
+                <TableColumn fx:id="addinfo" prefWidth="80.7999267578125" text="Information" />
+            </columns>
+        </TableView>
     </children>
 </AnchorPane>

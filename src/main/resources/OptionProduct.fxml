@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OptionProduct">
+   <children>
+      <VBox layoutX="336.0" layoutY="31.0" prefHeight="718.0" prefWidth="848.0">
+         <children>
+            <HBox prefHeight="374.0" prefWidth="848.0">
+               <children>
+                  <ImageView fitHeight="358.0" fitWidth="319.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../java/image/Heureux%20Groupe%20De%20Voyageurs%20Adolescents%20_%20Vecteur%20Premium.jpg" />
+                     </image>
+                  </ImageView>
+                  <Pane prefHeight="345.0" prefWidth="184.0" />
+                  <ImageView fitHeight="344.0" fitWidth="319.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../java/image/1584a3f597a5ab09aabbd91ba4b74245.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox prefHeight="122.0" prefWidth="848.0">
+               <children>
+                  <Button fx:id="AjouterProduit" mnemonicParsing="false" onAction="#ajouterpathP" prefHeight="80.0" prefWidth="235.0" text="Ajouter Produit">
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Button>
+                  <Pane prefHeight="122.0" prefWidth="224.0" />
+                  <Button fx:id="ShopProduit" mnemonicParsing="false" onAction="#ShoppathP" prefHeight="80.0" prefWidth="235.0" text="Shop Produit">
+                     <HBox.margin>
+                        <Insets left="40.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+
+                  <BorderPane fx:id="userSidebar1">
+         <left>
+            <fx:include fx:id="userSidebar" source="UserSideBar.fxml" />
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>

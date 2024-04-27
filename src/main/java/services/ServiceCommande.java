@@ -90,5 +90,31 @@ public class ServiceCommande implements CommandeInterface<Commande> {
         }
         return commandeList;
     }
+    public Commande getCommandeById(int id) throws SQLException {
+        Commande commande = null;
+        String req = "SELECT * FROM commande WHERE id_commande = ?";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
 
+        if (rs.next()) {
+            // Retrieve data from the ResultSet and create a Commande object
+            int idCommande = rs.getInt("id_commande");
+            java.sql.Date dateCommande = rs.getDate("dateCommande");
+            String etatCommande = rs.getString("etatCommande");
+            String coupon = rs.getString("coupon");
+            String commandeAdresse = rs.getString("commande_Address");
+            int commandePhoneNumber = rs.getInt("command_phone_number");
+            String additionalInformation = rs.getString("additional_information");
+
+            commande = new Commande(idCommande, dateCommande, etatCommande, coupon, commandeAdresse, commandePhoneNumber, additionalInformation);
+        }
+
+        // Close resources
+        rs.close();
+        ps.close();
+
+        return commande;
+    }
 }
+

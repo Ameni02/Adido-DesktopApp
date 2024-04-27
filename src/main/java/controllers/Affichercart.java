@@ -142,9 +142,14 @@ public class Affichercart {
         // Iterate over cart items and add them to the UI
         for (Panier item : cartItemList) {
             HBox itemBox = new HBox();
-            Label productNameLabel = new Label(item.getProductName());
+        ;
+            itemBox.setSpacing(20);
+            Label productNameLabel= new Label("Product name : " + item.getProductName());
+            productNameLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #333333;");
             Label productQuantityLabel = new Label("Quantity: " + item.getQuantity());
+            productQuantityLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #333333;");
             Label productPriceLabel = new Label("Price: $" + item.getPrixTotal());
+            productPriceLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #333333;");
             itemBox.getChildren().addAll(productNameLabel, productQuantityLabel, productPriceLabel);
             cartItems.getChildren().add(itemBox);
         }

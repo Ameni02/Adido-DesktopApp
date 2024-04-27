@@ -10,7 +10,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="591.0" prefWidth="821.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjoutcommandeController">
+<AnchorPane prefHeight="622.0" prefWidth="885.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjoutcommandeController">
     <children>
         <Label layoutX="39.0" layoutY="154.0" text="Date Commande " />
         <Label layoutX="39.0" layoutY="189.0" text="État Commande " />
@@ -31,14 +31,14 @@
         <Label layoutX="39.0" layoutY="119.0" text="ID Commande" />
         <TextField fx:id="idcommandf" layoutX="185.0" layoutY="115.0" />
         <Button fx:id="btndelete" layoutX="476.0" layoutY="534.0" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: #F44336; -fx-text-fill: white;" text="Delete" />
-        <TableView fx:id="listcommande" layoutX="411.0" layoutY="32.0" prefHeight="472.0" prefWidth="390.0">
+        <TableView fx:id="listcommande" layoutX="367.0" layoutY="24.0" prefHeight="480.0" prefWidth="510.0">
             <columns>
-                <TableColumn fx:id="idcommande" prefWidth="49.59991455078125" text="ID Commande" />
-                <TableColumn fx:id="datecommande" minWidth="0.0" prefWidth="42.39996337890625" text="Date Commande" />
-                <TableColumn fx:id="adresse" prefWidth="85.60000610351562" text="Adresse Commande" />
-                <TableColumn fx:id="etatcommande" prefWidth="64.0" text="État Commande" />
-                <TableColumn fx:id="phonenumber" prefWidth="68.00006103515625" text="Phone " />
-                <TableColumn fx:id="addinfo" prefWidth="80.7999267578125" text="Information" />
+                <TableColumn fx:id="idcommande" prefWidth="92.0" text="ID Commande" />
+                <TableColumn fx:id="datecommande" minWidth="0.0" prefWidth="86.39999389648438" text="Date Commande" />
+                <TableColumn fx:id="adresse" minWidth="0.0" prefWidth="64.0" text="Adresse Commande" />
+                <TableColumn fx:id="etatcommande" minWidth="0.0" prefWidth="112.00006103515625" text="État Commande" />
+                <TableColumn fx:id="phonenumber" minWidth="0.0" prefWidth="60.7999267578125" text="Phone " />
+                <TableColumn fx:id="addinfo" minWidth="0.0" prefWidth="96.800048828125" text="Information" />
             </columns>
         </TableView>
     </children>

@@ -1,6 +1,7 @@
 package controllers;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,16 +11,33 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import models.Ecommerce.Commande;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import services.ServiceCommande;
-
+import org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javafx.scene.paint.Color;
+import java.awt.Desktop;
+import java.io.File;
+
 
 public class Historique {
     private final ServiceCommande ss = new ServiceCommande();
@@ -68,11 +86,11 @@ public class Historique {
     }
 
 
-
     @FXML
     void initialize() {
         Show();
     }
+
     @FXML
     public void Show() {
 
@@ -111,6 +129,56 @@ public class Historique {
 
     }
 
+    public void generatePdf(ActionEvent actionEvent) {
+        try (PDDocument document = new PDDocument()) {
+            PDPage page = new PDPage();
+            document.addPage(page);
+
+            // Get the selected item from the table view
+            Commande selectedCommande = listcommande.getSelectionModel().getSelectedItem();
+
+            if (selectedCommande != null) {
+                try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
+                    // Set margins
+                    final float margin = 40;
+                    final float lineSpacing = 20;  // Adjust line spacing as needed
+
+                    // Y position for information (start from bottom with some margin)
+                    float yPosition = page.getMediaBox().getHeight() - margin - lineSpacing;
+
+                    // Information section with smaller font and indentation
+                    contentStream.beginText();
+                    contentStream.setFont(PDType1Font.HELVETICA, 10);
+                    contentStream.newLineAtOffset(margin, yPosition);
+                    contentStream.showText("ID Commande: " + selectedCommande.getIdCommande());
+                    yPosition -= lineSpacing;  // Update Y position for next line
+                    contentStream.newLineAtOffset(0, lineSpacing);  // Move down without changing X position
+                    contentStream.showText("Date Commande: " + selectedCommande.getDateCommande());
+                    yPosition -= lineSpacing;
+                    contentStream.newLineAtOffset(0, lineSpacing);
+                    // ... (show other information using the same pattern)
+                    contentStream.showText("Informations supplémentaires: " + selectedCommande.getAdditionalInformation());
+                    contentStream.endText();
+                }
+
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+                String filename = "Historique_" + sdf.format(new Date()) + "_" + selectedCommande.getDateCommande() + ".pdf";
+                File file = new File(filename);
+                document.save(file);
+                System.out.println("PDF generated successfully!");
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setHeaderText("No Commande Selected");
+                alert.setContentText("Please select a commande from the table to generate PDF");
+                alert.showAndWait();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
+
+
+
 
 

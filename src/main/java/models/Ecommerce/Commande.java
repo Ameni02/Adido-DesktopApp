@@ -99,6 +99,7 @@ public class Commande {
         return Objects.hash(getIdCommande(), getDateCommande(), getEtatCommande(), getCoupon(), getCommandeAdresse(), getCommandePhoneNumber(), getAdditionalInformation());
     }
 
+
     public void setAdditionalInformation(String additionalInformation) {
         this.additionalInformation = additionalInformation;
     }

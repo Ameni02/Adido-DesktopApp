@@ -29,7 +29,9 @@
          </font>
       </Label>
       <Button fx:id="backbutton" layoutX="41.0" layoutY="361.0" mnemonicParsing="false" onAction="#back" text="Back " />
-      <Button fx:id="admin" layoutX="27.0" layoutY="17.0" mnemonicParsing="false" onAction="#admincommand" text="admin" />
+      <Button fx:id="admin" layoutX="79.0" layoutY="16.0" mnemonicParsing="false" onAction="#admincommand" text="admin" />
+        <Button fx:id="pdf" layoutX="16.0" layoutY="16.0" mnemonicParsing="false" onAction="#generatePdf" text="pdf" />
+
     </children>
 
 </AnchorPane>

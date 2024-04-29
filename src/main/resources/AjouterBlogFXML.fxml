@@ -35,7 +35,7 @@
       <Text layoutX="442.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contry" AnchorPane.leftAnchor="442.0" AnchorPane.rightAnchor="283.344140625" />
       <TextField fx:id="tfstockproduct" layoutX="551.0" layoutY="209.0" AnchorPane.leftAnchor="551.2" AnchorPane.rightAnchor="94.4" />
       <Button fx:id="backtolist" layoutX="399.0" layoutY="466.0" mnemonicParsing="false" onAction="#backtolist" prefHeight="26.0" prefWidth="113.0" text="Afficher blog" />
-      <Button layoutX="567.0" layoutY="332.0" mnemonicParsing="false" onAction="#ajouterProduct" prefHeight="26.0" prefWidth="98.0" text="Save" />
+      <Button layoutX="567.0" layoutY="332.0" mnemonicParsing="false" onAction="#ajouterBlog" prefHeight="26.0" prefWidth="98.0" text="Save" />
       <Text layoutX="446.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title Blog" AnchorPane.leftAnchor="446.0" AnchorPane.rightAnchor="257.31718749999993" />
       <TextField fx:id="tfcategorieproduct" layoutX="551.0" layoutY="154.0" AnchorPane.leftAnchor="551.0" AnchorPane.rightAnchor="94.36601562499996" />
       <ImageView fitHeight="423.0" fitWidth="308.0" layoutX="103.2" layoutY="57.4" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="103.2" AnchorPane.rightAnchor="410.3999999999999" AnchorPane.topAnchor="57.4">

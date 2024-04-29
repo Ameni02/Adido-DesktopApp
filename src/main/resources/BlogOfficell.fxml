@@ -23,7 +23,7 @@
          <left>
             <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="syle.css" BorderPane.alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" prefHeight="81.0" prefWidth="435.0">
                      <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="96.0" text="Product" textOverrun="LEADING_ELLIPSIS">
                            <font>
@@ -58,9 +58,14 @@
                   <Pane prefHeight="34.0" prefWidth="435.0" VBox.vgrow="ALWAYS">
                      <children>
                         <Pane layoutX="-91.0" layoutY="-95.0" prefHeight="200.0" prefWidth="200.0" />
-                        <Button fx:id="addpost" layoutX="92.0" layoutY="24.0" mnemonicParsing="false" onAction="#addpost" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@syle.css" text="Add your post" textFill="#464141">
+                        <Button fx:id="showDashbord" layoutX="11.0" layoutY="30.0" mnemonicParsing="false" onAction="#showDashbord" prefHeight="50.0" prefWidth="186.0" styleClass="add-btn" stylesheets="@syle.css" text="Blog Dashbord" textFill="#464141">
                            <font>
-                              <Font size="22.0" />
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="addpost" layoutX="218.0" layoutY="30.0" mnemonicParsing="false" onAction="#addpost" prefHeight="50.0" prefWidth="204.0" styleClass="add-btn" stylesheets="@syle.css" text="Add your post" textFill="#464141">
+                           <font>
+                              <Font size="19.0" />
                            </font>
                         </Button>
 

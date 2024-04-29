@@ -25,9 +25,9 @@
         <columns>
             <TableColumn fx:id="id_blog" prefWidth="81.60000228881836" text="idblog" />
 
-                <TableColumn fx:id="id_categorieproduct" prefWidth="212.80006408691406" text="Title Post" />
-                <TableColumn fx:id="id_nomproduct" prefWidth="166.39996337890625" text="ContentPost" />
-                <TableColumn fx:id="id_prixproduct" prefWidth="99.199951171875" text="County" />
+                <TableColumn fx:id="id_post" prefWidth="212.80006408691406" text="Title Post" />
+                <TableColumn fx:id="id_content" prefWidth="166.39996337890625" text="ContentPost" />
+                <TableColumn fx:id="id_country" prefWidth="99.199951171875" text="County" />
             </columns>
         </TableView>
 

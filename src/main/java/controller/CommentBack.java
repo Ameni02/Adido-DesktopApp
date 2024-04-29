@@ -96,7 +96,13 @@ public class CommentBack {
     }
 
     @FXML
-    void ajoutercomment(ActionEvent actionEvent)throws IOException {
+    void Backtopost(ActionEvent actionEvent)throws IOException {
         FxMain.loadFXML("/ShowAll.fxml");
     }
+    @FXML
+    void ajoutercomment(ActionEvent actionEvent)throws IOException {
+        FxMain.loadFXML("/AjouterComment.fxml");
+    }
+
+
 }

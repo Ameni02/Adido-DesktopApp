@@ -108,7 +108,7 @@ public class ServiceComment implements CRUDComment<Comments>  {
             while (rs.next()) {
                 Comments c = new Comments();
                 c.setIdcomment(rs.getInt(1));
-                c.setContentcomment(rs.getString(2));
+                c.setContentcomment(rs.getString(3));
             list.add(c);
             }
         } catch (SQLException e) {

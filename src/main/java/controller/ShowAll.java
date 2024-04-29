@@ -18,21 +18,21 @@ import test.FxMain;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.List;
 
 public class ShowAll {
 
+    public TableColumn id_post;
     @FXML
     private TableColumn<?, ?> action;
     @FXML
     private TableColumn<?, ?> id_blog;
-    @FXML
-    private TableColumn<?, ?> id_categorieproduct;
 
     @FXML
-    private TableColumn<?, ?> id_nomproduct;
+    private TableColumn<?, ?> id_content;
 
     @FXML
-    private TableColumn<?, ?> id_prixproduct;
+    private TableColumn<?, ?> id_country;
 
 
 
@@ -54,14 +54,16 @@ public class ShowAll {
         ObservableList<Blog> list = FXCollections.observableList(ServiceBlog.selectAll());
         TableColumn<Object, Object> id_product;
         id_blog.setCellValueFactory(new PropertyValueFactory<>("idblog"));
-        id_categorieproduct.setCellValueFactory(new PropertyValueFactory<>("titleBlog"));
-        id_nomproduct.setCellValueFactory(new PropertyValueFactory<>("contentBlog"));
-        id_prixproduct.setCellValueFactory(new PropertyValueFactory<>("country"));
+        id_post.setCellValueFactory(new PropertyValueFactory<>("titleBlog"));
+        id_content.setCellValueFactory(new PropertyValueFactory<>("contentBlog"));
+        id_country.setCellValueFactory(new PropertyValueFactory<>("CountryBlog"));
         BlogListe.setItems(list);
 
 
         TableColumn<Blog, Void> actionButtonColumn = new TableColumn<>("Actions");
         actionButtonColumn.setCellFactory(param -> new TableCell<>() {
+
+            private final Button aprouveButton = new Button("Aprouve");
             private final Button deleteButton = new Button("Delete");
             private final Button updateButton = new Button("Update");
 
@@ -99,6 +101,21 @@ public class ShowAll {
                         throw new RuntimeException(e);
                     }
 
+
+                });
+                aprouveButton.setOnAction(event -> {
+                    Blog blog = getTableView().getItems().get(getIndex());
+
+                    // Mettre à jour l'état d'approbation dans la base de données
+                    blog.setApproved(true); // Supposons que setApprouve est une méthode pour modifier l'attribut "approuve" du blog
+                    // Enregistrez les modifications dans la base de données, par exemple :
+                    // blogService.updateBlog(blog); // Supposons que blogService est votre service pour gérer les opérations sur les blogs
+
+                    // Mettre à jour l'affichage dans le TableView si nécessaire
+                    getTableView().refresh(); // Rafraîchit la vue pour refléter les modifications
+
+                    // Afficher un message de confirmation ou effectuer d'autres actions nécessaires
+                    System.out.println("Publication approuvée : " + blog.getTitleBlog());
 
                 });
             }

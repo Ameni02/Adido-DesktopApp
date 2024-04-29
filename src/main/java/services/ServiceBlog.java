@@ -143,7 +143,7 @@ public class ServiceBlog implements CRUD<Blog> {
                 b.setIdblog(rs.getInt(1));
                 b.setTitleBlog(rs.getString(2));
                 b.setContentBlog(rs.getString(3));
-                b.setCountryBlog(rs.getString(4));
+                b.setCountryBlog(rs.getString(5));
 
                 list.add(b);
             }

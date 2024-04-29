@@ -10,7 +10,6 @@ import models.Blog;
 import models.Image;
 import services.ServiceBlog;
 import test.FxMain;
-
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -33,8 +32,9 @@ public class AjouterBlogFXML {
 
 
 
+
     @FXML
-    void ajouterProduct(ActionEvent event) {
+    void ajouterBlog(ActionEvent event) {
         try {
             String titleBlog = tfnomproduct.getText();
             String contentBlog = tfcategorieproduct.getText();
@@ -69,13 +69,28 @@ public class AjouterBlogFXML {
                 return;
             }
 
+            Image imageblog = new Image();
+            String imagePath = picture_input.getText(); // Récupère le chemin d'accès de l'image à partir du champ de texte
+            imageblog.setName_img(imagePath);
+
+            if (imagePath == null) {
+                new Alert(Alert.AlertType.ERROR, "Error downloading image.").show();
+                return;
+            }
+
             Blog newBlog = new Blog(titleBlog, contentBlog, countryBlog);
             ServiceBlog serviceProduct = new ServiceBlog();
             serviceProduct.insertOne(newBlog);
             int idblog = newBlog.getIdblog();
 
-            // Ajout de l'image associée au blog (code non modifié ici)
+            imageblog.setIdblog(idblog);
 
+            serviceProduct.insertImageProduit(imageblog);
+            String userEmail = "sarah1sahlii1@gmail.com"; // Adresse e-mail du destinataire
+            String enchereDescription = "tetsette"; // Description spécifique à votre application
+            String userName = "Sarah reads for you"; // Nom de l'utilisateur (optionnel)
+
+            EmailSender.sendConfirmationEmail(userEmail, enchereDescription, userName) ;
             new Alert(Alert.AlertType.INFORMATION, "Post and image added successfully.").show();
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Error adding post or image: " + e.getMessage()).show();

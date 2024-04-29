@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="700" prefWidth="842.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CommentBack">
     <children>
-        <Button layoutX="332.0" layoutY="510.0" mnemonicParsing="false" onAction="#ajoutercomment" prefHeight="36.0" prefWidth="228.0" style="-fx-border-color: black; -fx-border-radius: 100; -fx-border-width: 2;" text="Back to postes">
+        <Button layoutX="322.0" layoutY="562.0" mnemonicParsing="false" onAction="#Backtopost" prefHeight="36.0" prefWidth="228.0" style="-fx-border-color: black; -fx-border-radius: 100; -fx-border-width: 2;" text="Back to postes">
             <font>
                 <Font name="Montserrat SemiBold" size="15.0" />
             </font></Button>
@@ -27,6 +27,11 @@
                 <TableColumn fx:id="contentcomment" prefWidth="313.59999084472656" text="ContentComment" />
             </columns>
         </TableView>
+      <Button layoutX="322.0" layoutY="492.0" mnemonicParsing="false" onAction="#ajoutercomment" prefHeight="36.0" prefWidth="228.0" style="-fx-border-color: black; -fx-border-radius: 100; -fx-border-width: 2;" text="Add comment">
+         <font>
+            <Font name="Montserrat SemiBold" size="15.0" />
+         </font>
+      </Button>
 
     </children>
 </AnchorPane>

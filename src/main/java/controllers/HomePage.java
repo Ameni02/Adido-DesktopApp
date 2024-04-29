@@ -1,31 +1,45 @@
 package controllers;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import de.taimos.totp.TOTP;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.security.SecureRandom;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import models.Person;
+import org.apache.commons.codec.binary.Base32;
+import org.apache.commons.codec.binary.Hex;
 import services.ServicePerson;
 import services.getData;
 
@@ -58,6 +72,9 @@ public class HomePage implements Initializable {
     private ComboBox<String> UserRAdd;
 
     @FXML
+    private ImageView Qrimg;
+
+    @FXML
     private TextField UserIDUpdate;
 
     @FXML
@@ -68,6 +85,9 @@ public class HomePage implements Initializable {
 
     @FXML
     private TextField UserPNUpdate;
+
+    @FXML
+    private TextField code;
 
     @FXML
     private TextField UserUNUpdate;
@@ -379,4 +399,49 @@ public void userUpdate()
         throw new RuntimeException(e);
     }
 }
+    public String generateSecretKey() throws IOException {
+        String account = "gmootaz3@gmail.com";
+        SecureRandom random = new SecureRandom();
+        byte[] bytes = new byte[20];
+        random.nextBytes(bytes);
+        Base32 base32 = new Base32();
+        System.out.println(base32.encodeToString(bytes));
+        String secretKey= base32.encodeToString(bytes);
+        bytes = base32.decode( secretKey);
+        String hexKey = Hex.encodeHexString(bytes);
+        System.out.println(TOTP.getOTP(hexKey));
+        try {
+            String barCodeData= "otpauth://totp/"
+                    + URLEncoder.encode("issuer" + ":" + account, "UTF-8").replace("+", "%20")
+                    + "?secret=" + URLEncoder.encode(secretKey, "UTF-8").replace("+", "%20")
+                    + "&issuer=" + URLEncoder.encode("issuer", "UTF-8").replace("+", "%20");
+            BitMatrix matrix = new MultiFormatWriter().encode(barCodeData, BarcodeFormat.QR_CODE,200, 200);
+            FileOutputStream out = new FileOutputStream("C:/Users/Si Taz/Desktop/WorkshopJDBC/src/main/resources/images/QR.png");
+            MatrixToImageWriter.writeToStream(matrix,"png", out);
+            out.close();
+            Image image = new Image("file:///C:/Users/Si Taz/Desktop/WorkshopJDBC/src/main/resources/images/QR.png");
+            Qrimg.setImage(image);
+        } catch (UnsupportedEncodingException | WriterException | FileNotFoundException e) {
+            throw new IllegalStateException(e);
+        }
+
+        return secretKey;
+    }
+    public static String getTOTPCode(String secretKey) {
+        Base32 base32 = new Base32();
+        byte[] bytes = base32.decode(secretKey);
+        String hexKey = Hex.encodeHexString(bytes);
+        System.out.println(TOTP.getOTP(hexKey));
+        return TOTP.getOTP(hexKey);
+    }
+    @FXML
+    void code() {
+        String secretKey = "EL2IPVGWWXJESPCV63PO6EHV6SWJKGAA"; // Your secret key
+        String enteredCode = code.getText();
+        String generatedCode = getTOTPCode(secretKey);
+        if (enteredCode.equals(generatedCode)) {
+            Qrimg.setImage(null); // Remove QR image
+
+        }
+    }
 }

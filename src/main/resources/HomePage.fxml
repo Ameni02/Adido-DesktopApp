@@ -86,7 +86,7 @@
                         <TableColumn fx:id="col_update" minWidth="7.0" prefWidth="115.0" />
                     </columns>
                   </TableView>
-                  <TextField fx:id="UsersSearch" layoutX="374.0" layoutY="14.0" onKeyTyped="#addUsersSearch" prefHeight="31.0" prefWidth="191.0" promptText="Search" />
+                  <TextField fx:id="UsersSearch" layoutX="374.0" layoutY="14.0" onAction="#addUsersSearch" onKeyTyped="#addUsersSearch" prefHeight="31.0" prefWidth="191.0" promptText="Search" />
                   <Label layoutX="587.0" layoutY="773.0" text="phone number" />
                   <Label layoutX="601.0" layoutY="691.0" text="last name" />
                   <Label layoutX="873.0" layoutY="687.0" text="role" />
@@ -114,13 +114,20 @@
                   <TextField fx:id="UserAAdd" layoutX="1551.0" layoutY="117.0" />
                   <TextField fx:id="UserUNAdd" layoutX="1551.0" layoutY="302.0" />
                   <ComboBox fx:id="UserRAdd" layoutX="1551.0" layoutY="428.0" prefWidth="150.0" />
-                  <Button layoutX="1551.0" layoutY="482.0" mnemonicParsing="false" onAction="#addUserAdd" text="add" />
+                  <Button fx:id="btn_add" layoutX="1551.0" layoutY="482.0" mnemonicParsing="false" onAction="#addUserAdd" text="add" />
                   <TextField fx:id="UserIDAdd" layoutX="1551.0" layoutY="45.0" />
                   <Label layoutX="1492.0" layoutY="43.0" prefHeight="29.0" prefWidth="35.0" text="id" />
                   <Label layoutX="1476.0" layoutY="348.0" prefHeight="29.0" prefWidth="66.0" text="password" />
                   <TextField fx:id="UserPWAdd" layoutX="1552.0" layoutY="350.0" />
                   <Label layoutX="1476.0" layoutY="388.0" prefHeight="29.0" prefWidth="66.0" text="is_verified" />
                   <TextField fx:id="UserIVAdd" layoutX="1551.0" layoutY="390.0" />
+                  <Button fx:id="btn_2fa" layoutX="130.0" layoutY="147.0" mnemonicParsing="false" onAction="#generateSecretKey" prefHeight="25.0" prefWidth="128.0" text="2fa" />
+                  <ImageView fx:id="Qrimg" fitHeight="200.0" fitWidth="200.0" layoutX="94.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@images/QR.png" />
+                  </image>
+                  </ImageView>
+                  <TextField fx:id="code" layoutX="120.0" layoutY="428.0" onKeyTyped="#code" />
                </children>
             </AnchorPane>
          </center>

@@ -1,5 +1,6 @@
 package test;
 
+import com.sun.javafx.util.Utils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+
 
 public class FxMain extends Application {
 
@@ -20,9 +23,14 @@ public class FxMain extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+
+
         Parent root = FXMLLoader.load(getClass().getResource("/AjouterPersonneFXML.fxml"));
 
+
+
         Scene scene = new Scene(root);
+
 
         root.setOnMousePressed((MouseEvent event) ->
         {
@@ -48,6 +56,6 @@ public class FxMain extends Application {
         stage.setFullScreen(true);
         stage.show();
 
-
     }
+
 }

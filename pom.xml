@@ -33,6 +33,24 @@
             <version>21.0.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>de.taimos</groupId>
+            <artifactId>totp</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.16.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>javase</artifactId>
+            <version>3.5.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -43,6 +61,15 @@
                 <version>0.0.8</version>
                 <configuration>
                     <mainClass>test.FxMain</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                    <compilerArgs>--enable-preview</compilerArgs>
                 </configuration>
             </plugin>
         </plugins>

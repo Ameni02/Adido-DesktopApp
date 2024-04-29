@@ -13,27 +13,27 @@
    <children>
       <AnchorPane layoutX="960.0" prefHeight="1080.0" prefWidth="960.0">
          <children>
-            <TextField fx:id="UserLastName" layoutX="395.0" layoutY="410.0" prefHeight="49.0" prefWidth="309.0" promptText="Last Name" style="-fx-background-color: transparent; -fx-border-color: #be3511; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="UserFirstName" layoutX="395.0" layoutY="482.0" prefHeight="49.0" prefWidth="309.0" promptText="First Name" style="-fx-background-color: Transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #be3511;" />
-            <TextField fx:id="UserUserName" layoutX="395.0" layoutY="554.0" prefHeight="49.0" prefWidth="309.0" promptText="User Name" style="-fx-border-color: #be3511; -fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent;" />
-            <Button fx:id="signup_btn" layoutX="461.0" layoutY="865.0" mnemonicParsing="false" onAction="#signup" prefHeight="49.0" prefWidth="177.0" style="-fx-background-radius: 6; -fx-background-color: #be3511;" text="sign up" textFill="WHITE" />
-            <TextField fx:id="UserEmail" layoutX="395.0" layoutY="626.0" prefHeight="49.0" prefWidth="309.0" promptText="E-mail" style="-fx-background-color: transparent; -fx-border-color: #be3511; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="UserPassword" layoutX="395.0" layoutY="699.0" prefHeight="49.0" prefWidth="309.0" promptText="Password" style="-fx-background-color: Transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #be3511;" />
-            <TextField fx:id="UserPasswordConfirm" layoutX="395.0" layoutY="771.0" prefHeight="49.0" prefWidth="309.0" promptText="Confirm Password" style="-fx-border-color: #be3511; -fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent;" />
+            <TextField fx:id="UserLastName" layoutX="253.0" layoutY="154.0" prefHeight="89.0" prefWidth="438.0" promptText="Last Name" style="-fx-background-color: transparent; -fx-border-color: #be3511; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="UserFirstName" layoutX="253.0" layoutY="268.0" prefHeight="89.0" prefWidth="438.0" promptText="First Name" style="-fx-background-color: Transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #be3511;" />
+            <TextField fx:id="UserUserName" layoutX="253.0" layoutY="382.0" prefHeight="89.0" prefWidth="438.0" promptText="User Name" style="-fx-border-color: #be3511; -fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent;" />
+            <Button fx:id="signup_btn" layoutX="369.0" layoutY="848.0" mnemonicParsing="false" onAction="#signup" prefHeight="69.0" prefWidth="206.0" style="-fx-background-radius: 6; -fx-background-color: #be3511;" text="sign up" textFill="WHITE" />
+            <TextField fx:id="UserEmail" layoutX="253.0" layoutY="494.0" prefHeight="89.0" prefWidth="438.0" promptText="E-mail" style="-fx-background-color: transparent; -fx-border-color: #be3511; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="UserPassword" layoutX="253.0" layoutY="609.0" prefHeight="89.0" prefWidth="438.0" promptText="Password" style="-fx-background-color: Transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #be3511;" />
+            <TextField fx:id="UserPasswordConfirm" layoutX="253.0" layoutY="722.0" prefHeight="89.0" prefWidth="438.0" promptText="Confirm Password" style="-fx-border-color: #be3511; -fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent;" />
             <Button fx:id="close" layoutX="922.0" layoutY="14.0" mnemonicParsing="false" onAction="#close" text="X" />
-            <Label fx:id="lastnameerror" layoutX="395.0" layoutY="465.0" prefHeight="17.0" prefWidth="438.0" />
-            <Label fx:id="lastnameerror1" layoutX="395.0" layoutY="540.0" prefHeight="17.0" prefWidth="438.0" />
-            <Label fx:id="lastnameerror2" layoutX="395.0" layoutY="609.0" prefHeight="17.0" prefWidth="438.0" />
-            <Label fx:id="lastnameerror3" layoutX="395.0" layoutY="682.0" prefHeight="17.0" prefWidth="438.0" />
-            <Label fx:id="lastnameerror4" layoutX="395.0" layoutY="754.0" prefHeight="17.0" prefWidth="438.0" />
-            <Label fx:id="lastnameerror5" layoutX="395.0" layoutY="826.0" prefHeight="17.0" prefWidth="438.0" />
+            <Label fx:id="lastnameerror" layoutX="253.0" layoutY="251.0" prefHeight="17.0" prefWidth="438.0" />
+            <Label fx:id="lastnameerror1" layoutX="253.0" layoutY="364.0" prefHeight="17.0" prefWidth="438.0" />
+            <Label fx:id="lastnameerror2" layoutX="253.0" layoutY="477.0" prefHeight="17.0" prefWidth="438.0" />
+            <Label fx:id="lastnameerror3" layoutX="253.0" layoutY="592.0" prefHeight="17.0" prefWidth="438.0" />
+            <Label fx:id="lastnameerror4" layoutX="253.0" layoutY="705.0" prefHeight="17.0" prefWidth="438.0" />
+            <Label fx:id="lastnameerror5" layoutX="253.0" layoutY="817.0" prefHeight="17.0" prefWidth="438.0" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="1080.0" prefWidth="960.0" stylesheets="@AjouterPersonneFXML.css">
          <children>
-            <TextField fx:id="UserEmailLogin" layoutX="325.0" layoutY="438.0" onAction="#loginAdmin" prefHeight="49.0" prefWidth="309.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #be3511;" />
-            <TextField fx:id="UserPasswordLogin" layoutX="325.0" layoutY="500.0" onAction="#loginAdmin" prefHeight="49.0" prefWidth="309.0" promptText="Password" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #be3511;" />
-            <Button fx:id="loginBtn" layoutX="391.0" layoutY="565.0" mnemonicParsing="false" onAction="#loginAdmin" prefHeight="49.0" prefWidth="177.0" style="-fx-background-radius: 6; -fx-background-color: #be3511;" text="Login" textFill="WHITE" />
+            <TextField fx:id="UserEmailLogin" layoutX="225.0" layoutY="398.0" onAction="#loginAdmin" prefHeight="89.0" prefWidth="438.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #be3511;" />
+            <TextField fx:id="UserPasswordLogin" layoutX="225.0" layoutY="506.0" onAction="#loginAdmin" prefHeight="89.0" prefWidth="438.0" promptText="Password" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #be3511;" />
+            <Button fx:id="loginBtn" layoutX="341.0" layoutY="623.0" mnemonicParsing="false" onAction="#loginAdmin" prefHeight="69.0" prefWidth="206.0" style="-fx-background-radius: 6; -fx-background-color: #be3511;" text="Login" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="slider" layoutX="-47.0" prefHeight="1080.0" prefWidth="1007.0" style="-fx-background-color: #be3511; -fx-background-radius: 50; -fx-border-radius: 50;">

@@ -1,6 +1,7 @@
 package controllers;
 
 import com.sun.javafx.collections.ElementObservableListDecorator;
+import com.twilio.Twilio;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,8 +17,14 @@ import java.text.DateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.rest.api.v2010.account.MessageCreator;
+import com.twilio.type.PhoneNumber;
 
 public class AjoutcommandeController {
+    private static final String ACCOUNT_SID = "ACdc2fa3af4202c9577fb871b90f2ace3c";
+    private static final String AUTH_TOKEN = "043bd7356830c06a0bf70d7715c92b22";
 
     @FXML
     private TableColumn<Commande, String> addinfo;
@@ -72,7 +79,8 @@ public class AjoutcommandeController {
 
 
     @FXML
-   void ajoutcommandeController(ActionEvent event) {
+
+    void ajoutcommandeController(ActionEvent event) {
         String adresse = tfadresse.getText();
         Date date = Date.valueOf(tfdate.getValue());
         String etat = tfetat.getText();
@@ -111,12 +119,43 @@ public class AjoutcommandeController {
             alert.showAndWait();
             return;
         }
-        if (!etat.equals("confirmed") && !etat.equals("in process") && !etat.equals("shipped")) {
+        if (etat.equals("Shipped")) {
+            // Send SMS using Twilio
+            String recipientPhoneNumber = "+21654736876"; // Replace with the recipient's phone number
+            String messageBody = "We're excited to let you know that your recent order has been shipped! Your package is on its way and should be arriving soon. :\n";
+
+            try {
+                Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+                Message message = Message.creator(
+                                new PhoneNumber(recipientPhoneNumber),
+                                new PhoneNumber("+12569739630"), // Replace with your Twilio phone number
+                                messageBody)
+                        .create();
+
+                System.out.println("Message SID: " + message.getSid());
+                // Show success message
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Success");
+                alert.setHeaderText(null);
+                alert.setContentText("SMS sent successfully!");
+                alert.showAndWait();
+            } catch (Exception e) {
+                // Handle Twilio API exception
+                e.printStackTrace();
+                // Display error message to the user
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Failed to send SMS. Please try again later.");
+                alert.showAndWait();
+                return;
+            }
+        } else if (!etat.equals("Confirmed") && !etat.equals("in process") && !etat.equals("Shipped")) {
             // Handle invalid status
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Please enter 'confirmed', 'in process', or 'shipped' for the status.");
+            alert.setContentText("Please enter 'Confirmed', 'in process', or 'Shipped' for the status.");
             alert.showAndWait();
             return;
         }
@@ -146,11 +185,8 @@ public class AjoutcommandeController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
-
-
     }
+
 
     @FXML
     void delete(ActionEvent event) {

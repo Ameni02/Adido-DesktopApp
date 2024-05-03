@@ -137,5 +137,17 @@ public class ServicePanier implements PanierInterface<Panier> {
             return 0;
         }
     }
-    }
 
+    public int getStock(String productName) throws SQLException {
+        String req = "SELECT stockproduct FROM product WHERE nomproduct = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(req)) {
+            ps.setString(1, productName);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("stockproduct");
+            } else {
+                throw new SQLException("Product not found");
+            }
+        }
+    }
+}

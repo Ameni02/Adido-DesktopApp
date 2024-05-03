@@ -14,4 +14,5 @@ public interface PanierInterface<T> {
     public void clearAll() throws SQLException ;
     public int getQuantity(String productName) throws SQLException ;
     public void updateCartItem(Panier panier) throws SQLException ;
+    public int getStock(String productName) throws SQLException;
 }

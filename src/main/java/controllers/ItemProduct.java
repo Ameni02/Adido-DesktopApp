@@ -3,6 +3,7 @@ package controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -63,13 +64,23 @@ public class ItemProduct extends VBox {
         ServicePanier sp = new ServicePanier();
         Panier panier = new Panier(2, sp.retrieveOneProduct(nameLabel.getText()), 1, Math.round(Float.parseFloat(priceLabel.getText())), nameLabel.getText());
         int quantity = sp.getQuantity(panier.getProductName());
-        if (quantity == 0) {
-            // item does not exist in the cart, so add it
-            sp.addToCart(panier);
+        int stock = sp.getStock(panier.getProductName());
+        if (stock < quantity + 1) {
+            // stock is less than the number of clicks, so show an alert
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Insufficient Stock");
+            alert.setHeaderText(null);
+            alert.setContentText("Insufficient Stock");
+            alert.showAndWait();
         } else {
-            // item already exists in the cart, so update the quantity
-            panier.setQuantity(quantity + 1);
-            sp.updateCartItem(panier);
+            if (quantity == 0) {
+                // item does not exist in the cart, so add it
+                sp.addToCart(panier);
+            } else {
+                // item already exists in the cart, so update the quantity
+                panier.setQuantity(quantity + 1);
+                sp.updateCartItem(panier);
+            }
         }
     }
 }

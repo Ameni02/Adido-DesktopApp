@@ -39,8 +39,8 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <Button fx:id="addComment" layoutX="423.0" layoutY="494.0" mnemonicParsing="false" onAction="#addComment" text="add it " />
-      <TextArea fx:id="ChampsComment" layoutX="72.0" layoutY="449.0" prefHeight="142.0" prefWidth="266.0" text="Write here your comment" />
+      <Button fx:id="addComment" layoutX="354.0" layoutY="479.0" mnemonicParsing="false" onAction="#addComment" text="add it " />
+      <TextArea fx:id="ChampsComment" layoutX="72.0" layoutY="449.0" prefHeight="96.0" prefWidth="234.0" text="Write here your comment" />
       <ImageView fx:id="imageShow" fitHeight="150.0" fitWidth="200.0" layoutX="205.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="generateQRCodeImage" fitHeight="150.0" fitWidth="200.0" layoutX="607.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="generateQRCode" layoutX="849.0" layoutY="579.0" mnemonicParsing="false" onAction="#generateQRCode" text="Button" />

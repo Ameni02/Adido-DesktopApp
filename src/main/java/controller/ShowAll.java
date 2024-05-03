@@ -30,6 +30,7 @@ import java.util.concurrent.Future;
 public class ShowAll {
 
     public TableColumn id_post;
+    public Label Voice;
     @FXML
     private TableColumn<?, ?> action;
     @FXML
@@ -184,52 +185,6 @@ public class ShowAll {
         }
 
     }
-    /*
 
-    @FXML
-    void Microbtn(ActionEvent event) {
-        // Create a new Task for asynchronous speech recognition
-        Task<String> recognitionTask = new Task<String>() {
-            @Override
-            protected String call() throws Exception {
-                // Replace with your subscription key and region
-                SpeechConfig speechConfig = SpeechConfig.fromSubscription("YOUR_SUBSCRIPTION_KEY", "YOUR_REGION");
-
-                try (SpeechRecognizer speechRecognizer = new SpeechRecognizer(speechConfig, AudioConfig.fromDefaultMicrophoneInput())) {
-                    System.out.println("Speak into your microphone."); // Inform user to speak
-
-                    Future<SpeechRecognitionResult> task = speechRecognizer.recognizeOnceAsync();
-                    SpeechRecognitionResult result = task.get();
-
-                    if (result.getReason() == ResultReason.Canceled) {
-                        System.out.println("Cancellation detected.");
-                        return null;
-                    } else if (result.getReason() == ResultReason.NoMatch) {
-                        System.out.println("No speech recognized.");
-                        return null;
-                    } else {
-                        String recognizedText = result.getText();
-                        return recognizedText;
-                    }
-                }
-            }
-        };
-
-        // Start the recognition task and handle the result
-        recognitionTask.setOnSucceeded(event1 -> {
-            String transcribedText = recognitionTask.getValue();
-            if (transcribedText != null) {
-                // Update the text field with the recognized text
-                rechercheblog.setText(transcribedText);
-            }
-        });
-
-        recognitionTask.setOnFailed(event1 -> {
-            Throwable exception = recognitionTask.getException();
-            System.err.println("Speech recognition failed: " + exception.getMessage());
-        });
-
-        new Thread(recognitionTask).start();
-    }*/
 
 }

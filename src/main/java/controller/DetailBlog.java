@@ -5,6 +5,12 @@
     import com.google.zxing.client.j2se.MatrixToImageWriter;
     import com.google.zxing.common.BitMatrix;
     import com.google.zxing.qrcode.QRCodeWriter;
+    import com.microsoft.cognitiveservices.speech.ResultReason;
+    import com.microsoft.cognitiveservices.speech.SpeechConfig;
+    import com.microsoft.cognitiveservices.speech.SpeechRecognitionResult;
+    import com.microsoft.cognitiveservices.speech.SpeechRecognizer;
+    import com.microsoft.cognitiveservices.speech.audio.AudioConfig;
+    import javafx.concurrent.Task;
     import javafx.event.ActionEvent;
     import javafx.fxml.FXML;
     import javafx.fxml.FXMLLoader;
@@ -29,6 +35,7 @@
     import java.util.HashMap;
     import java.util.List;
     import java.util.Map;
+    import java.util.concurrent.Future;
 
     public class DetailBlog {
 
@@ -36,6 +43,7 @@
         public TextArea ChampsComment;
         public ImageView generateQRCodeImage;
         public Button generateQRCode;
+        public Label Voice;
 
 
         @FXML
@@ -190,5 +198,54 @@
             generateQRCodeImage.setImage(qrImage);
         }
 
+        @FXML
+        public void Microbtn(ActionEvent actionEvent) {
 
-    }
+                // Create a new Task for asynchronous speech recognition
+                Task<String> recognitionTask = new Task<String>() {
+                    @Override
+                    protected String call() throws Exception {
+                        // Replace with your subscription key and region
+                        SpeechConfig speechConfig = SpeechConfig.fromSubscription("71109cefd1b54092b1a24c0337e0c264", "francecentral");
+
+                        try (SpeechRecognizer speechRecognizer = new SpeechRecognizer(speechConfig, AudioConfig.fromDefaultMicrophoneInput())) {
+                            System.out.println("Speak into your microphone."); // Inform user to speak
+
+                            Future<SpeechRecognitionResult> task = speechRecognizer.recognizeOnceAsync();
+                            SpeechRecognitionResult result = task.get();
+
+                            if (result.getReason() == ResultReason.Canceled) {
+                                System.out.println("Cancellation detected.");
+                                return null;
+                            } else if (result.getReason() == ResultReason.NoMatch) {
+                                System.out.println("No speech recognized.");
+                                return null;
+                            } else {
+                                String recognizedText = result.getText();
+                                //System.out.println("Recognized text: " + recognizedText);
+                                return recognizedText;
+                            }
+                        }
+                    }
+                };
+
+                // Start the recognition task and handle the result
+                recognitionTask.setOnSucceeded(event1 -> {
+                    String transcribedText = recognitionTask.getValue();
+                    if (transcribedText != null) {
+                        // Update UI element (if desired)
+                        Voice.setText(transcribedText);
+                    }
+                });
+
+                recognitionTask.setOnFailed(event1 -> {
+                    Throwable exception = recognitionTask.getException();
+                    System.err.println("Speech recognition failed: " + exception.getMessage());
+                });
+
+                new Thread(recognitionTask).start();
+            }
+
+        }
+
+

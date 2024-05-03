@@ -81,8 +81,10 @@ public class BlogOfficel {
     void addpost(ActionEvent actionEvent)throws IOException {
         FxMain.loadFXML("/AjouterBlogFXML.fxml");
     }
-
-
-    public void showDashbord(ActionEvent actionEvent) {
+    @FXML
+    void showDashbord(ActionEvent actionEvent)throws IOException {
+        FxMain.loadFXML("/ShowAll.fxml");
     }
+
+
 }

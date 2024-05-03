@@ -63,8 +63,13 @@ public class ItemProduct extends VBox {
         ServicePanier sp = new ServicePanier();
         Panier panier = new Panier(2, sp.retrieveOneProduct(nameLabel.getText()), 1, Math.round(Float.parseFloat(priceLabel.getText())), nameLabel.getText());
         int quantity = sp.getQuantity(panier.getProductName());
-        panier.setQuantity(quantity + 1);
-        sp.updateCartItem(panier);
-        sp.addToCart(panier);
+        if (quantity == 0) {
+            // item does not exist in the cart, so add it
+            sp.addToCart(panier);
+        } else {
+            // item already exists in the cart, so update the quantity
+            panier.setQuantity(quantity + 1);
+            sp.updateCartItem(panier);
+        }
     }
 }

@@ -98,12 +98,22 @@ public class ServicePanier implements PanierInterface<Panier> {
         return productId;
     }
     public void updateCartItem(Panier panier) throws SQLException {
-        String query = "UPDATE panier SET quantity = ?, prix_total = ? WHERE id = ?";
-        PreparedStatement statement = cnx.prepareStatement(query);
-        statement.setInt(1, panier.getQuantity());
-        statement.setInt(2, panier.getPrixTotal());
-        statement.setInt(3, panier.getId());
-        statement.executeUpdate();
+        String req = "UPDATE `panier` SET `quantity` =? WHERE `product_name` =? AND `idUser` =?";
+        try (PreparedStatement ps = cnx.prepareStatement(req)) {
+            ps.setInt(1, panier.getQuantity());
+            ps.setString(2, panier.getProductName());
+            ps.setInt(3, 1); // assuming the user ID is 1
+            ps.executeUpdate();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("Product successfully added to the shopping cart.");
+            alert.showAndWait();
+            System.out.println("Panier Added !");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }
     }
 
     public void clearAll() throws SQLException {

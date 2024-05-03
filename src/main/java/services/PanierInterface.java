@@ -1,5 +1,7 @@
 package services;
 
+import models.Ecommerce.Panier;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -11,5 +13,5 @@ public interface PanierInterface<T> {
     public int retrieveOneProduct(String nom) throws SQLException;
     public void clearAll() throws SQLException ;
     public int getQuantity(String productName) throws SQLException ;
-
+    public void updateCartItem(Panier panier) throws SQLException ;
 }

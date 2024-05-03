@@ -20,38 +20,23 @@ import java.util.List;
 
 public class BlogOfficel {
 
-    @FXML
-    private ImageView ProductImage;
 
-    @FXML
-    private Label ProductNameLabel;
-
-    @FXML
-    private Label ProductPriceLabel;
-
-    @FXML
-    private VBox chosenProductCart;
     @FXML
     private GridPane grid;
 
-    @FXML
-    private ScrollPane scrol;
-
-    @FXML
-    private HBox productBox;
 
 
-    // private MyListener myListener;
+
 
 
     @FXML
 
     void initialize() throws SQLException {
         // Fetch the list of products
-        ServiceBlog serviceblog = new ServiceBlog();
+        ServiceBlog serviceProduct = new ServiceBlog();
 
         // Appelez selectAll() à partir de l'instance créée
-        List<Blog> BlogList = serviceblog.selectAll();
+        List<Blog> BlogList = serviceProduct.selectAll();
         // Keep track of the position in the grid
         int column = 0;
         int row = 0;
@@ -64,7 +49,7 @@ public class BlogOfficel {
                 ItemPost itemPost = loader.getController();
 
                 // Get the list of images for the product
-                List<Image> images = serviceblog.getImagesByProductId(blog.getIdblog());
+                List<Image> images = serviceProduct.getImagesByProductId(blog.getIdblog());
                 String imagePath = null;
 
                 // Check if there are images available for the product
@@ -76,12 +61,14 @@ public class BlogOfficel {
                 // Set the data for the itemProduct
                 itemPost.setData(blog.getTitleBlog(), blog.getContentBlog(), blog.getCountryBlog(),  imagePath);
 
+                itemPost.setSelectedBlog(blog);
+
                 // Add the card to the grid
                 grid.add(card, column, row);
 
                 // Update column and row values
                 column++;
-                if (column == 3) { // Assuming 3 columns per row
+                if (column == 1) { // Assuming 3 columns per row
                     column = 0;
                     row++;
                 }
@@ -90,14 +77,12 @@ public class BlogOfficel {
             }
         }
     }
-
     @FXML
     void addpost(ActionEvent actionEvent)throws IOException {
         FxMain.loadFXML("/AjouterBlogFXML.fxml");
     }
-    @FXML
-    void showDashbord(ActionEvent actionEvent)throws IOException {
-        FxMain.loadFXML("/ShowAll.fxml");
-    }
 
+
+    public void showDashbord(ActionEvent actionEvent) {
+    }
 }

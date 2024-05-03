@@ -5,12 +5,12 @@ public class Blog {
     private String TitleBlog;
     private String ContentBlog;
     private  String CountryBlog;
-    private boolean approved;
+    private int approved;
     public Blog(){
 
     }
 
-    public Blog(int idblog, String titleBlog, String contentBlog, String countryBlog, boolean approved) {
+    public Blog(int idblog, String titleBlog, String contentBlog, String countryBlog, int approved) {
         this.idblog = idblog;
         TitleBlog = titleBlog;
         ContentBlog = contentBlog;
@@ -31,11 +31,11 @@ public class Blog {
         CountryBlog = countryBlog;
     }
 
-    public boolean getApproved() {
+    public int getApproved() {
         return approved;
     }
 
-    public void setApproved(boolean approved) {
+    public void setApproved(int approved) {
         this.approved = approved;
     }
 

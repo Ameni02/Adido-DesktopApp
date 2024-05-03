@@ -8,9 +8,9 @@ import java.sql.PreparedStatement;
 
 public class DBConnection {
 
-    private final java.lang.String user = "root";
-    private final java.lang.String pwd = "";
-    private final java.lang.String url = "jdbc:mysql://localhost:3306/adido";
+    private final String user = "root";
+    private final String pwd = "";
+    private final String url = "jdbc:mysql://localhost:3306/adido";
     private Connection cnx;
 
     // 1er etape : rendre le constructeur prive
@@ -34,6 +34,9 @@ public class DBConnection {
         if (instance == null) instance = new DBConnection();
         return instance;
     }
+
+
+
     public Connection getCnx(){
         return cnx;
     }

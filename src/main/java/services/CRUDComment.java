@@ -1,5 +1,7 @@
 package services;
 
+import models.Comments;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -9,4 +11,6 @@ public interface CRUDComment<T>  {
     void updateOneComment(T t) throws SQLException;
     void deleteOneComment(T t) throws SQLException;
     List<T> selectAllComments() throws SQLException;
+    List<Comments> getCommentsByBlogId(int blogId)throws SQLException ;
+
 }

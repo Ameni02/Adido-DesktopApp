@@ -120,4 +120,24 @@ public class ServiceComment implements CRUDComment<Comments>  {
     }
 
 
+    public List<Comments> getCommentsByBlogId(int blogId) throws SQLException {
+        List<Comments> commentList = new ArrayList<>();
+        String query = "SELECT * FROM comments WHERE idblog = ?"; // Remplacez comments et idblog par les noms réels de vos tables et colonnes
+
+        try (PreparedStatement statement = cnx.prepareStatement(query)) {
+            statement.setInt(1, blogId);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                int idComment = resultSet.getInt("idcomment");
+                String contentComment = resultSet.getString("contentcomment");
+
+                // Créez un objet Comments à partir des données récupérées
+                Comments comment = new Comments(idComment, contentComment, blogId);
+                commentList.add(comment);
+            }
+        }
+
+        return commentList;
+    }
 }

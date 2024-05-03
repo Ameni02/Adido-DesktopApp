@@ -21,7 +21,7 @@
    <children>
       <BorderPane layoutX="14.0" layoutY="48.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
-            <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="syle.css" BorderPane.alignment="CENTER">
+            <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@../java/style/syle.css" BorderPane.alignment="CENTER">
                <children>
                   <HBox alignment="CENTER" prefHeight="81.0" prefWidth="435.0">
                      <children>
@@ -58,12 +58,12 @@
                   <Pane prefHeight="34.0" prefWidth="435.0" VBox.vgrow="ALWAYS">
                      <children>
                         <Pane layoutX="-91.0" layoutY="-95.0" prefHeight="200.0" prefWidth="200.0" />
-                        <Button fx:id="showDashbord" layoutX="11.0" layoutY="30.0" mnemonicParsing="false" onAction="#showDashbord" prefHeight="50.0" prefWidth="186.0" styleClass="add-btn" stylesheets="@syle.css" text="Blog Dashbord" textFill="#464141">
+                        <Button fx:id="showDashbord" layoutX="11.0" layoutY="30.0" mnemonicParsing="false" onAction="#showDashbord" prefHeight="50.0" prefWidth="186.0" styleClass="add-btn" stylesheets="@../java/style/syle.css" text="Blog Dashbord" textFill="#464141">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Button>
-                        <Button fx:id="addpost" layoutX="218.0" layoutY="30.0" mnemonicParsing="false" onAction="#addpost" prefHeight="50.0" prefWidth="204.0" styleClass="add-btn" stylesheets="@syle.css" text="Add your post" textFill="#464141">
+                        <Button fx:id="addpost" layoutX="218.0" layoutY="30.0" mnemonicParsing="false" onAction="#addpost" prefHeight="50.0" prefWidth="204.0" styleClass="add-btn" stylesheets="@../java/style/syle.css" text="Add your post" textFill="#464141">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -109,7 +109,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@syle.css" text="add to cart" textFill="#464141">
+                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../java/style/syle.css" text="add to cart" textFill="#464141">
                            <VBox.margin>
                               <Insets bottom="20.0" top="30.0" />
                            </VBox.margin>

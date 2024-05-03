@@ -17,7 +17,7 @@ public class FxMain extends Application {
         //Image favicon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/favicon.png")));
         primaryStage.setTitle("TechTerra Portal");
         //  primaryStage.getIcons().add(favicon);
-        loadFXML("/AjouterBlogFXML.fxml");
+        loadFXML("/BlogOfficell.fxml");
     }
     public static FXMLLoader loadFXML(String fxmlFileName) throws IOException {
         FXMLLoader loader = new FXMLLoader(FxMain.class.getResource(fxmlFileName));

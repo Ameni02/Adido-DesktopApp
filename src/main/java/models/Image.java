@@ -17,6 +17,10 @@ public class Image {
 
     }
 
+    public Image(String imageName) {
+        this.name_img = imageName;
+    }
+
     public int getId_img() {
         return id_img;
     }
@@ -45,4 +49,9 @@ public class Image {
     public int hashCode() {
         return Objects.hash(id_img, name_img, idblog);
     }
+
+    public void add(Image image) {
+    }
+
+
 }

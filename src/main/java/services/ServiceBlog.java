@@ -1,8 +1,14 @@
 package services;
+import com.mysql.cj.jdbc.DatabaseMetaData;
+import javafx.fxml.FXML;
 import models.Blog;
 import models.Image;
 import utils.DBConnection;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +49,20 @@ public class ServiceBlog implements CRUD<Blog> {
     }
 
 
+    @Override
+    public void updateApprovedStatus(Blog blog) throws SQLException {
+        String requete = "UPDATE blog " +
+                "SET approved = 1 " +
+                "WHERE idblog = ?";
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(requete)) {
 
+            preparedStatement.setInt(1, blog.getIdblog());
+            preparedStatement.executeUpdate();
+            System.out.println("blog posted!");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     @Override
@@ -189,6 +208,42 @@ public class ServiceBlog implements CRUD<Blog> {
         // Retournez la liste d'images
         return images;
     }
+    public javafx.scene.image.Image getImageByBlogId(int blogId) throws SQLException {
+        javafx.scene.image.Image image = null;
+
+        // Requête SQL pour sélectionner l'image associée au blog donné
+        String query = "SELECT nom_image FROM image_blog WHERE idblog = ?";
+
+        // Préparez la déclaration avec le paramètre blogId
+        try (PreparedStatement ps = cnx.prepareStatement(query)) {
+            ps.setInt(1, blogId);
+            ResultSet rs = ps.executeQuery();
+
+            // S'il y a une image associée à ce blog, récupérez les données binaires de l'image
+            if (rs.next()) {
+                InputStream inputStream = rs.getBinaryStream("nom_image");
+                if (inputStream != null) {
+                    // Créez un tableau de bytes pour stocker les données binaires de l'image
+                    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                    byte[] buffer = new byte[4096];
+                    int bytesRead;
+                    while ((bytesRead = inputStream.read(buffer)) != -1) {
+                        outputStream.write(buffer, 0, bytesRead);
+                    }
+                    byte[] imageBytes = outputStream.toByteArray();
+                    // Créez un objet Image JavaFX à partir des données binaires de l'image
+                    image = new javafx.scene.image.Image(new ByteArrayInputStream(imageBytes));
+                }
+            }
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+            throw new SQLException("Erreur lors de la récupération de l'image du blog : " + e.getMessage());
+        }
+
+        // Retournez l'objet Image associé au blog
+        return image;
+    }
+
 
     public List<Integer> getAllIdBlogs() throws SQLException {
         List<Integer> idBlogList = new ArrayList<>();
@@ -204,7 +259,10 @@ public class ServiceBlog implements CRUD<Blog> {
 
         return idBlogList;
     }
-}
+
+ }
+
+
 
 
 

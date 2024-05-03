@@ -97,6 +97,14 @@ public class ServicePanier implements PanierInterface<Panier> {
 
         return productId;
     }
+    public void updateCartItem(Panier panier) throws SQLException {
+        String query = "UPDATE panier SET quantity = ?, prix_total = ? WHERE id = ?";
+        PreparedStatement statement = cnx.prepareStatement(query);
+        statement.setInt(1, panier.getQuantity());
+        statement.setInt(2, panier.getPrixTotal());
+        statement.setInt(3, panier.getId());
+        statement.executeUpdate();
+    }
 
     public void clearAll() throws SQLException {
         String req = "DELETE FROM `panier`";
@@ -108,4 +116,16 @@ public class ServicePanier implements PanierInterface<Panier> {
             throw ex;
         }
     }
+    public int getQuantity(String productName) throws SQLException {
+        String query = "SELECT quantity FROM panier WHERE product_name = ?";
+        PreparedStatement statement = cnx.prepareStatement(query);
+        statement.setString(1, productName);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getInt("quantity");
+        } else {
+            return 0;
+        }
     }
+    }
+

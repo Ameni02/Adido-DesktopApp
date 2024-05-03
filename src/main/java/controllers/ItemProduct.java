@@ -62,6 +62,9 @@ public class ItemProduct extends VBox {
     public void addtocart(ActionEvent actionEvent) throws SQLException {
         ServicePanier sp = new ServicePanier();
         Panier panier = new Panier(2, sp.retrieveOneProduct(nameLabel.getText()), 1, Math.round(Float.parseFloat(priceLabel.getText())), nameLabel.getText());
+        int quantity = sp.getQuantity(panier.getProductName());
+        panier.setQuantity(quantity + 1);
+        sp.updateCartItem(panier);
         sp.addToCart(panier);
     }
 }

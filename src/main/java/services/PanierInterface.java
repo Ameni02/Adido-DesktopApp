@@ -10,5 +10,6 @@ public interface PanierInterface<T> {
     List<T> selectAll(String Id) throws SQLException;
     public int retrieveOneProduct(String nom) throws SQLException;
     public void clearAll() throws SQLException ;
+    public int getQuantity(String productName) throws SQLException ;
 
 }

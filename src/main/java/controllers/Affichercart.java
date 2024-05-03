@@ -6,10 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -142,9 +139,8 @@ public class Affichercart {
         // Iterate over cart items and add them to the UI
         for (Panier item : cartItemList) {
             HBox itemBox = new HBox();
-        ;
             itemBox.setSpacing(20);
-            Label productNameLabel= new Label("Product name : " + item.getProductName());
+            Label productNameLabel = new Label("Product name : " + item.getProductName());
             productNameLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #333333;");
             Label productQuantityLabel = new Label("Quantity: " + item.getQuantity());
             productQuantityLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #333333;");
@@ -154,11 +150,20 @@ public class Affichercart {
             cartItems.getChildren().add(itemBox);
         }
 
-        // Update total and taxes labels if needed
-        // totalLabel.setText(...);
-        // taxesLabel.setText(...);
+        // Calculate the total price of all products in the cart
+        int totalPrice = calculateTotalPrice();
+        totalLabel.setText("Total: $" + totalPrice);
+
     }
 
+    private int calculateTotalPrice() throws SQLException {
+        int totalPrice = 0;
+        List<Panier> cartItemList = sp.selectAll("userId");
+        for (Panier item : cartItemList) {
+            totalPrice += item.getQuantity() * item.getPrixTotal();
+        }
+        return totalPrice;
+    }
     public void setServicePanier(ServicePanier servicePanier) {
         this.sp = servicePanier;
     }

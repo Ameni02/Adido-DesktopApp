@@ -98,7 +98,7 @@ public class Historique {
             List<Commande> ls1 = ss.selectAll();
 
             if (ls1 != null) {
-                idcommande.setCellValueFactory(new PropertyValueFactory<>("idCommande"));
+               // idcommande.setCellValueFactory(new PropertyValueFactory<>("idCommande"));
                 adresse.setCellValueFactory(new PropertyValueFactory<>("commandeAdresse"));
                 phonenumber.setCellValueFactory(new PropertyValueFactory<>("commandePhoneNumber"));
                 addinfo.setCellValueFactory(new PropertyValueFactory<>("additionalInformation"));

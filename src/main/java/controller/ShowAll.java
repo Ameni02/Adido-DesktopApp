@@ -15,6 +15,8 @@ import test.FxMain;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static controller.EmailAprouve.sendConfirmationEmail;
+
 public class ShowAll {
 
     @FXML
@@ -43,8 +45,8 @@ public class ShowAll {
 
     @FXML
     private TableView<product> productListe;
-    @FXML
 
+    @FXML
     void ajouterProduct(ActionEvent event) throws IOException {
         FxMain.loadFXML("/shopProduit.fxml");
 
@@ -61,17 +63,19 @@ public class ShowAll {
         id_prixproduct.setCellValueFactory(new PropertyValueFactory<>("prixproduct"));
         id_promotionproduct.setCellValueFactory(new PropertyValueFactory<>("promotionproduct"));
         id_stockproduct.setCellValueFactory(new PropertyValueFactory<>("stockproduct"));
-        //country.setCellValueFactory(new PropertyValueFactory<>("idcountry"));
+        //   country.setCellValueFactory(new PropertyValueFactory<>("idcountry"));
         tfAprouved.setCellValueFactory(new PropertyValueFactory<>("approved"));
 
         productListe.setItems(list);
 
 
-        TableColumn<product, Void> actionButtonColumn = new TableColumn<>("Actions");
+
+       TableColumn<product, Void> actionButtonColumn = new TableColumn<>("Actions");
         actionButtonColumn.setCellFactory(param -> new TableCell<>() {
             private final Button deleteButton = new Button("Delete");
             private final Button updateButton = new Button("Update");
             private final Button aprouve = new Button("Aprouve");
+
 
             {
                 deleteButton.setOnAction(event -> {
@@ -106,13 +110,18 @@ public class ShowAll {
 
 
                 });
-                aprouve.setOnAction(event -> {
-                    product product = getTableView().getItems().get(getIndex());
-                    product.setApproved(1); // Changer l'état approved à true
 
+                aprouve.setOnAction(event -> {
+                    product product1 = getTableView().getItems().get(getIndex());
+                    product1.setApproved(1); // Changer l'état approved à true
+                    System.out.println(product1);
                     try {
                         Serviceproduct serviceProduct = new Serviceproduct();
-                        serviceProduct.updateApprovedStatus(product); // Mettre à jour le produit dans la base de données
+                        serviceProduct.updateApprovedStatus(product1); // Mettre à jour le produit dans la base de données
+
+                        // Envoyer l'e-mail de confirmation
+                        sendConfirmationEmail();
+
                         productListe.refresh(); // Rafraîchir la table pour refléter les modifications
                     } catch (SQLException e) {
                         // Gérer l'exception ici

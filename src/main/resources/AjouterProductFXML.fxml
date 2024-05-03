@@ -39,7 +39,7 @@
       <TextField fx:id="tfstockproduct" layoutX="551.0" layoutY="209.0" AnchorPane.leftAnchor="551.2" AnchorPane.rightAnchor="94.4" />
       <Text layoutX="444.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="promotionproduct" AnchorPane.leftAnchor="444.0" AnchorPane.rightAnchor="253.021484375" />
       <TextField fx:id="tfpromotionproduct" layoutX="551.0" layoutY="315.0" AnchorPane.leftAnchor="551.2" AnchorPane.rightAnchor="94.4" />
-      <Button fx:id="backtolist" layoutX="1170.0" layoutY="470.0" mnemonicParsing="false" onAction="#backtolist" prefHeight="26.0" prefWidth="81.0" text="back to liste" />
+      <Button fx:id="backtolist" layoutX="1170.0" layoutY="470.0" mnemonicParsing="false" onAction="#chatBot" prefHeight="26.0" prefWidth="81.0" text="Generate with AI" />
       <Text layoutX="442.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prixproduct" AnchorPane.leftAnchor="442.0" AnchorPane.rightAnchor="291.40078125" />
       <Button layoutX="397.0" layoutY="470.0" mnemonicParsing="false" onAction="#ajouterProduct" prefHeight="26.0" prefWidth="98.0" text="Save" />
       <Text layoutX="446.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nomproduct" AnchorPane.leftAnchor="446.0" AnchorPane.rightAnchor="257.31718749999993" />

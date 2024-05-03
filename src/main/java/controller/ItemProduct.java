@@ -22,7 +22,9 @@ public class ItemProduct extends VBox {
     @FXML
     private Label priceLabel;
     @FXML
-    private Label labelCountry;
+    private Label discountLabel;
+    @FXML
+    private Label originalPriceLabel;
 
     private product product;
 //    public ItemProduct() {
@@ -36,12 +38,27 @@ public class ItemProduct extends VBox {
 //        }
 //    }
 
-    public void setData(String nomproduct, Float price, String imagePath) {
+    public void setData(String nomproduct, Float price, String imagePath ,int promotion) {
         // Set the name and price of the product
 
         nameLabel.setText(nomproduct);
-        priceLabel.setText(String.valueOf(price));
+        if (promotion > 0) {
+            float discountedPrice = price * (100 - promotion) / 100;
 
+            // Set the original price with a strike-through
+            originalPriceLabel.setText(String.format("%.2f", price));
+            // Set the discounted price
+            priceLabel.setText(String.format("%.2f", discountedPrice));
+
+            // Set the discount label to indicate promotion
+            discountLabel.setText("Solde");
+            discountLabel.setVisible(true);
+        } else {
+            originalPriceLabel.setText(String.valueOf(price));
+            // Cacher l'étiquette de solde si la promotion est nulle ou négative
+            discountLabel.setVisible(false);
+            priceLabel.setVisible(false);
+        }
         // Load the image from the provided path and set it to the ImageView
         if (imagePath != null && !imagePath.isEmpty()) {
             try {

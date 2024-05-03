@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 
 public class Serviceproduct implements CRUD<product> {
@@ -168,7 +169,7 @@ public class Serviceproduct implements CRUD<product> {
                 p.setPrixproduct(rs.getFloat(4)); // Utilisez la colonne correcte pour prixproduct
                 p.setStockproduct(rs.getInt(5)); // Utilisez la colonne correcte pour stockproduct
                 p.setPromotionproduct(rs.getInt(6)); // Utilisez la colonne correcte pour promotionproduct
-                p.setIdCountry(rs.getInt(7));
+               // p.setIdCountry(rs.getInt(7));
                 p.setApproved(rs.getInt(8));
                 list.add(p);
             }
@@ -290,6 +291,43 @@ public class Serviceproduct implements CRUD<product> {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public static boolean isBadContent(String content) {
+        AsyncHttpClient client1 = new DefaultAsyncHttpClient();
+
+        try {
+            CompletableFuture<Response> responseFuture = client1.prepare("POST", "https://neutrinoapi-bad-word-filter.p.rapidapi.com/bad-word-filter")
+                    .setHeader("content-type", "application/x-www-form-urlencoded")
+                    .setHeader("X-RapidAPI-Key", "8433d15735msh2702a52a05e99bdp1e7f6djsn60b6c77343ce")
+                    .setHeader("X-RapidAPI-Host", "neutrinoapi-bad-word-filter.p.rapidapi.com")
+                    .setBody("content=" + encodeContent(content) + "&censor-character=*")
+                    .execute()
+                    .toCompletableFuture();
+
+            Response response = responseFuture.join();
+            return parseBadWordResponse(response.getResponseBody());
+        } catch (IOException e) {
+            throw new RuntimeException("Error executing request", e);
+        } finally {
+            try {
+                client1.close();
+            } catch (IOException e) {
+                throw new RuntimeException("Error closing client", e);
+            }
+        }
+    }
+
+    private static String encodeContent(String content) {
+        return content.replace(" ", "%20");
+    }
+
+    private static boolean parseBadWordResponse(String responseBody) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode jsonNode = objectMapper.readTree(responseBody);
+
+        JsonNode isBadNode = jsonNode.get("is-bad");
+        return isBadNode != null && isBadNode.asBoolean();
     }
 
 }

@@ -11,7 +11,7 @@ public class product {
     private float prixproduct;
     private int promotionproduct;
     private int stockproduct;
-    private int approved=0;
+    private  int approved;
     private int idCountry;
 
 
@@ -98,7 +98,6 @@ public class product {
     public void setApproved(int approved) {
         this.approved = approved;
     }
-
 
     public int getIdCountry() {
         return idCountry;

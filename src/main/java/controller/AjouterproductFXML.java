@@ -1,5 +1,7 @@
 package controller;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -10,6 +12,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import models.product;
 import models.Image;
+import org.asynchttpclient.AsyncHttpClient;
+import org.asynchttpclient.DefaultAsyncHttpClient;
+import org.asynchttpclient.Response;
 import services.Serviceproduct;
 import test.FxMain;
 
@@ -29,6 +34,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class AjouterproductFXML {
 
@@ -141,7 +147,14 @@ public class AjouterproductFXML {
 
             // Create a service to manage the product
             Serviceproduct serviceProduct = new Serviceproduct();
-
+            if ((Serviceproduct.isBadContent(tfnomproduct.getText())||(Serviceproduct.isBadContent(tfcategorieproduct.getText()))))
+            {
+                System.out.println("Bad word detected");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Bad word detected!");
+                alert.show();
+                return;
+            }
             // Insert the product into the database
             serviceProduct.insertOne(newProduct);
 
@@ -198,6 +211,10 @@ public class AjouterproductFXML {
             // Gérez les exceptions en cas d'erreur de base de données
             e.printStackTrace();
         }
+    }
+
+    public void chatBot(ActionEvent actionEvent) throws IOException {
+        FxMain.loadFXML("/chatbot.fxml");
     }
 
 }

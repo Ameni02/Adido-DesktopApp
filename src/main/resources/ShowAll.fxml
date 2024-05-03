@@ -28,7 +28,6 @@
                 <TableColumn fx:id="id_prixproduct" prefWidth="129.60003662109375" text="prixproduct" />
                 <TableColumn fx:id="id_promotionproduct" prefWidth="130.39996337890625" text="promotionproduct" />
                 <TableColumn fx:id="id_stockproduct" prefWidth="119.2000732421875" text="stockproduct" />
-                <TableColumn fx:id="country" prefWidth="86.40008544921875" text="idcountry" />
             <TableColumn fx:id="tfAprouved" prefWidth="84.8001708984375" text="aprouve" />
             </columns>
         </TableView>

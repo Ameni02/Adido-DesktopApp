@@ -69,36 +69,38 @@ public class ShopProduit  {
         int row = 0;
 
         for (product product : productList) {
-            try {
-                // Load the itemProduct FXML
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/itemProduct.fxml"));
-                Parent card = loader.load();
-                ItemProduct itemProduct = loader.getController();
+            if (product.getApproved() == 1) {
+                try {
+                    // Load the itemProduct FXML
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/itemProduct.fxml"));
+                    Parent card = loader.load();
+                    ItemProduct itemProduct = loader.getController();
 
-                // Get the list of images for the product
-                List<Image> images = serviceProduct.getImagesByProductId(product.getId());
-                String imagePath = null;
+                    // Get the list of images for the product
+                    List<Image> images = serviceProduct.getImagesByProductId(product.getId());
+                    String imagePath = null;
 
-                // Check if there are images available for the product
-                if (!images.isEmpty()) {
-                    // Assuming you want to use the first image in the list as the product image
-                    imagePath = images.get(0).getName_img();
+                    // Check if there are images available for the product
+                    if (!images.isEmpty()) {
+                        // Assuming you want to use the first image in the list as the product image
+                        imagePath = images.get(0).getName_img();
+                    }
+
+                    // Set the data for the itemProduct
+                    itemProduct.setData(product.getNomproduct(), product.getPrixproduct(), imagePath, product.getPromotionproduct());
+
+                    // Add the card to the grid
+                    grid.add(card, column, row);
+
+                    // Update column and row values
+                    column++;
+                    if (column == 3) { // Assuming 3 columns per row
+                        column = 0;
+                        row++;
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-
-                // Set the data for the itemProduct
-                itemProduct.setData(product.getNomproduct(), product.getPrixproduct(), imagePath);
-
-                // Add the card to the grid
-                grid.add(card, column, row);
-
-                // Update column and row values
-                column++;
-                if (column == 3) { // Assuming 3 columns per row
-                    column = 0;
-                    row++;
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
         }
     }
@@ -110,6 +112,7 @@ public class ShopProduit  {
     }
 */
 
+    
     public void setTranslatedContent(String textDesc, String language) {
 
         // Fetch translated title and content based on the selected language

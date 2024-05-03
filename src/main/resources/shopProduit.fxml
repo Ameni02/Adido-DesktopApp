@@ -83,7 +83,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <VBox prefHeight="100.0" prefWidth="458.0">
+                        <VBox prefHeight="100.0" prefWidth="494.0">
                            <children>
                               <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0" stylesheets="@../java/style/syle.css">
                                  <opaqueInsets>
@@ -105,12 +105,9 @@
                                     <String fx:value="shadow" />
                                  </styleClass>
                               </HBox>
-                              <HBox prefHeight="61.0" prefWidth="435.0">
-                                 <children>
-                                    <TextField fx:id="text" prefHeight="46.0" prefWidth="392.0" text="Hello this is just a text translating .." />
-                                 </children>
-                              </HBox>
+                              <HBox prefHeight="48.0" prefWidth="466.0" />
                            </children></VBox>
+                        <TextField fx:id="text" prefHeight="46.0" prefWidth="392.0" text="Hello this is just a text translating .." />
                      </children>
                   </HBox>
                   <HBox fx:id="productBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">

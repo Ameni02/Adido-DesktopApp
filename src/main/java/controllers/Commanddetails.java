@@ -1,5 +1,9 @@
 package controllers;
 
+import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
+import com.stripe.model.Charge;
+import com.stripe.param.ChargeCreateParams;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import models.Ecommerce.Commande;
+import models.Ecommerce.Panier;
 import services.ServiceCommande;
 
 import java.io.IOException;
@@ -44,7 +49,7 @@ public class Commanddetails {
         // Validate address input
         String adresse = tfadresse.getText();
         if (adresse.length() < 3) {
-            showAlert("Invalid Address", "Please enter a valid adress.");
+            showAlert("Invalid Address", "Please enter a valid address.");
             return;
         }
 
@@ -67,6 +72,16 @@ public class Commanddetails {
         // Set the etat to "process"
         String etat = "process";
 
+        // Create a new instance of Panier
+        Panier panier = new Panier(0, 0, 1, 1, "null"); // create an instance of Panier
+        double prixTotal = panier.getPrixTotal(); // get prixTotal from Panier
+
+        // Process the payment
+        if (!processPayment(prixTotal, "tok_visa")) {
+            showAlert("Payment Error", "An error occurred while processing the payment. Please try again.");
+            return;
+        }
+
         // Create the Commande object with today's date, "process" etat, and retrieved data
         Commande commande = new Commande(0, date, etat, "", adresse, phone, info);
 
@@ -77,6 +92,29 @@ public class Commanddetails {
         } catch (SQLException e) {
             e.printStackTrace();
             showAlert("Error", "An error occurred while inserting the command.");
+        }
+    }
+
+    public boolean processPayment(double amount, String token) {
+        // Configuration de la clé secrète de l'API Stripe
+        Stripe.apiKey = ("sk_test_51PCTpzAITMBvnG134uDPYNnhJK2W4krUJMp9FijdxzuSIxslKA9ROyYMsxxbBJ7lQTYOsWR2eqSHQnCg73UYW1PA00aLyfeH9O");
+
+        try {
+            // Création de la charge
+            Charge charge = Charge.create(
+                    new ChargeCreateParams.Builder()
+                            .setAmount((long) (amount * 100)) // Montant en centimes
+                            .setCurrency("usd") // Devise
+                            .setSource(token) // Token de carte de crédit
+                            .build()
+            );
+
+            // Le paiement a réussi
+            return true;
+        }  catch (StripeException e) {
+            e.printStackTrace();
+            System.out.println("Error message: " + e.getMessage());
+            return false;
         }
     }
 

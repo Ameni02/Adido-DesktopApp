@@ -41,5 +41,6 @@
                 <TableColumn fx:id="addinfo" minWidth="0.0" prefWidth="96.800048828125" text="Information" />
             </columns>
         </TableView>
+      <TextField fx:id="searchCom" layoutX="25.0" layoutY="48.0" onAction="#search" prefHeight="26.0" prefWidth="309.0" promptText="search command" />
     </children>
 </AnchorPane>

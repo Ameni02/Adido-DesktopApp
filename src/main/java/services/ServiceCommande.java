@@ -12,7 +12,7 @@ import utils.DBConnection;
 
 public class ServiceCommande implements CommandeInterface<Commande> {
 
-    private Connection cnx;
+    private static Connection cnx;
 
     public ServiceCommande() {
         cnx = DBConnection.getInstance().getCnx();
@@ -67,7 +67,7 @@ public class ServiceCommande implements CommandeInterface<Commande> {
 
 
     @Override
-    public List<Commande> selectAll() throws SQLException {
+    public  List<Commande> selectAll() throws SQLException {
         List<Commande> commandeList = new ArrayList<>();
         String req = "SELECT * FROM `commande`";
         try (Statement st = cnx.createStatement();

@@ -10,6 +10,6 @@ public interface CommandeInterface<T> {
     void updateOne(T t) throws SQLException;
     void deleteOne(T t) throws SQLException;
     void deleteOne(String commande) throws SQLException;
-    List<T> selectAll() throws SQLException;
+      List<T> selectAll() throws SQLException;
     public Commande getCommandeById(int id) throws SQLException;
 }

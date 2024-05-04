@@ -30,6 +30,8 @@ public class AjoutcommandeController {
     private TableColumn<Commande, String> addinfo;
 
     @FXML
+    private TextField searchCom;
+    @FXML
     private TableColumn<Commande, String> adresse;
 
     @FXML
@@ -301,6 +303,26 @@ public class AjoutcommandeController {
     }
 
 
-
+    @FXML
+    public void search() throws SQLException {
+        String searchTerm = searchCom.getText().toLowerCase();
+        if (searchTerm.isEmpty()) {
+            ServiceCommande serviceCommande = new ServiceCommande();
+            listcommande.setItems(FXCollections.observableList(serviceCommande.selectAll()));
+        } else {
+            ObservableList<Commande> filteredList = FXCollections.observableArrayList();
+            ServiceCommande serviceCommande = new ServiceCommande();
+            List<Commande> allCommandes = serviceCommande.selectAll();
+            for (Commande commande : allCommandes) {
+                if (commande.getCommandeAdresse().toLowerCase().contains(searchTerm) ||
+                        commande.getEtatCommande().toLowerCase().contains(searchTerm) ||
+                        commande.getDateCommande().toString().toLowerCase().contains(searchTerm) ||
+                        String.valueOf(commande.getCommandePhoneNumber()).contains(searchTerm)) {
+                    filteredList.add(commande);
+                }
+            }
+            listcommande.setItems(filteredList);
+        }
+    }
 
 }

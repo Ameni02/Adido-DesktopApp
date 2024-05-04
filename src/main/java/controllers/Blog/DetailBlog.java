@@ -95,7 +95,7 @@ public class DetailBlog {
             int row = 0;
             for (Comments comment : commentList) {
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Blog/CommentSection.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/Blog/CommentSection.fxml"));
                 Parent card =loader.load();
                 CommentSection commentSection =loader.getController();
                 commentSection.setDataC(comment.getContentcomment(),comment.getIduser());

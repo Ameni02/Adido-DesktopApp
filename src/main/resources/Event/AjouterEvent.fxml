@@ -17,7 +17,7 @@
    <children>
       <ImageView fitHeight="758.0" fitWidth="1048.0" layoutX="-86.0" layoutY="-61.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@image/02.jpg" />
+            <Image url="@imageEvent/02.jpg" />
          </image>
       </ImageView>
       <Label ellipsisString="" layoutX="48.0" layoutY="178.0" text="Name Event" textFill="WHITE">
@@ -88,7 +88,7 @@
       </Text>
       <ImageView fitHeight="453.0" fitWidth="440.0" layoutX="466.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@image/01.png" />
+            <Image url="@imageEvent/01.png" />
          </image>
       </ImageView>
       <Button fx:id="goto_dashboard" layoutX="335.0" layoutY="528.0" mnemonicParsing="false" onAction="#goto_dashboard" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: #DC143C;" text="List Event" textFill="WHITE">

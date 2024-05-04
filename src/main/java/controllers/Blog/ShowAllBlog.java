@@ -39,7 +39,7 @@ public class ShowAllBlog {
 
     @FXML
     void ShowOfficelBlog(ActionEvent event) throws IOException {
-        FxMain.loadFXML("/Blog/BlogOfficell.fxml");
+        FxMain.loadFXML("/Event/Blog/BlogOfficell.fxml");
 
     }
 
@@ -88,7 +88,7 @@ public class ShowAllBlog {
                 updateButton.setOnAction(event -> {
                     Blog blog = getTableView().getItems().get(getIndex());
                     try {
-                        FXMLLoader loader = FxMain.loadFXML("/Blog/updateBlog.fxml");
+                        FXMLLoader loader = FxMain.loadFXML("/Event/Blog/updateBlog.fxml");
                         updateBlog updateController = loader.getController();
                         updateController.retrievedata(blog);
                         System.out.println("Selected");

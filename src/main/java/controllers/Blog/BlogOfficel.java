@@ -37,7 +37,7 @@ public class BlogOfficel {
         for (Blog blog : approvedBlogList) {
             try {
                 // Load the itemBlog FXML
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Blog/itemBlog.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/Blog/itemBlog.fxml"));
                 Parent card = loader.load();
                 ItemPost itemPost = loader.getController();
 
@@ -74,11 +74,11 @@ public class BlogOfficel {
 
     @FXML
     void addpost(ActionEvent actionEvent)throws IOException {
-        FxMain.loadFXML("/Blog/AjouterBlogFXML.fxml");
+        FxMain.loadFXML("/Event/Blog/AjouterBlogFXML.fxml");
     }
     @FXML
     void showDashbord(ActionEvent actionEvent)throws IOException {
-        FxMain.loadFXML("/Blog/ShowAllBlog.fxml");
+        FxMain.loadFXML("/Event/Blog/ShowAllBlog.fxml");
     }
 
     @FXML

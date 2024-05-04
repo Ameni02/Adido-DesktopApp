@@ -80,7 +80,7 @@ public class ItemPost extends VBox implements Initializable {
         // Vérifiez si un blog est sélectionné
         if (selectedBlog != null) {
             // Chargez le FXML de DetailBlog.fxml
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Blog/DetailBlog.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/Blog/DetailBlog.fxml"));
             Parent root = loader.load();
 
             // Obtenez le contrôleur DetailBlog
@@ -153,11 +153,7 @@ public class ItemPost extends VBox implements Initializable {
             System.err.println("Erreur lors du chargement de l'image : " + e.getMessage());
         }
 
-        // Ajouter un gestionnaire d'événements pour l'image de like
-        jaime.setOnMouseClicked(event -> {
-            LikeButtn(new ActionEvent()); // Appeler la méthode LikeButtn lors du clic sur l'image de like
-        });
-       // Appeler la méthode LikeButtn lors du clic sur l'image de like
+
 
 
     }

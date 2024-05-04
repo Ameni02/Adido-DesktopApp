@@ -50,7 +50,7 @@ public class updateBlog {
     private ComboBox<Integer> countrycombo;
     @FXML
     void back_to_list(ActionEvent event) throws IOException {
-        FxMain.loadFXML("/Blog/ShowAllBlog.fxml");
+        FxMain.loadFXML("/Event/Blog/ShowAllBlog.fxml");
     }
     private Blog blog;
     ServiceBlog ServiceBlog = new ServiceBlog();

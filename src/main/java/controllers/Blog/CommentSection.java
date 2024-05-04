@@ -13,7 +13,7 @@ public class CommentSection {
 
     public CommentSection() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Blog/CommentSection.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/Blog/CommentSection.fxml"));
             loader.setRoot(this);
             loader.setController(this);
             loader.load();

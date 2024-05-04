@@ -24,7 +24,7 @@ public class updateComment {
     private ComboBox<Integer> countrycombo;
     @FXML
     void back_to_list(ActionEvent event) throws IOException {
-        FxMain.loadFXML("/Blog/ShowAllBlog.fxml");
+        FxMain.loadFXML("/Event/Blog/ShowAllBlog.fxml");
     }
     private Comments comments;
     ServiceComment Servicecomment = new ServiceComment();

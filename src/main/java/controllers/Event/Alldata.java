@@ -56,12 +56,15 @@ public class Alldata {
     @FXML
     void handleBackButton(ActionEvent event) {
         try {
-            FxMain.loadFXML("/show_data_for_user.fxml");
-        } catch (IOException var3) {
-            throw new RuntimeException(var3);
+            FxMain.loadFXML("/Event/show_data_for_user.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle the IO exception (e.g., show an error message)
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Handle other potential exceptions
         }
     }
-
     public void setFullContent(Event event) {
         this.event = event;
         this.locationnnnn.setText(event.getLocationevent());

@@ -116,7 +116,7 @@ public class AjouterBlogFXML {
 
     @FXML
     void backtolist(ActionEvent event) throws IOException {
-        FxMain.loadFXML("/Blog/BlogOfficell.fxml");
+        FxMain.loadFXML("/Event/Blog/BlogOfficell.fxml");
     }
 
     @FXML

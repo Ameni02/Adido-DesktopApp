@@ -70,7 +70,7 @@ public class CommentBack {
                 updateButton.setOnAction(event -> {
                     Comments comments = getTableView().getItems().get(getIndex());
                     try {
-                        FXMLLoader loader = FxMain.loadFXML("/Blog/updateComment.fxml");
+                        FXMLLoader loader = FxMain.loadFXML("/Event/Blog/updateComment.fxml");
                         updateComment updateController = loader.getController();
                         updateController.retrievedata(comments);
                         System.out.println("Selected");
@@ -97,11 +97,11 @@ public class CommentBack {
 
     @FXML
     void Backtopost(ActionEvent actionEvent)throws IOException {
-        FxMain.loadFXML("/Blog/ShowAllBlog.fxml");
+        FxMain.loadFXML("/Event/Blog/ShowAllBlog.fxml");
     }
     @FXML
     void ajoutercomment(ActionEvent actionEvent)throws IOException {
-        FxMain.loadFXML("/Blog/AjouterComment.fxml");
+        FxMain.loadFXML("/Event/Blog/AjouterComment.fxml");
     }
 
 

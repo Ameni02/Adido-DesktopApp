@@ -48,7 +48,7 @@ public class AjouterCommentFXML {
 
     @FXML
     void AfficheComment(ActionEvent event) throws IOException {
-        FxMain.loadFXML("/Blog/DashComment.fxml");
+        FxMain.loadFXML("/Event/Blog/DashComment.fxml");
     }
 
     @FXML

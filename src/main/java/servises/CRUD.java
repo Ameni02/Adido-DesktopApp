@@ -1,4 +1,6 @@
 package servises;
+import model.Event;
+
 import java.util.List;
 
 import java.awt.*;
@@ -9,5 +11,6 @@ public interface CRUD<T> {
     void updateOne(T t) throws SQLException;
     void deleteOne(T t) throws SQLException;
     List<T> selectAll() throws SQLException;
+  //Event getNewsById(int id) ;
 
 }

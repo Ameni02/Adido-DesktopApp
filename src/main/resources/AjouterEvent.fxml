@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -76,8 +77,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="tfaffiche" layoutX="177.0" layoutY="434.0" />
-      <TextField fx:id="tfidcountry" layoutX="177.0" layoutY="472.0" />
+      <TextField fx:id="tfaffiche" layoutX="177.0" layoutY="433.0" />
       <Text fill="#ff4141" layoutX="69.0" layoutY="80.0" stroke="#a11b1b" strokeType="OUTSIDE" strokeWidth="0.0" text="ADIDO" wrappingWidth="182.61376953125">
          <effect>
             <Glow />
@@ -95,6 +95,13 @@
          <font>
             <Font size="14.0" />
          </font></Button>
+      <ComboBox fx:id="countryComboBox" layoutX="177.0" layoutY="472.0" prefWidth="150.0" />
+      <Button layoutX="524.0" layoutY="526.0" mnemonicParsing="false" onAction="#goto_show_for_user" prefHeight="30.0" prefWidth="162.0" style="-fx-background-color: #DC143C;" text="Events" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="imageevent" layoutX="344.0" layoutY="433.0" mnemonicParsing="false" onAction="#upload_img" style="-fx-background-color: #af4c4c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 20; -fx-border-radius: 20; -fx-font-size: bold;" text="Upload" />
    </children>
    <effect>
       <Lighting bumpInput="$null" diffuseConstant="2.0" specularConstant="0.0" specularExponent="40.0" surfaceScale="10.0">

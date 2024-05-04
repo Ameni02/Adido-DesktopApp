@@ -3,6 +3,7 @@ package controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import model.Event;
@@ -15,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 
 
 public class updateEvent {
@@ -32,7 +34,7 @@ public class updateEvent {
     private TextField tfdescriptioneventupdate;
 
     @FXML
-    private TextField tfidcountryupdate;
+    private ComboBox<Integer> tfidcountryupdate;
 
     @FXML
     private TextField tfidorganiserupdate;
@@ -61,25 +63,22 @@ public class updateEvent {
             String discriptionevent = event.getDescriptionevent();
             tfdescriptioneventupdate.setText(event.getDescriptionevent());
 
-            // Assuming you have a DatePicker field called datePickerField
-
             Date datestartevent = event.getDatestartevent(); // Retrieve the date from the event
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // Define the format you want
             String dateString = sdf.format(datestartevent); // Format the date as a string
 
-// Set the formatted date as the value of the date picker field
+            // Set the formatted date as the value of the date picker field
             tfdatestarteventupdate.setValue(LocalDate.parse(dateString));
 
             Date dateendevent = event.getDateendevent(); // Retrieve the date from the event
             SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd"); // Define the format you want
             String dateString1 = sdf1.format(dateendevent); // Format the date as a string
 
-// Set the formatted date as the value of the date picker field
+            // Set the formatted date as the value of the date picker field
             tfdateendeventupdate.setValue(LocalDate.parse(dateString1));
 
             String locationevent = event.getLocationevent();
             tflocationeventupdate.setText(event.getLocationevent());
-
 
             String idorganiser = Integer.toString(event.getIdorganiser());
             tfidorganiserupdate.setText(idorganiser);
@@ -90,15 +89,29 @@ public class updateEvent {
             String affiche = event.getAffiche();
             tfafficheupdate.setText(event.getAffiche());
 
-            String idcountry = Integer.toString(event.getIdcountry());
-            tfidcountryupdate.setText(idcountry);
-
-
-
-
-
+            // Populate ComboBox with country IDs and select the current country ID
+            try {
+                List<Integer> countryIds = ServiceEvent.getAllCountryIds();
+                tfidcountryupdate.getItems().addAll(countryIds);
+                tfidcountryupdate.setValue(event.getIdcountry());
+            } catch (SQLException e) {
+                e.printStackTrace();
+                // Handle the exception
+            }
         }
     }
+
+    // Method to populate ComboBox with country IDs
+    private void populateCountryComboBox() {
+        try {
+            List<Integer> countryIds = ServiceEvent.getAllCountryIds();
+            tfidcountryupdate.getItems().addAll(countryIds);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle the exception
+        }
+    }
+
 
     @FXML
     void update_data(ActionEvent event) throws IOException, SQLException {
@@ -110,7 +123,30 @@ public class updateEvent {
         String idorganiser = tfidorganiserupdate.getText().trim();
         String nbattendees = tfnbattendeesupdate.getText().trim();
         String affiche = tfafficheupdate.getText().trim();
-        String idcountry = tfidcountryupdate.getText().trim();
+        int idcountry = tfidcountryupdate.getValue();
+
+        try {
+            ServiceEvent serviceEvent = new ServiceEvent();
+            List<Integer> countryIds = servises.ServiceEvent.getAllCountryIds();
+
+            // Ajouter les ID de pays au ComboBox
+            tfidcountryupdate.getItems().addAll(countryIds);
+
+            // Sélectionner le pays associé au produit
+            int countryId = events.getIdcountry(); // Supposons que vous avez cette méthode dans la classe product
+            // Vérifier si le pays associé au event est dans la liste des pays
+            if (countryIds.contains(countryId)) {
+                tfidcountryupdate.setValue(countryId);
+            } else {
+                // Si le pays n'est pas dans la liste, afficher un message d'erreur ou gérez le cas en conséquence
+                System.out.println("Le pays associé au event n'est pas dans la liste.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Gérer l'erreur
+        }
+
+
 
         // Validate inputs
         if (nameevent.isEmpty() || !nameevent.matches("[a-zA-Z]+")) {
@@ -148,10 +184,7 @@ public class updateEvent {
             return;
         }
 
-        if (idcountry.isEmpty() || !idcountry.matches("\\d+")) {
-            showAlert("Country ID must not be empty and contain only numbers.");
-            return;
-        }
+
 
         // Convert to integer values
         int idorganise;
@@ -160,7 +193,7 @@ public class updateEvent {
         try {
             idorganise = Integer.parseInt(idorganiser);
             nbattendeess = Integer.parseInt(nbattendees);
-            idcountryy = Integer.parseInt(idcountry);
+            idcountryy = Integer.parseInt(String.valueOf(idcountry));
         } catch (NumberFormatException e) {
             showAlert("Invalid numeric input.");
             return;

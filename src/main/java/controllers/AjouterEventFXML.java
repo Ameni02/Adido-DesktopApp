@@ -1,21 +1,23 @@
 package controllers;
 
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.stage.FileChooser;
 import model.Event;
 import servises.ServiceEvent;
 import test.FxMain;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
-
-
+import java.util.List;
 public class AjouterEventFXML {
 
     @FXML
@@ -43,9 +45,29 @@ public class AjouterEventFXML {
     private TextField tfaffiche;
 
     @FXML
-    private TextField tfidcountry;
+    private ComboBox<Integer> countryComboBox; // Combo box for selecting country ID
 
+    @FXML
+    private Button imageevent;
 
+    public static final String ACCOUNT_SID = "AC6fa7a4508189dd4848b872646bb798ac";
+    public static final String AUTH_TOKEN = "3a68fa1f343241016c4be7ade77e0675";
+    public void envoyerMessage(String nameevent) {
+        // Initialisation de Twilio
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+        String contenuMessage = "event "+ nameevent + " added succesfuly.";
+
+        // Création et envoi du message
+        Message message = Message.creator(
+                        new PhoneNumber("+21626585443"),  // Numéro de destination
+                        new PhoneNumber("+16812011937"),  // Numéro expéditeur
+                        contenuMessage)  // Contenu du message
+                .create();
+
+        // Affichage du SID du message pour vérification
+        System.out.println(message.getSid());
+    }
     @FXML
     void AjouterEvent(ActionEvent event) throws SQLException {
         // Récupération des valeurs des champs de texte
@@ -58,7 +80,7 @@ public class AjouterEventFXML {
         // Vérification de la non-nullité des champs
         if (nameevent.isEmpty() || descriptionevent.isEmpty() || localDateStart == null ||
                 localDateEnd == null || tflocationevent.getText().isEmpty() || tfidorganiser.getText().isEmpty() ||
-                tfnbattendees.getText().isEmpty() || tfaffiche.getText().isEmpty() || tfidcountry.getText().isEmpty()) {
+                tfnbattendees.getText().isEmpty() || tfaffiche.getText().isEmpty() || countryComboBox.getValue() == null) {
             showErrorAlert("Error", "All fields are required.");
             return;
         }
@@ -84,34 +106,28 @@ public class AjouterEventFXML {
             showErrorAlert("Error", "Number of attendees must contain only numbers.");
             return;
         }
-        if (!tfaffiche.getText().matches("[a-zA-Z]+")) {
-            showErrorAlert("Error", "Affiche must contain only letters.");
-            return;
-        }
-        if (!tfidcountry.getText().matches("\\d+")) {
-            showErrorAlert("Error", "Country ID must contain only numbers.");
-            return;
-        }
 
-        // Convert LocalDate to java.util.Date
-        java.util.Date utilDateStart = java.util.Date.from(localDateStart.atStartOfDay(ZoneId.systemDefault()).toInstant());
-        java.util.Date utilDateEnd = java.util.Date.from(localDateEnd.atStartOfDay(ZoneId.systemDefault()).toInstant());
-
-        // Convert java.util.Date to java.sql.Date
-        Date dateStart = new Date(utilDateStart.getTime());
-        Date dateEnd = new Date(utilDateEnd.getTime());
 
         try {
+            // Convert LocalDate to java.util.Date
+            java.util.Date utilDateStart = java.util.Date.from(localDateStart.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            java.util.Date utilDateEnd = java.util.Date.from(localDateEnd.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+            // Convert java.util.Date to java.sql.Date
+            Date dateStart = new Date(utilDateStart.getTime());
+            Date dateEnd = new Date(utilDateEnd.getTime());
+
             // Convertir prixString, promotionString, et stockString en entiers
             int idorga = Integer.parseInt(tfidorganiser.getText());
             int nbatendees = Integer.parseInt(tfnbattendees.getText());
-            int country = Integer.parseInt(tfidcountry.getText());
+            int country = countryComboBox.getValue(); // Get selected country from combo box
 
             // Si toutes les vérifications sont réussies, créer un nouvel objet product
             Event eventToAdded = new Event(nameevent, descriptionevent, dateStart, dateEnd, tflocationevent.getText(), idorga, nbatendees, tfaffiche.getText(), country);
 
             // Appeler le service pour ajouter le produit
             ServiceEvent sp = new ServiceEvent();
+            envoyerMessage(tfnameevent.getText());
             sp.insertOne(eventToAdded);
 
             // Afficher un message de réussite
@@ -122,7 +138,6 @@ public class AjouterEventFXML {
             showErrorAlert("Error", "Invalid input for organizer ID, attendees number, or country ID.");
         }
     }
-
 
     private void showErrorAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -141,11 +156,48 @@ public class AjouterEventFXML {
         assert tfidorganiser != null : "fx:id=\"tfidorganiser\" was not injected: check your FXML file 'AjouterEvent.fxml'.";
         assert tfnbattendees != null : "fx:id=\"tfnbattendees\" was not injected: check your FXML file 'AjouterEvent.fxml'.";
         assert tfaffiche != null : "fx:id=\"tfaffiche\" was not injected: check your FXML file 'AjouterEvent.fxml'.";
-        assert tfidcountry != null : "fx:id=\"tfidcountry\" was not injected: check your FXML file 'AjouterEvent.fxml'.";
+        assert countryComboBox != null : "fx:id=\"countryComboBox\" was not injected: check your FXML file 'AjouterEvent.fxml'.";
+
+        // Populate country combo box, you need to replace this with your own method of populating country IDs
+        //countryComboBox.getItems().addAll(1, 2, 3, 4, 5); // Example items, replace with your own data
+        ServiceEvent serviceEvent = new ServiceEvent();
+        try {
+            // Obtenir tous les ID de pays
+            List<Integer> countryIds = serviceEvent.getAllCountryIds();
+
+            // Ajouter tous les ID de pays au ComboBox
+            countryComboBox.getItems().addAll(countryIds);
+        } catch (SQLException e) {
+            // Gérez les exceptions en cas d'erreur de base de données
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void goto_dashboard(ActionEvent event) throws IOException {
         FxMain.loadFXML("/ShowAll.fxml");
     }
+
+    @FXML
+    void goto_show_for_user(ActionEvent event) throws IOException {
+        FxMain.loadFXML("/Show_data_for_user.fxml");
+    }
+
+    public void upload_img(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Upload your profile picture");
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+            String fileName = selectedFile.getName().toLowerCase();
+            if (fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) {
+                tfaffiche.setText(selectedFile.getPath());
+            } else {
+                System.out.println("Invalid file format. Please select a PNG or JPG file.");
+            }
+        } else {
+            System.out.println("No file selected");
+        }
+    }
+
+
 }

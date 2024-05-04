@@ -18,7 +18,7 @@ private static Stage primaryStage;
     public void start(Stage stage) throws Exception {
         primaryStage = stage; // Utilisez le stage passé en paramètre
         primaryStage.setTitle("TechTerra Portal");
-        loadFXML("/ShowAll.fxml");
+        loadFXML("/AjouterEvent.fxml");
     }
 
     public static FXMLLoader loadFXML(String fxmlFileName) throws IOException {

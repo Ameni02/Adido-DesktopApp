@@ -87,6 +87,29 @@ public class ServiceEvent {
         }
     }
 
+    public static List<Integer> getAllCountryIds() throws SQLException {
+        // Créez une liste pour stocker les ID de pays
+        List<Integer> countryIds = new ArrayList<>();
+
+        // Requête SQL pour sélectionner tous les ID de pays
+        String query = "SELECT idcountry FROM Country"; // Assurez-vous que les noms de la table et de la colonne sont corrects
+
+        // Utilisez un PreparedStatement avec votre connexion cnx
+        try (PreparedStatement ps = cnx.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+
+            // Parcourez les résultats
+            while (rs.next()) {
+                // Récupérez l'ID du pays à partir du ResultSet et ajoutez-le à la liste
+                int countryId = rs.getInt("idcountry");
+                countryIds.add(countryId);
+            }
+        }
+
+        // Retournez la liste des ID de pays
+        return countryIds;
+    }
+
 
     public static void deleteOne(Event event) throws SQLException {
 
@@ -126,6 +149,37 @@ public class ServiceEvent {
             return eventList;
         }
 
+
+
+    public Event getNewsById(int id) {
+        Event event = null;
+        String query = "SELECT * FROM event WHERE idevent = ?";
+        try {
+            PreparedStatement statement = DBConnexion.getInstance().getCnx().prepareStatement(query);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                event = new Event();
+                event.setIdevent(resultSet.getInt("idevent"));
+                event.setNameevent(resultSet.getString("Nameevent"));
+                event.setDescriptionevent(resultSet.getString("Descriptionevent"));
+                event.setDatestartevent(resultSet.getDate("Datestartevent"));
+                event.setDateendevent(resultSet.getDate("Dateendevent"));
+                event.setIdorganiser(resultSet.getInt("Idorganiser"));
+                event.setNbattendees(resultSet.getInt("Nbattendees"));
+                event.setAffiche(resultSet.getString("Affiche"));
+                event.setIdcountry(resultSet.getInt("Idcountry"));
+
+                // Assuming category_id is an integer column representing the ordinal value of the enum
+                // int categoryOrdinal = resultSet.getInt("category_id");
+                //  news.setCategory(Threads.Category.values()[categoryOrdinal - 1]); // Assuming categories start from 1
+            }
+            System.out.println("news Fetched!");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return event;
+    }
 
 
     }

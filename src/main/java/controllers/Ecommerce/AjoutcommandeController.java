@@ -1,19 +1,16 @@
-package controllers;
+package controllers.Ecommerce;
 
-import com.sun.javafx.collections.ElementObservableListDecorator;
-import com.twilio.Twilio;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import models.Ecommerce.Commande;
+import models.Commande;
 import services.ServiceCommande;
 
 import java.sql.Date;
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -252,7 +249,7 @@ public class AjoutcommandeController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Please enter 'confirmed', 'in process', or 'shipped' for the status.");
+            alert.setContentText("Please enter 'Confirmed', 'process', or 'Shipped' for the status.");
             alert.showAndWait();
             return;
         }

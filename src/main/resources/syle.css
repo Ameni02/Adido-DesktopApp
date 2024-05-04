@@ -46,4 +46,10 @@
 .fruit-item{
         -fx-background-color: #FFFFFF;
         -fx-background-radius: 30;
+
+}
+.label-inclined {
+        transform: rotate(-45deg);
+        display: inline-block;
+
 }

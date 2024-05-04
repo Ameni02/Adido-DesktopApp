@@ -1,4 +1,4 @@
-package controllers;
+package controllers.Ecommerce;
 
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
@@ -12,8 +12,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import models.Ecommerce.Commande;
-import models.Ecommerce.Panier;
+import models.Commande;
+import models.Panier;
 import org.controlsfx.control.Notifications;
 import services.ServiceCommande;
 

@@ -11,7 +11,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="622.0" prefWidth="885.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjoutcommandeController">
+<AnchorPane prefHeight="622.0" prefWidth="885.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ecommerce.AjoutcommandeController">
     <children>
         <Label layoutX="39.0" layoutY="154.0" text="Date Commande " />
         <Label layoutX="39.0" layoutY="189.0" text="État Commande " />

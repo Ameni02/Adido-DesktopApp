@@ -1,4 +1,4 @@
-package controllers;
+package controllers.product;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,10 +7,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import models.product;
-import test.FxMain;
 import services.Serviceproduct;
+import test.FxMain;
+
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class updateProduct {
 
@@ -77,7 +79,26 @@ public class updateProduct {
             String promotionString = Integer.toString(products.getPromotionproduct());
             updated_promotionProduct.setText(promotionString);
 
+            try {
+                Serviceproduct serviceProduct = new Serviceproduct();
+                List<Integer> countryIds = serviceProduct.getAllCountryIds();
 
+                // Ajouter les ID de pays au ComboBox
+                countrycombo.getItems().addAll(countryIds);
+
+                // Sélectionner le pays associé au produit
+                int countryId = products.getIdCountry(); // Supposons que vous avez cette méthode dans la classe product
+                // Vérifier si le pays associé au produit est dans la liste des pays
+                if (countryIds.contains(countryId)) {
+                    countrycombo.setValue(countryId);
+                } else {
+                    // Si le pays n'est pas dans la liste, afficher un message d'erreur ou gérez le cas en conséquence
+                    System.out.println("Le pays associé au produit n'est pas dans la liste.");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                // Gérer l'erreur
+            }
         }
     }
     @FXML

@@ -4,32 +4,37 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700" prefWidth="1500" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ShowAll">
+<AnchorPane prefHeight="810.0" prefWidth="1315.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.product.ShowAll">
     <children>
         <Button layoutX="599.0" layoutY="616.0" mnemonicParsing="false" onAction="#ajouterProduct" prefHeight="33.0" prefWidth="150.0" style="-fx-border-color: black; -fx-border-radius: 100; -fx-border-width: 2;" text="Add news">
             <font>
                 <Font name="Montserrat SemiBold" size="15.0" />
             </font></Button>
-        <Text layoutX="32.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="product  list" wrappingWidth="370.82305908203125">
+        <Text layoutX="628.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="product  list" wrappingWidth="370.82305908203125">
             <font>
                 <Font name="Dubai Regular" size="50.0" />
             </font>
         </Text>
 
-        <TableView fx:id="productListe" layoutX="42.0" layoutY="106.0" prefHeight="488.0" prefWidth="1225.0">
+        <TableView fx:id="productListe" layoutX="310.0" layoutY="105.0" prefHeight="458.0" prefWidth="990.0">
             <columns>
 
-                <TableColumn fx:id="id_categorieproduct" prefWidth="156.0" text="categorieproduct" />
-                <TableColumn fx:id="id_nomproduct" prefWidth="145.0" text="nomproduct" />
-                <TableColumn fx:id="id_prixproduct" prefWidth="248.0" text="prixproduct" />
-                <TableColumn fx:id="id_promotionproduct" prefWidth="145.0" text="promotionproduct" />
-                <TableColumn fx:id="id_stockproduct" prefWidth="179.0" text="stockproduct" />
-                <TableColumn fx:id="action" prefWidth="137.0" text="action" />
+                <TableColumn fx:id="id_categorieproduct" prefWidth="135.99998474121094" text="categorieproduct" />
+                <TableColumn fx:id="id_nomproduct" prefWidth="148.79998779296875" text="nomproduct" />
+                <TableColumn fx:id="id_prixproduct" prefWidth="129.60003662109375" text="prixproduct" />
+                <TableColumn fx:id="id_promotionproduct" prefWidth="130.39996337890625" text="promotionproduct" />
+                <TableColumn fx:id="id_stockproduct" prefWidth="119.2000732421875" text="stockproduct" />
+                <TableColumn fx:id="tfAprouved" prefWidth="84.8001708984375" text="aprouve" />
             </columns>
         </TableView>
-
+        <BorderPane fx:id="adminSidebar1">
+            <left>
+                <fx:include fx:id="adminSidebar" source="AdminSideBar.fxml" />
+            </left>
+        </BorderPane>
     </children>
 </AnchorPane>

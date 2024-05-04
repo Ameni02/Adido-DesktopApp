@@ -8,13 +8,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="537.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Commanddetails">
+<AnchorPane prefHeight="537.0" prefWidth="769.0" styleClass="root" stylesheets="@details.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ecommerce.Commanddetails">
     <children>
         <!-- Background Panel -->
-        <Label layoutX="0.0" layoutY="0.0" prefHeight="537.0" prefWidth="769.0" style="-fx-background-color: #E25822;" />
+        <Label layoutX="0.0" layoutY="0.0" prefHeight="537.0" prefWidth="769.0" style="-fx-background-color: #f0f0f0;" styleClass="root" stylesheets="@details.css" />
 
         <!-- Checkout Details Heading -->
-        <Text layoutX="267.0" layoutY="65.0" strokeWidth="0.0" text="Checkout Details" underline="true">
+        <Text layoutX="277.0" layoutY="103.0" strokeWidth="0.0" styleClass="text" text="Checkout Details" underline="true">
             <font>
                 <Font size="28.0" />
             </font>
@@ -22,35 +22,38 @@
         </Text>
 
         <!-- Address Label and TextField -->
-        <Label layoutX="150.0" layoutY="140.0" text="Address">
+        <Label layoutX="100.0" layoutY="140.0" prefHeight="40.0" prefWidth="153.0" styleClass="text" stylesheets="@details.css" text="Address">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
-        <TextField fx:id="tfadresse" layoutX="295.0" layoutY="138.0" />
+        <TextField fx:id="tfadresse" layoutX="399.0" layoutY="145.0" styleClass="text" />
 
         <!-- Phone Number Label and TextField -->
-        <Label layoutX="150.0" layoutY="200.0" text="Phone Number">
+        <Label layoutX="100.0" layoutY="200.0" prefHeight="30.0" prefWidth="200.0" styleClass="text" stylesheets="@details.css" text="Phone Number">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
-        <TextField fx:id="tfphone" layoutX="295.0" layoutY="198.0" />
+        <TextField fx:id="tfphone" layoutX="399.0" layoutY="205.0" styleClass="text-field" stylesheets="@syle.css" />
 
         <!-- Additional Information Label and TextArea -->
-        <Label layoutX="100.0" layoutY="260.0" text="Additional Information">
+        <Label layoutX="100.0" layoutY="260.0" styleClass="text" stylesheets="@details.css" text="Additional Information">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
-        <TextArea fx:id="tfinfo" layoutX="294.0" layoutY="258.0" prefHeight="86.0" prefWidth="250.0" />
+        <TextArea fx:id="tfinfo" layoutX="399.0" layoutY="257.0" prefHeight="86.0" prefWidth="250.0" styleClass="text-area" />
 
         <!-- Back to Cart Button -->
-        <Button fx:id="backtocart" layoutX="212.0" layoutY="470.0" mnemonicParsing="false" onAction="#backtocart" prefHeight="26.0" prefWidth="120.0" text="Back to Cart" />
+        <Button fx:id="backtocart" layoutX="175.0" layoutY="470.0" mnemonicParsing="false" onAction="#backtocart" prefHeight="59.0" prefWidth="215.0" text="Back to Cart" />
 
         <!-- Pay Button -->
-        <Button layoutX="431.0" layoutY="470.0" mnemonicParsing="false" onAction="#ajoutcommandeController" prefHeight="26.0" prefWidth="120.0" text="Pay" />
-      <Button layoutX="315.0" layoutY="401.0" mnemonicParsing="false" onAction="#historique" prefHeight="37.0" prefWidth="139.0" text="My previous Orders" />
+        <Button layoutX="425.0" layoutY="470.0" mnemonicParsing="false" onAction="#ajoutcommandeController" prefHeight="59.0" prefWidth="174.0" stylesheets="@details.css" text="Pay" />
+      <Button layoutX="7.0" layoutY="14.0" mnemonicParsing="false" onAction="#historique" prefHeight="59.0" prefWidth="308.0" stylesheets="@details.css" text="My previous Orders" textFill="WHITE">
+         <font>
+            <Font size="11.0" />
+         </font></Button>
 
     </children>
 </AnchorPane>

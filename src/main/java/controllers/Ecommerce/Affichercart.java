@@ -1,4 +1,4 @@
-package controllers;
+package controllers.Ecommerce;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,7 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import models.Ecommerce.Panier;
+import models.Panier;
 import services.ServiceCommande;
 import services.ServicePanier;
 

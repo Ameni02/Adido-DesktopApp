@@ -4,8 +4,8 @@ import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
 import com.stripe.param.ChargeCreateParams;
-import models.Ecommerce.Commande;
-import models.Ecommerce.Panier;
+import models.Commande;
+import models.Panier;
 
 public class PaymentService {
 

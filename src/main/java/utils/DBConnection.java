@@ -1,40 +1,40 @@
 package utils;
 
-import com.mysql.cj.jdbc.ConnectionGroup;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.PreparedStatement;
+
 
 public class DBConnection {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/adido";
-    private static final String USER = "root";
-    private static final String PASSWORD = "";
-
-    //Second Step: Creer une instance static de meme type que la classe
-    private static DBConnection instance;
-
+    private final java.lang.String user = "root";
+    private final java.lang.String pwd = "";
+    private final java.lang.String url = "jdbc:mysql://localhost:3306/adido";
     private Connection cnx;
 
-    //First Step: Rendre le constructeur privé
-    private DBConnection() {
-        try {
-            cnx = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("Connected To DATABASE !");
-        } catch (SQLException e) {
-            System.err.println("Error: "+e.getMessage());
-        }
-    }
+    // 1er etape : rendre le constructeur prive
+    // 2eme etape : creer une variable de meme tupe que la classe
+    private static DBConnection instance;
 
-    //Thrid Step: Creer une methode static pour recuperer l'instance
+    private DBConnection(){
+        try {
+            cnx = DriverManager.getConnection(url,user,pwd);
+            System.out.println("Connection Etablie !");
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+
+        }
+
+
+    }
+    // 3eme etape : creer une methode static et public pour recuperer l'instance
 
     public static DBConnection getInstance(){
         if (instance == null) instance = new DBConnection();
         return instance;
     }
-
-    public Connection getCnx() {
+    public Connection getCnx(){
         return cnx;
     }
 }

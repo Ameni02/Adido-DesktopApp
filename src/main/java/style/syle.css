@@ -46,4 +46,55 @@
 .fruit-item{
         -fx-background-color: #FFFFFF;
         -fx-background-radius: 30;
+
+}
+.label-inclined {
+        transform: rotate(-45deg);
+        display: inline-block;
+
+}
+/* Styling for the AnchorPane */
+.root {
+        -fx-background-color: #f0f0f0; /* Set background color */
+}
+
+/* Styling for the Label */
+.label {
+        -fx-font-size: 18px; /* Set font size */
+        -fx-text-fill: #fff; /* Set text color */
+}
+
+/* Styling for the Text */
+.text {
+        -fx-font-size: 28px; /* Set font size */
+        -fx-fill: #fff; /* Set text color */
+}
+
+/* Styling for the TextField */
+.text-field {
+        -fx-font-size: 14px; /* Set font size */
+        -fx-prompt-text-fill: #ccc; /* Set prompt text color */
+}
+
+/* Styling for the TextArea */
+.text-area {
+        -fx-font-size: 14px; /* Set font size */
+}
+
+/* Styling for the Button */
+.button {
+        -fx-font-size: 16px; /* Set font size */
+        -fx-background-color: #E25822; /* Set background color */
+        -fx-text-fill: #fff; /* Set text color */
+        -fx-background-radius: 20px; /* Set border radius */
+}
+
+/* Styling for the hovered Button */
+.button:hover {
+        -fx-background-color: #D74700; /* Change background color on hover */
+}
+
+/* Styling for the pressed Button */
+.button:pressed {
+        -fx-background-color: #BA3400; /* Change background color on press */
 }

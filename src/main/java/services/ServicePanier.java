@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.control.Alert;
-import models.Ecommerce.Panier;
+import models.Panier;
 import utils.DBConnection;
 
 public class ServicePanier implements PanierInterface<Panier> {

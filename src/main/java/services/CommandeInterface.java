@@ -1,6 +1,6 @@
 package services;
 
-import models.Ecommerce.Commande;
+import models.Commande;
 
 import java.sql.SQLException;
 import java.util.List;

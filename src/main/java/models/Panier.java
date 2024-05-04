@@ -1,4 +1,4 @@
-package models.Ecommerce;
+package models;
 
 import java.util.Objects;
 

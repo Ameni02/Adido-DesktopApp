@@ -1,15 +1,23 @@
 package services;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import models.Country;
 import models.product;
 import models.Image;
+import org.asynchttpclient.AsyncHttpClient;
+import org.asynchttpclient.DefaultAsyncHttpClient;
+import org.asynchttpclient.Response;
 import utils.DBConnection;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 
-public class Serviceproduct implements CRUD<product> {
+public class Serviceproduct implements ProductInterface<product> {
 
     private Connection cnx;
 
@@ -51,7 +59,7 @@ public class Serviceproduct implements CRUD<product> {
             preparedStatement.setFloat(3, product.getPrixproduct());
             preparedStatement.setInt(4, product.getStockproduct());
             preparedStatement.setFloat(5, product.getPromotionproduct());
-            preparedStatement.setBoolean(6, product.isApproved());
+            preparedStatement.setInt(6, product.getApproved());
             preparedStatement.setInt(7, product.getIdCountry());
 
             // Exécutez la requête d'insertion
@@ -73,7 +81,7 @@ public class Serviceproduct implements CRUD<product> {
     @Override
     public  void updateOne(product product) throws SQLException {
         String requete = "UPDATE product " +
-                "SET categorieproduct = ?, nomproduct = ?, prixproduct = ?, stockproduct= ?, promotionproduct = ?, Approved = ? " +
+                "SET categorieproduct = ?, nomproduct = ?, prixproduct = ?, stockproduct= ?, promotionproduct = ?, Approved = ?, idcountry = ? " +
                 "WHERE id = ?";
         try {
             PreparedStatement preparedStatement = DBConnection.getInstance().getCnx().prepareStatement(requete);
@@ -82,8 +90,9 @@ public class Serviceproduct implements CRUD<product> {
             preparedStatement.setFloat(3, product.getPrixproduct());
             preparedStatement.setInt(4, product.getStockproduct());
             preparedStatement.setInt(5, product.getPromotionproduct());
-            preparedStatement.setBoolean(6, product.isApproved());
-            preparedStatement.setInt(7, product.getId());
+            preparedStatement.setInt(6, product.getApproved());
+            preparedStatement.setInt(7, product.getIdCountry());
+            preparedStatement.setInt(8, product.getId());
             preparedStatement.executeUpdate();
             System.out.println("product Updated!");
         } catch (SQLException e) {
@@ -112,7 +121,7 @@ public class Serviceproduct implements CRUD<product> {
         try {
             // Désactiver temporairement les contraintes de clé étrangère
             //PreparedStatement stmtDisableFK = conn.prepareStatement("SET FOREIGN_KEY_CHECKS = 0;");
-           // stmtDisableFK.executeUpdate();
+            // stmtDisableFK.executeUpdate();
 
             // Préparer et exécuter la requête de suppression
             String requete = "DELETE FROM product WHERE id = ?";
@@ -160,7 +169,8 @@ public class Serviceproduct implements CRUD<product> {
                 p.setPrixproduct(rs.getFloat(4)); // Utilisez la colonne correcte pour prixproduct
                 p.setStockproduct(rs.getInt(5)); // Utilisez la colonne correcte pour stockproduct
                 p.setPromotionproduct(rs.getInt(6)); // Utilisez la colonne correcte pour promotionproduct
-                p.setApproved(rs.getBoolean(7));
+                // p.setIdCountry(rs.getInt(7));
+                p.setApproved(rs.getInt(7));
                 list.add(p);
             }
         } catch (SQLException e) {
@@ -169,6 +179,7 @@ public class Serviceproduct implements CRUD<product> {
 
         return list;
     }
+
 
 
     public List<Image> getImagesByProductId(int productId) throws SQLException {
@@ -225,9 +236,98 @@ public class Serviceproduct implements CRUD<product> {
         // Retournez la liste des ID de pays
         return countryIds;
     }
+
+    @Override
+    public void updateApprovedStatus(product product) throws SQLException {
+        String requete = "UPDATE product " +
+                "SET approved = 1 " +
+                "WHERE id = ?";
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(requete)) {
+
+            preparedStatement.setInt(1, product.getId());
+            preparedStatement.executeUpdate();
+            System.out.println("Product updated!");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public String translate(String sourceLang, String targetLang, String text) {
+        AsyncHttpClient client = new DefaultAsyncHttpClient();
+
+        String apiKey = "8433d15735msh2702a52a05e99bdp1e7f6djsn60b6c77343ce";
+        String apiUrl = "https://swift-translate.p.rapidapi.com/translate";
+        String textWithoutNewlines = text.replaceAll("\\n", "").replaceAll("\\r", "");
+
+        String requestBody = String.format("{\n    \"text\": \"%s\",\n    \"sourceLang\": \"%s\",\n    \"targetLang\": \"%s\"\n}",
+                textWithoutNewlines, sourceLang, targetLang);
+
+        try {
+            Response response = client.prepare("POST", apiUrl)
+                    .setHeader("content-type", "application/json")
+                    .setHeader("X-RapidAPI-Key", apiKey)
+                    .setHeader("X-RapidAPI-Host", "swift-translate.p.rapidapi.com")
+                    .setBody(requestBody)
+                    .execute()
+                    .toCompletableFuture()
+                    .join();
+
+            return response.getResponseBody();
+        } finally {
+            try {
+                client.close();
+            } catch (IOException e) {
+                throw new RuntimeException("Error while closing the HTTP client", e);
+            }
+        }
+    }
+
+    public static String extractTranslatedText(String jsonResponse) {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode rootNode = objectMapper.readTree(jsonResponse);
+            return rootNode.get("translatedText").asText();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static boolean isBadContent(String content) {
+        AsyncHttpClient client1 = new DefaultAsyncHttpClient();
+
+        try {
+            CompletableFuture<Response> responseFuture = client1.prepare("POST", "https://neutrinoapi-bad-word-filter.p.rapidapi.com/bad-word-filter")
+                    .setHeader("content-type", "application/x-www-form-urlencoded")
+                    .setHeader("X-RapidAPI-Key", "8433d15735msh2702a52a05e99bdp1e7f6djsn60b6c77343ce")
+                    .setHeader("X-RapidAPI-Host", "neutrinoapi-bad-word-filter.p.rapidapi.com")
+                    .setBody("content=" + encodeContent(content) + "&censor-character=*")
+                    .execute()
+                    .toCompletableFuture();
+
+            Response response = responseFuture.join();
+            return parseBadWordResponse(response.getResponseBody());
+        } catch (IOException e) {
+            throw new RuntimeException("Error executing request", e);
+        } finally {
+            try {
+                client1.close();
+            } catch (IOException e) {
+                throw new RuntimeException("Error closing client", e);
+            }
+        }
+    }
+
+    private static String encodeContent(String content) {
+        return content.replace(" ", "%20");
+    }
+
+    private static boolean parseBadWordResponse(String responseBody) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode jsonNode = objectMapper.readTree(responseBody);
+
+        JsonNode isBadNode = jsonNode.get("is-bad");
+        return isBadNode != null && isBadNode.asBoolean();
+    }
+
 }
-
-
-
-
-

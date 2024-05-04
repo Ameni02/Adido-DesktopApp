@@ -1,0 +1,111 @@
+/* Styling for the AnchorPane */
+.root {
+    -fx-background-color: #f0f0f0; /* Set background color */
+}
+
+/* Styling for the Label */
+.label {
+    -fx-font-size: 13px; /* Set font size */
+    -fx-text-fill: gRAY; /* Set text color */
+}/* Styling for the Text */
+.text {
+    -fx-font-size: 20px; /* Set font size */
+    -fx-fill: Gray; /* Set text color */
+}
+
+/* Styling for the Label */
+.label {
+    -fx-font-size: 14px; /* Set font size */
+    -fx-text-fill: Gray; /* Set text color */
+}
+
+/* Styling for the heading text */
+.heading-text {
+    -fx-font-size: 28px; /* Set font size */
+    -fx-font-weight: bold; /* Set font weight to bold */
+    -fx-fill: #333; /* Set text color */
+}
+
+/* Styling for the highlighted text */
+.highlighted-text {
+    -fx-font-size: 16px; /* Set font size */
+    -fx-fill: #E25822; /* Set text color */
+    -fx-font-weight: bold; /* Set font weight to bold */
+}
+
+/* Styling for the small text */
+.small-text {
+    -fx-font-size: 12px; /* Set font size */
+    -fx-fill: #666; /* Set text color */
+}
+/* Styling for the TextField */
+.text-field {
+    -fx-font-size: 14px; /* Set font size */
+    -fx-background-color: #fff; /* Set background color */
+    -fx-border-color: #ccc; /* Set border color */
+    -fx-border-radius: 5px; /* Set border radius */
+    -fx-padding: 5px; /* Add padding */
+}
+
+/* Styling for the hovered TextField */
+.text-field:hover {
+    -fx-border-color: #aaa; /* Change border color on hover */
+}
+
+/* Styling for the focused TextField */
+.text-field:focused {
+    -fx-border-color: ORANGE; /* Change border color when focused */
+    -fx-border-width: 2px; /* Increase border width when focused */
+}
+
+/* Styling for the TextArea */
+.text-area {
+    -fx-font-size: 14px; /* Set font size */
+    -fx-background-color: #fff; /* Set background color */
+    -fx-border-color: #ccc; /* Set border color */
+    -fx-border-radius: 5px; /* Set border radius */
+    -fx-padding: 5px; /* Add padding */
+}
+
+/* Styling for the hovered TextArea */
+.text-area:hover {
+    -fx-border-color: #aaa; /* Change border color on hover */
+}
+
+/* Styling for the focused TextArea */
+.text-area:focused {
+    -fx-border-color: ORANGE; /* Change border color when focused */
+    -fx-border-width: 2px; /* Increase border width when focused */
+}
+
+/* Styling for the Button */
+.button {
+    -fx-font-size: 16px; /* Set font size */
+    -fx-background-color: #E25822; /* Set background color */
+    -fx-text-fill: #fff; /* Set text color */
+    -fx-background-radius: 5px; /* Set border radius */
+    -fx-padding: 8px 16px; /* Add padding */
+    -fx-border-width: 2px; /* Set border width */
+    -fx-border-color: transparent; /* Set border color */
+    -fx-cursor: hand; /* Change cursor on hover */
+}
+
+/* Styling for the hovered Button */
+.button:hover {
+    -fx-background-color: #D74700; /* Change background color on hover */
+}
+
+/* Styling for the pressed Button */
+.button:pressed {
+    -fx-background-color: #BA3400; /* Change background color on press */
+}
+
+/* Styling for the focused Button */
+.button:focused {
+    -fx-border-color: orange; /* Change border color when focused */
+}
+
+/* Styling for the disabled Button */
+.button:disabled {
+    -fx-opacity: 0.5; /* Reduce opacity for disabled state */
+}

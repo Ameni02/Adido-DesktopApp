@@ -1,14 +1,11 @@
-package controllers;
+package controllers.product;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import models.product;
@@ -18,10 +15,12 @@ import test.FxMain;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static controllers.product.EmailAprouve.sendConfirmationEmail;
+
 public class ShowAll {
 
     @FXML
-    private TableColumn<?, ?> action;
+    private TableColumn<?, ?> country;
 
     @FXML
     private TableColumn<?, ?> id_categorieproduct;
@@ -34,6 +33,8 @@ public class ShowAll {
 
     @FXML
     private TableColumn<?, ?> id_product;
+    @FXML
+    private TableColumn<?, ?> tfAprouved;
 
     @FXML
     private TableColumn<?, ?> id_promotionproduct;
@@ -44,8 +45,8 @@ public class ShowAll {
 
     @FXML
     private TableView<product> productListe;
-    @FXML
 
+    @FXML
     void ajouterProduct(ActionEvent event) throws IOException {
         FxMain.loadFXML("/shopProduit.fxml");
 
@@ -62,14 +63,19 @@ public class ShowAll {
         id_prixproduct.setCellValueFactory(new PropertyValueFactory<>("prixproduct"));
         id_promotionproduct.setCellValueFactory(new PropertyValueFactory<>("promotionproduct"));
         id_stockproduct.setCellValueFactory(new PropertyValueFactory<>("stockproduct"));
-        action.setCellValueFactory(new PropertyValueFactory<>("approved"));
+        //   country.setCellValueFactory(new PropertyValueFactory<>("idcountry"));
+        tfAprouved.setCellValueFactory(new PropertyValueFactory<>("approved"));
+
         productListe.setItems(list);
 
 
-        TableColumn<product, Void> actionButtonColumn = new TableColumn<>("Actions");
+
+       TableColumn<product, Void> actionButtonColumn = new TableColumn<>("Actions");
         actionButtonColumn.setCellFactory(param -> new TableCell<>() {
             private final Button deleteButton = new Button("Delete");
             private final Button updateButton = new Button("Update");
+            private final Button aprouve = new Button("Aprouve");
+
 
             {
                 deleteButton.setOnAction(event -> {
@@ -90,16 +96,37 @@ public class ShowAll {
                     }
                 });
 
-               updateButton.setOnAction(event -> {
+                updateButton.setOnAction(event -> {
                     product product = getTableView().getItems().get(getIndex());
-
-                   FXMLLoader loader = null;
-                   loader = FxMain.loadFXML("/updateProduct.fxml");
-                   updateProduct updateController = loader.getController();
+                    try {
+                        FXMLLoader loader = FxMain.loadFXML("/updateProduct.fxml");
+                        updateProduct updateController = loader.getController();
                         updateController.retrievedata(product);
                         System.out.println("Selected");
 
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
 
+
+                });
+
+                aprouve.setOnAction(event -> {
+                    product product1 = getTableView().getItems().get(getIndex());
+                    product1.setApproved(1); // Changer l'état approved à true
+                    System.out.println(product1);
+                    try {
+                        Serviceproduct serviceProduct = new Serviceproduct();
+                        serviceProduct.updateApprovedStatus(product1); // Mettre à jour le produit dans la base de données
+
+                        // Envoyer l'e-mail de confirmation
+                        sendConfirmationEmail();
+
+                        productListe.refresh(); // Rafraîchir la table pour refléter les modifications
+                    } catch (SQLException e) {
+                        // Gérer l'exception ici
+                        e.printStackTrace();
+                    }
                 });
             }
 
@@ -109,7 +136,7 @@ public class ShowAll {
                 if (empty) {
                     setGraphic(null);
                 } else {
-                    HBox buttons = new HBox(deleteButton, updateButton);
+                    HBox buttons = new HBox(deleteButton, updateButton,aprouve);
                     setGraphic(buttons);
                 }
             }
@@ -117,4 +144,6 @@ public class ShowAll {
 
         productListe.getColumns().add(actionButtonColumn);
     }
+
 }
+

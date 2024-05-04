@@ -1,6 +1,6 @@
 package services;
 
-import models.Ecommerce.Panier;
+import models.Panier;
 
 import java.sql.SQLException;
 import java.util.List;

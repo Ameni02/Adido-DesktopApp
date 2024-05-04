@@ -11,7 +11,7 @@ public class product {
     private float prixproduct;
     private int promotionproduct;
     private int stockproduct;
-    private boolean approved=false;
+    private int approved;
     private int idCountry;
 
 
@@ -21,7 +21,7 @@ public class product {
 
     }
 
-    public product(String categorieproduct, String nomproduct, float prixproduct, int promotionproduct, int stockproduct, boolean approved,int idCountry) {
+    public product(String categorieproduct, String nomproduct, float prixproduct, int promotionproduct, int stockproduct, int approved,int idCountry) {
         this.categorieproduct = categorieproduct;
         this.nomproduct = nomproduct;
         this.prixproduct = prixproduct;
@@ -39,6 +39,9 @@ public class product {
         this.stockproduct = stockproduct;
         this.idCountry = idCountry;
     }
+
+
+
 
     public int getId() {
         return id;
@@ -88,11 +91,12 @@ public class product {
         this.stockproduct = stockproduct;
     }
 
-    public boolean isApproved() {
+
+    public int getApproved() {
         return approved;
     }
 
-    public void setApproved(boolean approved) {
+    public void setApproved(int approved) {
         this.approved = approved;
     }
 

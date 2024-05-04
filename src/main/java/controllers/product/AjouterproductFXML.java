@@ -1,4 +1,4 @@
-package controllers;
+package controllers.product;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +13,7 @@ import models.Image;
 import services.Serviceproduct;
 import test.FxMain;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -130,7 +131,14 @@ public class AjouterproductFXML {
 
             // Create a service to manage the product
             Serviceproduct serviceProduct = new Serviceproduct();
-
+            if ((Serviceproduct.isBadContent(tfnomproduct.getText())||(Serviceproduct.isBadContent(tfcategorieproduct.getText()))))
+            {
+                System.out.println("Bad word detected");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Bad word detected!");
+                alert.show();
+                return;
+            }
             // Insert the product into the database
             serviceProduct.insertOne(newProduct);
 
@@ -187,6 +195,10 @@ public class AjouterproductFXML {
             // Gérez les exceptions en cas d'erreur de base de données
             e.printStackTrace();
         }
+    }
+
+    public void chatBot(ActionEvent actionEvent) throws IOException {
+        FxMain.loadFXML("/chatbot.fxml");
     }
 
 }

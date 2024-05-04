@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import models.Ecommerce.Commande;
+import models.Commande;
 import utils.DBConnection;
 
 public class ServiceCommande implements CommandeInterface<Commande> {

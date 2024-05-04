@@ -15,9 +15,9 @@ public class FxMain extends Application {
     public void start(Stage primaryStage) throws IOException {
         FxMain.primaryStage = primaryStage;
         //Image favicon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/favicon.png")));
-        primaryStage.setTitle("TechTerra Portal");
+        primaryStage.setTitle("ADIDO");
         //  primaryStage.getIcons().add(favicon);
-        loadFXML("/BlogOfficell.fxml");
+        loadFXML("/Event/Blog/BlogOfficell.fxml");
     }
     public static FXMLLoader loadFXML(String fxmlFileName) throws IOException {
         FXMLLoader loader = new FXMLLoader(FxMain.class.getResource(fxmlFileName));
@@ -27,4 +27,5 @@ public class FxMain extends Application {
         primaryStage.show();
         return loader;
     }
+
 }

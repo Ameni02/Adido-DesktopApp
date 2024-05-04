@@ -61,11 +61,11 @@
          </font>
       </Text>
     
-      <Button fx:id="addComment" layoutX="343.0" layoutY="547.0" mnemonicParsing="false" onAction="#addComment" prefHeight="39.0" prefWidth="176.0" text="Add your comment" textFill="#e58917">
+      <Button fx:id="addComment" layoutX="388.0" layoutY="521.0" mnemonicParsing="false" onAction="#addComment" prefHeight="39.0" prefWidth="176.0" text="Add your comment" textFill="#e58917">
          <font>
             <Font size="16.0" />
          </font></Button>
-      <TextArea fx:id="ChampsComment" layoutX="98.0" layoutY="396.0" prefHeight="96.0" prefWidth="234.0" promptText="write here">
+      <TextArea fx:id="ChampsComment" layoutX="98.0" layoutY="396.0" prefHeight="96.0" prefWidth="311.0" promptText="write here">
          <font>
             <Font size="19.0" />
          </font></TextArea>
@@ -89,7 +89,7 @@
             </LinearGradient>
          </textFill></Button>
       <Button layoutX="8.0" layoutY="587.0" mnemonicParsing="false" onAction="#Microbtn" prefHeight="48.0" prefWidth="73.0" text="🎤" />
-      <Label fx:id="Voice" layoutX="98.0" layoutY="578.0" prefHeight="75.0" prefWidth="218.0">
+      <Label fx:id="Voice" layoutX="98.0" layoutY="578.0" prefHeight="130.0" prefWidth="304.0">
          <font>
             <Font size="18.0" />
          </font></Label>

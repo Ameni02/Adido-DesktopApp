@@ -1,6 +1,4 @@
 package services;
-import com.mysql.cj.jdbc.DatabaseMetaData;
-import javafx.fxml.FXML;
 import models.Blog;
 import models.Image;
 import utils.DBConnection;
@@ -66,21 +64,22 @@ public class ServiceBlog implements CRUD<Blog> {
 
 
     @Override
-    public void insertOne(Blog blog) {
+    public void insertOne(Blog blog, int idUser) {
         if (blog.getTitleBlog() == null || blog.getTitleBlog().isEmpty()) {
             throw new IllegalArgumentException("Le titre du blog ne peut pas être vide.");
         }
 
-        String req = "INSERT INTO blog(titleblog,contentblog,country) VALUES (?, ?, ?)";
+        String req = "INSERT INTO blog(titleblog,contentblog,country,iduser) VALUES (?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = cnx.prepareStatement(req, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, blog.getTitleBlog());
             preparedStatement.setString(2, blog.getContentBlog());
             preparedStatement.setString(3, blog.getCountryBlog());
+            preparedStatement.setInt(4, blog.getIduser()); // Utilisez l'ID de l'utilisateur connecté
 
             // Exécutez la requête d'insertion
             preparedStatement.executeUpdate();
 
-            // Obtenez le `product_id` généré
+            // Obtenez le `blog_id` généré
             ResultSet rs = preparedStatement.getGeneratedKeys();
             if (rs.next()) {
                 int blogid = rs.getInt(1);
@@ -92,6 +91,7 @@ public class ServiceBlog implements CRUD<Blog> {
             throw new RuntimeException(e);
         }
     }
+
     public List<Blog> selectAllApproved() throws SQLException {
         List<Blog> approvedBlogList = new ArrayList<>();
         String query = "SELECT * FROM blog WHERE approved = 1"; // Sélectionne les posts approuvés

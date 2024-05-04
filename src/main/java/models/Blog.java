@@ -6,6 +6,7 @@ public class Blog {
     private String ContentBlog;
     private  String CountryBlog;
     private int approved;
+    private int iduser;
     public Blog(){
 
     }
@@ -16,6 +17,15 @@ public class Blog {
         ContentBlog = contentBlog;
         CountryBlog = countryBlog;
         this.approved = approved;
+        this.iduser=iduser;
+    }
+    public Blog(int idblog, String titleBlog, String contentBlog, String countryBlog, int approved,int iduser) {
+        this.idblog = idblog;
+        TitleBlog = titleBlog;
+        ContentBlog = contentBlog;
+        CountryBlog = countryBlog;
+        this.approved = approved;
+        this.iduser=iduser;
     }
 
     public Blog(int idblog, String titleBlog, String contentBlog, String countryBlog) {
@@ -29,6 +39,14 @@ public class Blog {
         TitleBlog = titleblog;
         ContentBlog = contentBlog;
         CountryBlog = countryBlog;
+    }
+
+    public int getIduser() {
+        return iduser;
+    }
+
+    public void setIduser(int iduser) {
+        this.iduser = iduser;
     }
 
     public int getApproved() {

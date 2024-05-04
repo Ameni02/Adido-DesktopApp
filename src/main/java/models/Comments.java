@@ -5,6 +5,7 @@ public class Comments {
     private int idcomment;
     private String contentcomment;
     private int idblog;
+    private int iduser;
 public Comments(){
 
 }
@@ -12,6 +13,20 @@ public Comments(){
         this.idcomment = idcomment;
         this.contentcomment = contentcomment;
         this.idblog = idblog;
+    }
+    public Comments(int idcomment, String contentcomment, int idblog,int iduser) {
+        this.idcomment = idcomment;
+        this.contentcomment = contentcomment;
+        this.idblog = idblog;
+        this.iduser=iduser;
+    }
+
+    public int getIduser() {
+        return iduser;
+    }
+
+    public void setIduser(int iduser) {
+        this.iduser = iduser;
     }
 
     public Comments(String commentcontent) {

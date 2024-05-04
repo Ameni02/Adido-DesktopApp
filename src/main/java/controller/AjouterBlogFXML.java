@@ -80,7 +80,7 @@ public class AjouterBlogFXML {
 
             Blog newBlog = new Blog(titleBlog, contentBlog, countryBlog);
             ServiceBlog serviceProduct = new ServiceBlog();
-            serviceProduct.insertOne(newBlog);
+            serviceProduct.insertOne(newBlog,1);
             int idblog = newBlog.getIdblog();
 
             imageblog.setIdblog(idblog);

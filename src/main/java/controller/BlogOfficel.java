@@ -31,7 +31,7 @@ public class BlogOfficel {
 
     @FXML
     void initialize() throws SQLException {
-        // Fetch the list of approved posts
+        // Fetch the list of approved postsm
         ServiceBlog serviceBlog = new ServiceBlog();
         List<Blog> approvedBlogList = serviceBlog.selectAllApproved();
 

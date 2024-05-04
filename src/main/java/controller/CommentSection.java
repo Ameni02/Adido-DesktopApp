@@ -9,6 +9,8 @@ import java.io.IOException;
 public class CommentSection {
     @FXML
     public Label commentShow;
+    @FXML
+    public  Label NameUser;
 
     public CommentSection() {
         try {
@@ -20,6 +22,10 @@ public class CommentSection {
             e.printStackTrace();
         }
     }
-
+public void setDataC(String content, int iduser)
+{
+     commentShow.setText(content);
+    NameUser.setText(String.valueOf(iduser));
+}
 
 }

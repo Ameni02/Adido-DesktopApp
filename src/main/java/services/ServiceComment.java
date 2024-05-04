@@ -13,15 +13,19 @@ public class ServiceComment implements CRUDComment<Comments>  {
     private static Connection cnx;
 
     public ServiceComment() {
+
         cnx = DBConnection.getInstance().getCnx();
     }
-    @Override
 
-    public void insertOneComment(Comments comments) throws SQLException {
-        String req = "INSERT INTO comments (idblog, contentcomment) VALUES (?, ?)";
+
+
+    @Override
+    public void insertOneComment(Comments comments, int iduser) throws SQLException {
+        String req = "INSERT INTO comments (idblog, contentcomment, iduser) VALUES (?, ?,?)";
         try (PreparedStatement preparedStatement = cnx.prepareStatement(req, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setInt(1, comments.getIdblog());
             preparedStatement.setString(2, comments.getContentcomment());
+            preparedStatement.setInt(3,iduser);
 
             // Exécutez la requête d'insertion
             preparedStatement.executeUpdate();
@@ -37,9 +41,8 @@ public class ServiceComment implements CRUDComment<Comments>  {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
     }
-
-
 
     @Override
     public void updateOneComment(Comments comments) throws SQLException {

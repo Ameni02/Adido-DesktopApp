@@ -37,7 +37,7 @@ public class AjouterCommentFXML {
             // Create the Comments object and insert comment
             Comments newComment = new Comments(idblog, commentcontent);
             ServiceComment servicecomment = new ServiceComment();
-            servicecomment.insertOneComment(newComment);
+            servicecomment.insertOneComment(newComment,1);
 
             new Alert(Alert.AlertType.INFORMATION, "Comment added successfully.").show();
         } catch (SQLException e) {

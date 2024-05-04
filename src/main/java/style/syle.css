@@ -46,6 +46,7 @@
 .fruit-item{
         -fx-background-color: #FFFFFF;
         -fx-background-radius: 30;
+<<<<<<< HEAD
 
 }
 .label-inclined {
@@ -98,3 +99,6 @@
 .button:pressed {
         -fx-background-color: #BA3400; /* Change background color on press */
 }
+
+
+

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="296.0" prefWidth="487.0" stylesheets="../Event/syle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Blog.ItemPost">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="280.0" prefWidth="255.0" styleClass="shadow" stylesheets="@../Event/syle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="54.0" prefWidth="215.0">
+               <children>
+                  <Label fx:id="nameLabel" prefHeight="50.0" prefWidth="146.0" text="bejoux">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="jaime" fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" >
+                     <image>
+                        <Image url="@../../java/image/like.png" />
+                     </image>
+                  </ImageView>
+                  <Button mnemonicParsing="false" onAction="#disllike" prefHeight="26.0" prefWidth="91.0" text="Dislike" translateX="100.0" />
+                  <Button mnemonicParsing="false" onAction="#LikeButtn" prefHeight="26.0" prefWidth="65.0" scaleZ="100.0" text="Like" translateX="120.0" translateY="5.0" />
+                  <Label fx:id="nbLikes" translateX="-20.0">
+                     <HBox.margin>
+                        <Insets left="180.0" top="10.0" />
+                     </HBox.margin></Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="contrylabel" prefHeight="18.0" prefWidth="74.0" text="Label" />
+                  <Label fx:id="tutl" prefWidth="105.0" text="Label" />
+               </children>
+            </HBox>
+            <ImageView fx:id="imageLabel" fitHeight="195.0" fitWidth="184.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../java/image/solitaire-certi.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </ImageView>
+            <Button fx:id="showPost" mnemonicParsing="false" onAction="#showPost" text="Show" />
+         </children>
+      </VBox>
+   </children>
+   <styleClass>
+      <String fx:value="fruit-item" />
+      <String fx:value="shadow" />
+   </styleClass>
+</AnchorPane>

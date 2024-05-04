@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="296.0" prefWidth="487.0" stylesheets="../syle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Blog.ItemPost">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="280.0" prefWidth="255.0" styleClass="shadow" stylesheets="@../syle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="54.0" prefWidth="215.0" translateY="20.0">
+               <children>
+                  <Label fx:id="nameLabel" prefHeight="50.0" prefWidth="146.0" text="bejoux">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#disllike" prefHeight="26.0" prefWidth="91.0" text="Dislike" translateX="100.0" translateY="16.0" />
+                  <Button mnemonicParsing="false" onAction="#LikeButtn" prefHeight="26.0" prefWidth="62.0" scaleZ="10.0" text="Like" translateX="120.0" translateY="16.0" />
+                  <Label fx:id="nbLikes" layoutX="10.0" layoutY="10.0" prefHeight="51.0" prefWidth="46.0" translateX="-30.0">
+                     <HBox.margin>
+                        <Insets left="180.0" top="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets right="40.0" top="20.0" />
+                     </padding></Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" translateX="10.0" translateY="30.0" translateZ="2.0">
+               <children>
+                  <Label fx:id="contrylabel" prefHeight="18.0" prefWidth="74.0" text="Label" translateX="20.0" translateY="-10.0" translateZ="3.0">
+                     <font>
+                        <Font size="22.0" />
+                     </font></Label>
+                  <Label fx:id="tutl" prefHeight="1.0" prefWidth="150.0" scaleZ="10.0" text="Label" translateX="220.0" translateY="-10.0">
+                     <font>
+                        <Font name="A 3D Max Alsalam" size="22.0" />
+                     </font></Label>
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </HBox>
+            <ImageView fx:id="imageLabel" fitHeight="136.0" fitWidth="179.0" pickOnBounds="true" preserveRatio="true" scaleX="0.75" scaleY="0.75" scaleZ="10.0" translateX="1.0" translateY="-25.0" translateZ="10.0">
+               <image>
+                  <Image url="@../../../java/image/solitaire-certi.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </ImageView>
+            <Button fx:id="showPost" mnemonicParsing="false" onAction="#showPost" scaleX="2.0" scaleY="2.0" scaleZ="10.0" text="Show" translateX="1.0" translateY="-20.0" translateZ="10.0" />
+         </children>
+      </VBox>
+   </children>
+   <styleClass>
+      <String fx:value="fruit-item" />
+      <String fx:value="shadow" />
+   </styleClass>
+</AnchorPane>

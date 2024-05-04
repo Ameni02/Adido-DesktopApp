@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="810.0" prefWidth="1315.0" style="-fx-background-color: #FAAC58;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Blog.BlogOfficel">
+   <children>
+      <BorderPane layoutX="14.0" layoutY="48.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@../../../java/style/syle.css" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="81.0" prefWidth="435.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="96.0" text="Product" textOverrun="LEADING_ELLIPSIS">
+                           <font>
+                              <Font name="Arial" size="21.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0" stylesheets="@../../../java/style/syle.css">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </VBox.margin>
+                     <children>
+                        <TextField prefHeight="40.0" prefWidth="245.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../../../java/style/syle.css">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../../../java/style/syle.css" text="searsh" textFill="WHITE" />
+                     </children>
+                     <styleClass>
+                        <String fx:value="search-box" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </HBox>
+                  <Pane prefHeight="34.0" prefWidth="435.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Pane layoutX="-91.0" layoutY="-95.0" prefHeight="200.0" prefWidth="200.0" />
+                        <Button fx:id="showDashbord" layoutX="11.0" layoutY="30.0" mnemonicParsing="false" onAction="#showDashbord" prefHeight="50.0" prefWidth="186.0" styleClass="add-btn" stylesheets="@../../../java/style/syle.css" text="Blog Dashbord" textFill="#464141">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="addpost" layoutX="218.0" layoutY="30.0" mnemonicParsing="false" onAction="#addpost" prefHeight="50.0" prefWidth="204.0" styleClass="add-btn" stylesheets="@../../../java/style/syle.css" text="Add your post" textFill="#464141">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+
+                      
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Pane>
+                  <VBox fx:id="chosenProductCart" alignment="CENTER" prefHeight="535.0" prefWidth="100.0" styleClass="chosen-fruit-card" stylesheets="@../../../java/style/syle.css">
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" />
+                     </VBox.margin>
+                     <children>
+                        <HBox prefHeight="67.0" prefWidth="334.0">
+                           <children>
+                              <Label fx:id="ProductNameLabel" prefHeight="67.0" prefWidth="238.0" text="bejoux" textFill="WHITE">
+                                 <font>
+                                    <Font name="Corbel" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="30.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <ImageView fx:id="ProductImage" fitHeight="170.0" fitWidth="285.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../java/image/solitaire-certi.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </ImageView>
+                        <HBox alignment="CENTER" prefHeight="47.0" prefWidth="334.0">
+                           <children>
+                              <Label prefHeight="58.0" prefWidth="173.0" text="Quantity">
+                                 <font>
+                                    <Font name="Corbel" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../../../java/style/syle.css" text="add to cart" textFill="#464141">
+                           <VBox.margin>
+                              <Insets bottom="20.0" top="30.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label prefHeight="66.0" prefWidth="161.0" text="language" textFill="#948f8f">
+                           <font>
+                              <Font name="Corbel" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="66.0" prefWidth="135.0" text="English" textFill="#948f8f" underline="true">
+                           <font>
+                              <Font name="Corbel" size="18.0" />
+                           </font>
+                        </Label>
+                        <Pane prefHeight="66.0" prefWidth="359.0" />
+                        <Label prefHeight="66.0" prefWidth="135.0" text="Cart" textFill="#948f8f">
+                           <font>
+                              <Font name="Corbel" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="150.0" prefWidth="370.0">
+                           <children>
+                              <Button fx:id="showEvent" mnemonicParsing="false" onAction="#showEvent" text="Event" />
+                           </children></VBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="productBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <ScrollPane fx:id="scrol" prefHeight="634.0" prefWidth="838.0" styleClass="transparent" stylesheets="@../../../java/style/syle.css">
+                           <content>
+                              <GridPane fx:id="grid" prefHeight="492.0" prefWidth="827.0" style="-fx-hgap: 10; -fx-vgap: 20;">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                              </GridPane>
+                           </content>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </ScrollPane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

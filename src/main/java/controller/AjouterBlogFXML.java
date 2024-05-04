@@ -86,11 +86,7 @@ public class AjouterBlogFXML {
             imageblog.setIdblog(idblog);
 
             serviceProduct.insertImageProduit(imageblog);
-            String userEmail = "sarah1sahlii1@gmail.com"; // Adresse e-mail du destinataire
-            String enchereDescription = "tetsette"; // Description spécifique à votre application
-            String userName = "Sarah reads for you"; // Nom de l'utilisateur (optionnel)
 
-            EmailSender.sendConfirmationEmail(userEmail, enchereDescription, userName) ;
             new Alert(Alert.AlertType.INFORMATION, "Post and image added successfully.").show();
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Error adding post or image: " + e.getMessage()).show();

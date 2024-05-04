@@ -246,6 +246,7 @@
                 new Thread(recognitionTask).start();
             }
 
-        }
+
+    }
 
 

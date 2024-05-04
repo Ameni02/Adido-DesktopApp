@@ -92,6 +92,51 @@ public class ServiceBlog implements CRUD<Blog> {
             throw new RuntimeException(e);
         }
     }
+    public List<Blog> selectAllApproved() throws SQLException {
+        List<Blog> approvedBlogList = new ArrayList<>();
+        String query = "SELECT * FROM blog WHERE approved = 1"; // Sélectionne les posts approuvés
+        try (
+             Statement statement = cnx.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+            while (resultSet.next()) {
+
+                Blog b = new Blog();
+                b.setIdblog(resultSet.getInt(1));
+                b.setTitleBlog(resultSet.getString(2));
+                b.setContentBlog(resultSet.getString(3));
+                b.setCountryBlog(resultSet.getString(5));
+
+
+                approvedBlogList.add(b);
+            }
+        }
+        return approvedBlogList;
+    }
+
+
+    @Override
+    public List<Blog> selectAll() throws SQLException {
+        List<Blog> list = new ArrayList<>();
+        String requete = "SELECT * FROM blog";
+        try {
+            Statement stmt = cnx.createStatement();
+            ResultSet rs = stmt.executeQuery(requete);
+            while (rs.next()) {
+                Blog b = new Blog();
+                b.setIdblog(rs.getInt(1));
+                b.setTitleBlog(rs.getString(2));
+                b.setContentBlog(rs.getString(3));
+                b.setCountryBlog(rs.getString(5));
+
+                list.add(b);
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return list;
+    }
 
 
     @Override
@@ -149,28 +194,6 @@ public class ServiceBlog implements CRUD<Blog> {
             }
             // Pas besoin de fermer la connexion car elle est gérée par DBConnection
         }
-    }
-    @Override
-    public List<Blog> selectAll() throws SQLException {
-        List<Blog> list = new ArrayList<>();
-        String requete = "SELECT * FROM blog";
-        try {
-            Statement stmt = cnx.createStatement();
-            ResultSet rs = stmt.executeQuery(requete);
-            while (rs.next()) {
-                Blog b = new Blog();
-                b.setIdblog(rs.getInt(1));
-                b.setTitleBlog(rs.getString(2));
-                b.setContentBlog(rs.getString(3));
-                b.setCountryBlog(rs.getString(5));
-
-                list.add(b);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        return list;
     }
 
 

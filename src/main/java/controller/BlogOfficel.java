@@ -30,36 +30,34 @@ public class BlogOfficel {
 
 
     @FXML
-
     void initialize() throws SQLException {
-        // Fetch the list of products
-        ServiceBlog serviceProduct = new ServiceBlog();
+        // Fetch the list of approved posts
+        ServiceBlog serviceBlog = new ServiceBlog();
+        List<Blog> approvedBlogList = serviceBlog.selectAllApproved();
 
-        // Appelez selectAll() à partir de l'instance créée
-        List<Blog> BlogList = serviceProduct.selectAll();
         // Keep track of the position in the grid
         int column = 0;
         int row = 0;
 
-        for (Blog blog :BlogList) {
+        for (Blog blog : approvedBlogList) {
             try {
-                // Load the itemProduct FXML
+                // Load the itemBlog FXML
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/itemBlog.fxml"));
                 Parent card = loader.load();
                 ItemPost itemPost = loader.getController();
 
-                // Get the list of images for the product
-                List<Image> images = serviceProduct.getImagesByProductId(blog.getIdblog());
+                // Get the list of images for the post
+                List<Image> images = serviceBlog.getImagesByProductId(blog.getIdblog());
                 String imagePath = null;
 
-                // Check if there are images available for the product
+                // Check if there are images available for the post
                 if (!images.isEmpty()) {
-                    // Assuming you want to use the first image in the list as the product image
+                    // Assuming you want to use the first image in the list as the post image
                     imagePath = images.get(0).getName_img();
                 }
 
-                // Set the data for the itemProduct
-                itemPost.setData(blog.getTitleBlog(), blog.getContentBlog(), blog.getCountryBlog(),  imagePath);
+                // Set the data for the itemBlog
+                itemPost.setData(blog.getTitleBlog(), blog.getContentBlog(), blog.getCountryBlog(), imagePath);
 
                 itemPost.setSelectedBlog(blog);
 
@@ -77,6 +75,8 @@ public class BlogOfficel {
             }
         }
     }
+
+
     @FXML
     void addpost(ActionEvent actionEvent)throws IOException {
         FxMain.loadFXML("/AjouterBlogFXML.fxml");

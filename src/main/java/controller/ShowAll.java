@@ -118,8 +118,13 @@ public class ShowAll {
                         ServiceBlog serviceBlog = new ServiceBlog();
                         serviceBlog.updateApprovedStatus(blog); // Mettre à jour le blog dans la base de données
                         BlogListe.refresh(); // Rafraîchir la table pour refléter les modifications
+
+            String userEmail = "sarah1sahlii1@gmail.com"; // Adresse e-mail du destinataire
+            String enchereDescription = "Post add"; // Description spécifique à votre application
+            String userName = "Sarah reads for you"; // Nom de l'utilisateur (optionnel)
+
+            EmailSender.sendConfirmationEmail(userEmail, enchereDescription, userName) ;
                     } catch (SQLException e) {
-                        e.printStackTrace();
                         // Gérer l'exception ici
                     }
                 });

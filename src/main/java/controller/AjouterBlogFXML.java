@@ -87,7 +87,7 @@ public class AjouterBlogFXML {
 
             serviceProduct.insertImageProduit(imageblog);
 
-            new Alert(Alert.AlertType.INFORMATION, "Post and image added successfully.").show();
+            new Alert(Alert.AlertType.INFORMATION, "Your post is treated by the Admin, you will receive an email.").show();
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Error adding post or image: " + e.getMessage()).show();
             e.printStackTrace();

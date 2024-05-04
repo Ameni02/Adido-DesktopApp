@@ -123,6 +123,8 @@ public class ShowAll {
             String enchereDescription = "Post add"; // Description spécifique à votre application
             String userName = "Sarah reads for you"; // Nom de l'utilisateur (optionnel)
 
+
+
             EmailSender.sendConfirmationEmail(userEmail, enchereDescription, userName) ;
                     } catch (SQLException e) {
                         // Gérer l'exception ici

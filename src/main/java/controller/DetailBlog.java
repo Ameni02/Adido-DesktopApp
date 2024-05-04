@@ -146,6 +146,7 @@
                     alert.setContentText("Veuillez entrer un commentaire avant de l'ajouter.");
                     alert.showAndWait();
                 }
+                Notification.showNotification("A new comment is added !!");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -198,54 +199,57 @@
             generateQRCodeImage.setImage(qrImage);
         }
 
+
         @FXML
         public void Microbtn(ActionEvent actionEvent) {
+            // Create a new Task for asynchronous speech recognition
+            Task<String> recognitionTask = new Task<String>() {
+                @Override
+                protected String call() throws Exception {
+                    // Replace with your subscription key and region
+                    SpeechConfig speechConfig = SpeechConfig.fromSubscription("71109cefd1b54092b1a24c0337e0c264", "francecentral");
 
-                // Create a new Task for asynchronous speech recognition
-                Task<String> recognitionTask = new Task<String>() {
-                    @Override
-                    protected String call() throws Exception {
-                        // Replace with your subscription key and region
-                        SpeechConfig speechConfig = SpeechConfig.fromSubscription("71109cefd1b54092b1a24c0337e0c264", "francecentral");
+                    try (SpeechRecognizer speechRecognizer = new SpeechRecognizer(speechConfig, AudioConfig.fromDefaultMicrophoneInput())) {
+                        System.out.println("Speak into your microphone."); // Inform user to speak
 
-                        try (SpeechRecognizer speechRecognizer = new SpeechRecognizer(speechConfig, AudioConfig.fromDefaultMicrophoneInput())) {
-                            System.out.println("Speak into your microphone."); // Inform user to speak
+                        Future<SpeechRecognitionResult> task = speechRecognizer.recognizeOnceAsync();
+                        SpeechRecognitionResult result = task.get();
 
-                            Future<SpeechRecognitionResult> task = speechRecognizer.recognizeOnceAsync();
-                            SpeechRecognitionResult result = task.get();
-
-                            if (result.getReason() == ResultReason.Canceled) {
-                                System.out.println("Cancellation detected.");
-                                return null;
-                            } else if (result.getReason() == ResultReason.NoMatch) {
-                                System.out.println("No speech recognized.");
-                                return null;
-                            } else {
-                                String recognizedText = result.getText();
-                                //System.out.println("Recognized text: " + recognizedText);
-                                return recognizedText;
-                            }
+                        if (result.getReason() == ResultReason.Canceled) {
+                            System.out.println("Cancellation detected.");
+                            return null;
+                        } else if (result.getReason() == ResultReason.NoMatch) {
+                            System.out.println("No speech recognized.");
+                            return null;
+                        } else {
+                            String recognizedText = result.getText();
+                            System.out.println("Recognized text: " + recognizedText);
+                            return recognizedText;
                         }
                     }
-                };
+                }
+            };
 
-                // Start the recognition task and handle the result
-                recognitionTask.setOnSucceeded(event1 -> {
-                    String transcribedText = recognitionTask.getValue();
-                    if (transcribedText != null) {
-                        // Update UI element (if desired)
-                        Voice.setText(transcribedText);
-                    }
-                });
+            // Start the recognition task and handle the result
+            recognitionTask.setOnSucceeded(event1 -> {
+                String transcribedText = recognitionTask.getValue();
+                if (transcribedText != null) {
+                    // Update UI element (if desired)
+                    Voice.setText(transcribedText);
 
-                recognitionTask.setOnFailed(event1 -> {
-                    Throwable exception = recognitionTask.getException();
-                    System.err.println("Speech recognition failed: " + exception.getMessage());
-                });
+                    // Call addComment method with the transcribed text
+                    ChampsComment.setText(transcribedText); // Set the transcribed text in the comment field
+                    addComment(null); // Call addComment method with ActionEvent as null
+                }
+            });
 
-                new Thread(recognitionTask).start();
-            }
+            recognitionTask.setOnFailed(event1 -> {
+                Throwable exception = recognitionTask.getException();
+                System.err.println("Speech recognition failed: " + exception.getMessage());
+            });
 
+            new Thread(recognitionTask).start();
+        }
 
     }
 

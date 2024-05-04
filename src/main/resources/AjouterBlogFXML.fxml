@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="537.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AjouterBlogFXML">
+<AnchorPane prefHeight="745.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AjouterBlogFXML">
    <children>
       <Label layoutX="385.0" layoutY="29.0" prefHeight="478.0" prefWidth="351.0" style="-fx-background-color: EFB261;" AnchorPane.bottomAnchor="29.399999999999977" AnchorPane.leftAnchor="385.0" AnchorPane.rightAnchor="32.60000000000002" AnchorPane.topAnchor="29.0">
          <textFill>
@@ -31,30 +31,41 @@
             </RadialGradient>
          </textFill>
       </Label>
-      <TextField fx:id="tfnomproduct" layoutX="551.0" layoutY="107.0" prefHeight="26.0" prefWidth="176.0" AnchorPane.leftAnchor="551.0" />
-      <Text layoutX="442.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contry" AnchorPane.leftAnchor="442.0" AnchorPane.rightAnchor="283.344140625" />
-      <TextField fx:id="tfstockproduct" layoutX="551.0" layoutY="209.0" AnchorPane.leftAnchor="551.2" AnchorPane.rightAnchor="94.4" />
-      <Button fx:id="backtolist" layoutX="399.0" layoutY="466.0" mnemonicParsing="false" onAction="#backtolist" prefHeight="26.0" prefWidth="113.0" text="Afficher blog" />
-      <Button layoutX="567.0" layoutY="332.0" mnemonicParsing="false" onAction="#ajouterBlog" prefHeight="26.0" prefWidth="98.0" text="Save" />
-      <Text layoutX="446.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title Blog" AnchorPane.leftAnchor="446.0" AnchorPane.rightAnchor="257.31718749999993" />
-      <TextField fx:id="tfcategorieproduct" layoutX="551.0" layoutY="154.0" AnchorPane.leftAnchor="551.0" AnchorPane.rightAnchor="94.36601562499996" />
+      <TextField fx:id="tfnomproduct" layoutX="551.2" layoutY="152.0" prefHeight="26.0" prefWidth="308.0" promptText="write th title" AnchorPane.leftAnchor="551.0" />
+      <Text layoutX="449.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country" AnchorPane.leftAnchor="449.0" AnchorPane.rightAnchor="432.703125">
+         <font>
+            <Font size="21.0" />
+         </font></Text>
+      <TextField fx:id="tfstockproduct" layoutX="551.0" layoutY="307.0" promptText="write your country" AnchorPane.leftAnchor="551.0" AnchorPane.rightAnchor="94.60000000000002" />
+      <Button fx:id="backtolist" layoutX="541.0" layoutY="544.0" mnemonicParsing="false" onAction="#backtolist" prefHeight="55.0" prefWidth="225.0" text="Back to blog page">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button layoutX="597.0" layoutY="455.0" mnemonicParsing="false" onAction="#ajouterBlog" prefHeight="26.0" prefWidth="98.0" text="Save">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Text layoutX="446.4" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title Blog" AnchorPane.leftAnchor="446.4" AnchorPane.rightAnchor="420.988671875">
+         <font>
+            <Font size="22.0" />
+         </font></Text>
+      <TextField fx:id="tfcategorieproduct" layoutX="551.0" layoutY="203.0" prefHeight="89.0" prefWidth="271.0" promptText="write the content" AnchorPane.leftAnchor="551.0" AnchorPane.rightAnchor="95.40000000000009" />
       <ImageView fitHeight="423.0" fitWidth="308.0" layoutX="103.2" layoutY="57.4" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="103.2" AnchorPane.rightAnchor="410.3999999999999" AnchorPane.topAnchor="57.4">
 
       </ImageView>
-      <Text layoutX="499.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add your  Post" wrappingWidth="235.4827880859375">
+      <Text layoutX="537.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add your  Post" wrappingWidth="235.4827880859375">
          <font>
             <Font name="System Bold" size="28.0" />
          </font>
       </Text>
       <Text layoutX="456.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <Text layoutX="446.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Content" />
-      <Label fx:id="nomerror211" layoutX="551.0" layoutY="180.0" prefHeight="18.0" prefWidth="190.0" />
-      <Label fx:id="nomerror2111" layoutX="551.0" layoutY="235.0" prefHeight="18.0" prefWidth="190.0" />
+      <Text layoutX="445.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Content">
+         <font>
+            <Font size="21.0" />
+         </font></Text>
       <Label fx:id="nomerror21111" layoutX="551.0" layoutY="289.0" prefHeight="18.0" prefWidth="190.0" />
-      <Button layoutX="555.0" layoutY="273.0" mnemonicParsing="false" onAction="#upload_img" prefHeight="26.0" prefWidth="61.0" text="upload" />
-      <TextField fx:id="picture_input" layoutX="637.0" layoutY="272.0" prefHeight="26.0" prefWidth="98.0" />
-      <Text layoutX="418.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="image de post " wrappingWidth="98.39999999999986" />
-      <Button layoutX="671.0" layoutY="467.0" mnemonicParsing="false" onAction="#AfficheComment" text="Afficher Comment" />
+      <Button layoutX="400.0" layoutY="381.0" mnemonicParsing="false" onAction="#upload_img" prefHeight="37.0" prefWidth="184.0" text="Insert your image" />
+      <TextField fx:id="picture_input" layoutX="612.0" layoutY="372.0" prefHeight="48.0" prefWidth="251.0" />
       
    </children>
 </AnchorPane>

@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -20,12 +21,18 @@ import java.util.List;
 import java.util.Objects;
 
 public class Affichercart {
+    @FXML
+    private Button btnmode;
 
     @FXML
     private VBox cartItems;
 
     @FXML
     private Button checkoutButton;
+
+    @FXML
+    private AnchorPane parent;
+    
 
     @FXML
     private Label productNameLabel;
@@ -169,6 +176,27 @@ public class Affichercart {
     }
 
     public void removeItemClicked(ActionEvent actionEvent) {
+
+    }
+private boolean isLightMode = true ;
+    public void changeMode(ActionEvent actionEvent) {
+        isLightMode = !isLightMode ;
+        if(isLightMode){
+            setLightMode();
+
+        }else {
+            setDarkMode();
+        }
+
+    }
+    private void setLightMode(){
+        parent.getStylesheets().remove("DarkMode.css");
+        parent.getStylesheets().add("LightMode.css");
+
+    }
+    private void setDarkMode(){
+        parent.getStylesheets().remove("LightMode.css");
+        parent.getStylesheets().add("DarkMode.css");
 
     }
 }

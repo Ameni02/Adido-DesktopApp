@@ -1,0 +1,34 @@
+/* Label */
+.label {
+    -fx-text-fill: #ffbb33; /* Orange text color */
+    -fx-font-size: 16px; /* Font size */
+}
+
+/* Button */
+.button {
+    -fx-background-color: #ffbb33; /* Orange button background */
+    -fx-text-fill: #fff; /* White button text */
+    -fx-font-size: 16px; /* Font size */
+}
+
+/* Root */
+.root {
+    -fx-background-color: #f0f0f0; /* Light gray background */
+}
+
+/* VBox */
+.vbox {
+    -fx-alignment: CENTER; /* Center alignment */
+    -fx-spacing: 20; /* Spacing between elements */
+}
+
+/* AnchorPane */
+.anchor-pane {
+    -fx-padding: 20px; /* Padding */
+}
+
+/* HBox */
+.hbox {
+    -fx-alignment: CENTER_RIGHT; /* Right alignment */
+    -fx-spacing: 20; /* Spacing between elements */
+}

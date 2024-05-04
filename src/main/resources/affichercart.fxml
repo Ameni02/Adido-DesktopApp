@@ -8,24 +8,26 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="478.0" prefWidth="726.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Affichercart">
+<AnchorPane fx:id="parent" prefHeight="478.0" prefWidth="726.0" style="-fx-background-color: #f0f0f0;" styleClass="root" stylesheets="@../java/style/LightMode.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Affichercart">
 
-    <VBox alignment="CENTER" spacing="20">
+    <VBox alignment="CENTER" spacing="20" styleClass="root">
+      <Button fx:id="btnmode" mnemonicParsing="false" onAction="#changeMode" styleClass="label" text="DARK">
+         <VBox.margin>
+            <Insets left="700.0" top="33.0" />
+         </VBox.margin>
+      </Button>
 
         <!-- Shopping Cart Title -->
         <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Your Shopping Cart" />
 
-        <!-- Clear All Button -->
-        <Button onAction="#clearAllClicked" style="-fx-font-size: 16px; -fx-background-color: #f44336; -fx-text-fill: white;" text="Clear All" />
-
         <!-- Shopping cart items -->
-        <VBox prefHeight="125.0" prefWidth="884.0" spacing="10" style="-fx-padding: 20px; -fx-background-color: #ffffff; -fx-border-width: 1px; -fx-border-color: #cccccc; -fx-border-radius: 5px;">
+        <VBox prefHeight="125.0" prefWidth="884.0" spacing="10" style="-fx-padding: 20px; -fx-background-color: #ffffff; -fx-border-width: 1px; -fx-border-color: #cccccc; -fx-border-radius: 5px;" styleClass="root">
             <!-- Each item in the cart -->
             <VBox fx:id="cartItems" spacing="5">
                 <!-- Product details -->
                 <HBox alignment="CENTER" prefHeight="98.0" prefWidth="842.0" spacing="20">
-                    <Region prefHeight="53.0" prefWidth="553.0" HBox.hgrow="ALWAYS" />
-                    <Label fx:id="productNameLabel" style="-fx-font-weight: ; -fx-text-fill: #333333; -fx-font-size: 18px;" />
+                    <Region prefHeight="53.0" prefWidth="553.0" styleClass="container" HBox.hgrow="ALWAYS" />
+                    <Label fx:id="productNameLabel" style="fx-text-fill: #333333; -fx-font-size: 18px;" />
                     <Label fx:id="productQuantityLabel" style="-fx-text-fill: #666666; -fx-font-size: 14px;" />
                     <Label fx:id="productPriceLabel" style="-fx-text-fill: #666666; -fx-font-size: 16px;" />
 
@@ -34,27 +36,13 @@
             </VBox>
         </VBox>
 
-        <!-- Buttons -->
-        <HBox prefHeight="38.0" prefWidth="884.0" spacing="20">
-            <Button onAction="#goBackShoppingClicked" prefHeight="38.0" prefWidth="334.0" style="-fx-font-size: 16px; -fx-background-color: #2196F3; -fx-text-fill: white;" text="Continue Shopping">
-                <HBox.margin>
-                    <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
-                </HBox.margin>
-            </Button>
-            <!-- Checkout Button -->
-            <Button fx:id="checkoutButton" onAction="#checkoutClicked" prefHeight="38.0" prefWidth="366.0" style="-fx-font-size: 16px; -fx-background-color: #4CAF50; -fx-text-fill: white;" text="Proceed to Checkout">
-                <HBox.margin>
-                    <Insets bottom="20.0" left="20.0" right="40.0" top="20.0" />
-                </HBox.margin>
-            </Button>
-        </HBox>
-
         <!-- Total and Taxes -->
-        <HBox alignment="CENTER_RIGHT" prefHeight="199.0" prefWidth="686.0" spacing="20">
-            <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Total: $" />
+        <HBox alignment="CENTER_RIGHT" prefHeight="199.0" prefWidth="686.0" spacing="20" styleClass="root">
             <Label fx:id="totalLabel" style="-fx-font-size: 20px; -fx-text-fill: #333333;" />
             <Region HBox.hgrow="ALWAYS" />
-            <Label style="-fx-font-size: 18px; -fx-text-fill: #666666;" text="Shipping: $" />
+   
+           <!-- Clear All Button -->
+           <Button onAction="#clearAllClicked" prefHeight="38.0" prefWidth="195.0" style="-fx-font-size: 16px; -fx-background-color: #f44336; -fx-text-fill: white;" styleClass="toggle-button" text="Clear All" />
             <Label fx:id="taxesLabel" style="-fx-font-size: 18px; -fx-text-fill: #666666;" />
         </HBox>
 
@@ -62,5 +50,20 @@
         <Region VBox.vgrow="ALWAYS" />
 
     </VBox>
+
+              <!-- Buttons -->
+     <HBox layoutX="48.0" layoutY="488.0" prefHeight="106.0" prefWidth="758.0" spacing="20">
+         <Button onAction="#goBackShoppingClicked" prefHeight="38.0" prefWidth="334.0" style="-fx-font-size: 16px; -fx-background-color: #2196F3; -fx-text-fill: white;" text="Continue Shopping">
+             <HBox.margin>
+                 <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
+             </HBox.margin>
+         </Button>
+         <!-- Checkout Button -->
+         <Button fx:id="checkoutButton" onAction="#checkoutClicked" prefHeight="38.0" prefWidth="366.0" style="-fx-font-size: 16px; -fx-background-color: #4CAF50; -fx-text-fill: white;" text="Proceed to Checkout">
+             <HBox.margin>
+                 <Insets bottom="20.0" left="20.0" right="40.0" top="20.0" />
+             </HBox.margin>
+         </Button>
+     </HBox>
 
 </AnchorPane>

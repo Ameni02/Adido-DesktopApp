@@ -116,5 +116,30 @@ public class ServiceCommande implements CommandeInterface<Commande> {
 
         return commande;
     }
+    public List<Commande> selectByState(String state) throws SQLException {
+        List<Commande> commandeList = new ArrayList<>();
+        String req = "SELECT * FROM `commande` WHERE `etatCommande`=?";
+        try (PreparedStatement ps = cnx.prepareStatement(req)) {
+            ps.setString(1, state);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Commande c = new Commande(
+                            rs.getInt("id_commande"),
+                            rs.getDate("dateCommande"),
+                            rs.getString("etatCommande"),
+                            rs.getString("coupon"),
+                            rs.getString("commande_address"),
+                            rs.getInt("command_phone_number"),
+                            rs.getString("additional_information")
+                    );
+                    commandeList.add(c);
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }
+        return commandeList;
+    }
 }
 

@@ -12,4 +12,5 @@ public interface CommandeInterface<T> {
     void deleteOne(String commande) throws SQLException;
       List<T> selectAll() throws SQLException;
     public Commande getCommandeById(int id) throws SQLException;
+    List<Commande> selectByState(String state) throws SQLException;
 }

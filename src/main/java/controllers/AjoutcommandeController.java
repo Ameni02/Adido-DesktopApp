@@ -78,6 +78,8 @@ public class AjoutcommandeController {
     @FXML
     private TextField tfphone;
 
+    @FXML
+    private ComboBox<String> filterComboBox;
 
 
     @FXML
@@ -157,7 +159,7 @@ public class AjoutcommandeController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Please enter 'Confirmed', 'in process', or 'Shipped' for the status.");
+            alert.setContentText("Please enter 'Confirmed', ' process', or 'Shipped' for the status.");
             alert.showAndWait();
             return;
         }
@@ -278,6 +280,10 @@ public class AjoutcommandeController {
     @FXML
     void initialize() {
         Show();
+
+        ObservableList<String> filterOptions = FXCollections.observableArrayList("All", "Confirmed", "Process", "Shipped");
+        filterComboBox.setItems(filterOptions);
+        filterComboBox.setValue("All");
     }
 
     public void Show() {
@@ -302,7 +308,26 @@ public class AjoutcommandeController {
         }
     }
 
+    @FXML
+    void filterByState(ActionEvent event) {
+        String selectedState = filterComboBox.getValue();
+        try {
+            if (selectedState.equals("All")) {
+                Show();
+            } else {
 
+                List<Commande> filteredList = ss.selectByState(selectedState);
+                if (filteredList != null) {
+                    listcommande.setItems(FXCollections.observableArrayList(filteredList));
+                } else {
+
+                    System.err.println("Error: Filtered list is null.");
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AjoutcommandeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     @FXML
     public void search() throws SQLException {
         String searchTerm = searchCom.getText().toLowerCase();

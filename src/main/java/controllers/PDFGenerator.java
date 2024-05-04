@@ -7,6 +7,7 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 import java.io.File;
 import java.io.IOException;
+
 public class PDFGenerator {
     public static void generatePDF(String filename, String content) throws IOException {
         try (PDDocument document = new PDDocument()) {

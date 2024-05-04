@@ -130,52 +130,113 @@ public class Historique {
     }
 
     public void generatePdf(ActionEvent actionEvent) {
-        try (PDDocument document = new PDDocument()) {
-            PDPage page = new PDPage();
+        try {
+            // Create a new PDF document
+            PDDocument document = new PDDocument();
+            PDPage page = new PDPage(PDRectangle.A4);
             document.addPage(page);
 
-            // Get the selected item from the table view
-            Commande selectedCommande = listcommande.getSelectionModel().getSelectedItem();
+            // Initialize the content stream
+            PDPageContentStream contentStream = new PDPageContentStream(document, page);
 
-            if (selectedCommande != null) {
-                try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
-                    // Set margins
-                    final float margin = 40;
-                    final float lineSpacing = 20;  // Adjust line spacing as needed
+            // Define the title and date
+            String title = "List Commande";
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+            String currentDate = dateFormat.format(new Date());
 
-                    // Y position for information (start from bottom with some margin)
-                    float yPosition = page.getMediaBox().getHeight() - margin - lineSpacing;
+            // Calculate the centered position for the title
+            float titleWidth = PDType1Font.HELVETICA_BOLD.getStringWidth(title) / 1000f * 14;
+            float titleXPosition = (page.getMediaBox().getWidth() - titleWidth) / 2;
+            float titleYPosition = page.getMediaBox().getHeight() - 50; // Adjust as needed
 
-                    // Information section with smaller font and indentation
+            // Draw the title
+            contentStream.beginText();
+            contentStream.setFont(PDType1Font.HELVETICA_BOLD, 19);
+            contentStream.newLineAtOffset(titleXPosition, titleYPosition);
+            contentStream.showText(title);
+            contentStream.endText();
+
+            // Place the date under the title on the left side
+            float dateYPosition = titleYPosition - 40; // Adjust as needed
+            contentStream.beginText();
+            contentStream.setFont(PDType1Font.HELVETICA, 10);
+            contentStream.newLineAtOffset(50, dateYPosition); // 50 is the left margin
+            contentStream.showText("Date : " + currentDate);
+            contentStream.endText();
+
+            // Add an empty line under the date by drawing a line
+            float emptyLineHeight = 10; // Adjust as needed
+            float nextContentYPosition = dateYPosition - (emptyLineHeight );
+            contentStream.moveTo(50, nextContentYPosition); // Start of the line
+            contentStream.lineTo(page.getMediaBox().getWidth() - 50, nextContentYPosition); // End of the line
+            contentStream.stroke(); // Draw the line
+
+            // Define the table layout
+            float margin = 50;
+            float tableWidth = page.getMediaBox().getWidth() - 2 * margin;
+            float yStart = dateYPosition - 30;
+            float rowHeight = 20;
+            float tableMargin = 10;
+
+            // Assuming listCommande is your ObservableList<Commande>
+            List<Commande> commandeList = listcommande.getItems();
+
+            // Draw table headers
+            float yPosition = yStart - rowHeight - tableMargin;
+            float xPosition = margin;
+            String[] headers = {"ID Commande", "Date Commande", "Informations supplémentaires"};
+            for (String header : headers) {
+                float textWidth = PDType1Font.HELVETICA_BOLD.getStringWidth(header) / 1000f * 12;
+                float centeredPosition = xPosition + (tableWidth / headers.length - textWidth) / 2;
+                contentStream.beginText();
+                contentStream.setFont(PDType1Font.HELVETICA_BOLD, 12);
+                contentStream.newLineAtOffset(centeredPosition, yPosition);
+                contentStream.showText(header);
+                contentStream.endText();
+                xPosition += tableWidth / headers.length;
+            }
+
+
+
+
+
+            // Draw table data
+            yPosition -= rowHeight + tableMargin;
+            for (Commande commande : commandeList) {
+                xPosition = margin;
+                SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
+                String dateAsString = date.format(commande.getDateCommande());
+                // Draw each detail
+                for (String detail : new String[]{String.valueOf(commande.getIdCommande()), dateAsString, commande.getAdditionalInformation()}) {
+                    float textWidth = PDType1Font.HELVETICA.getStringWidth(detail) / 1000f * 10;
+                    float centeredPosition = xPosition + (tableWidth / headers.length - textWidth) / 2;
                     contentStream.beginText();
                     contentStream.setFont(PDType1Font.HELVETICA, 10);
-                    contentStream.newLineAtOffset(margin, yPosition);
-                    contentStream.showText("ID Commande: " + selectedCommande.getIdCommande());
-                    yPosition -= lineSpacing;  // Update Y position for next line
-                    contentStream.newLineAtOffset(0, lineSpacing);  // Move down without changing X position
-                    contentStream.showText("Date Commande: " + selectedCommande.getDateCommande());
-                    yPosition -= lineSpacing;
-                    contentStream.newLineAtOffset(0, lineSpacing);
-                    // ... (show other information using the same pattern)
-                    contentStream.showText("Informations supplémentaires: " + selectedCommande.getAdditionalInformation());
+                    contentStream.newLineAtOffset(centeredPosition, yPosition);
+                    contentStream.showText(detail);
                     contentStream.endText();
+                    xPosition += tableWidth / headers.length;
                 }
-
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-                String filename = "Historique_" + sdf.format(new Date()) + "_" + selectedCommande.getDateCommande() + ".pdf";
-                File file = new File(filename);
-                document.save(file);
-                System.out.println("PDF generated successfully!");
-            } else {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setHeaderText("No Commande Selected");
-                alert.setContentText("Please select a commande from the table to generate PDF");
-                alert.showAndWait();
+                yPosition -= rowHeight + tableMargin;
             }
+
+            // Close the content stream and save the document
+            SimpleDateFormat fileDateFormat = new SimpleDateFormat("yyyyMMdd");
+            contentStream.close();
+            document.save("Historique_" + fileDateFormat.format(new Date()) + ".pdf");
+            document.close();
+
+            // Open the generated PDF file automatically
+            File pdfFile = new File("Historique_" + fileDateFormat.format(new Date()) + ".pdf");
+            if (pdfFile.exists()) {
+                Desktop.getDesktop().open(pdfFile);
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }
 
 

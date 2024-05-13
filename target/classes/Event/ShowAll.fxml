@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="700" prefWidth="1500" style="-fx-background-color: #EEE1D7;" stylesheets="@../../java/style/theme.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Event.ShowAll">
+    <children>
+      <BorderPane prefHeight="1080.0" prefWidth="1920.0">
+          <left>
+              <fx:include fx:id="sidebarAdmin" source="../AdminSideBar.fxml" />
+          </left>
+         <center>
+            <AnchorPane prefHeight="1080.0" prefWidth="1920.0" BorderPane.alignment="CENTER">
+                <children>
+                    <Button layoutX="1043.0" layoutY="616.0" mnemonicParsing="false" onMouseClicked="#AjouterEvent" prefHeight="33.0" prefWidth="262.0" style="-fx-background-color: #af4c4c; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; -fx-background-radius: 20; -fx-border-radius: 20;" text="Add Event" />
+                    <Button fx:id="btnexportToPDF" layoutX="712.0" layoutY="616.0" mnemonicParsing="false" onAction="#exportToPDF1" prefHeight="34.0" prefWidth="263.0" style="-fx-background-color: #af4c4c; -fx-text-fill: white; -fx-background-size: 15px; -fx-font-weight: bold; -fx-background-radius: 20; -fx-border-radius: 20;" text="PDF" />
+
+                    <Text fill="WHITE" layoutX="57.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event  List" wrappingWidth="370.82305908203125">
+                        <font>
+                            <Font name="Cambria Bold" size="50.0" />
+                        </font>
+                    </Text>
+
+                    <TableView fx:id="eventListe" layoutX="42.0" layoutY="106.0" prefHeight="488.0" prefWidth="1835.0">
+                        <columns>
+                            <TableColumn fx:id="idevent" prefWidth="80.79998779296875" text="ID Event" />
+                            <TableColumn fx:id="nameevent" prefWidth="167.0" text="Name Event" />
+                            <TableColumn fx:id="tfdescriptionevent" prefWidth="210.0" text="Description Event" />
+                            <TableColumn fx:id="tfdatestartevent" prefWidth="153.0" text="Date Start Event" />
+                            <TableColumn fx:id="tfdateendevent" prefWidth="160.0" text="Date End Event" />
+                            <TableColumn fx:id="tflocationevent" prefWidth="133.0" text="Location Event" />
+                            <TableColumn fx:id="tfidorganiser" prefWidth="154.0" text="ID Organiser" />
+                            <TableColumn fx:id="tfnbattendees" prefWidth="157.0" text="NB Attendees" />
+                            <TableColumn fx:id="tfaffiche" prefWidth="231.0" text="Affiche" />
+                            <TableColumn fx:id="tfidcountry" prefWidth="228.0" text="ID Country" />
+                        </columns>
+
+                        <!-- Apply CSS styling here -->
+                        <stylesheets>
+                            <URL value="@../../java/style/theme.css" />
+                        </stylesheets>
+                    </TableView>
+                    <TextField fx:id="searchevent" layoutX="1606.0" layoutY="56.0" onAction="#search" prefHeight="38.0" prefWidth="271.0" style="-fx-background-color: #FFFFFF;" />
+
+
+                </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+
+
+    </children>
+</AnchorPane>

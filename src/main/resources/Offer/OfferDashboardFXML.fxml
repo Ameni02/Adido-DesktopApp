@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="recherche" prefHeight="700" prefWidth="1049.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Offer.OfferDashboardFXML">
+    <children>
+        <Text fill="#dc9a20" layoutX="386.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Offers" wrappingWidth="208.42303466796875">
+            <font>
+                <Font name="Dubai Bold" size="50.0" />
+            </font>
+        </Text>
+
+        <TableView fx:id="OfferList" layoutX="76.0" layoutY="106.0" prefHeight="488.0" prefWidth="870.0">
+            <columns>
+                <TableColumn fx:id="id_post" prefWidth="212.80006408691406" text="Title Post" />
+                <TableColumn fx:id="id_content" prefWidth="166.39996337890625" text="Description" />
+                <TableColumn fx:id="id_country" prefWidth="99.199951171875" text="Country" />
+                <TableColumn fx:id="datedebut" prefWidth="99.199951171875" text="Start Date" />
+                <TableColumn fx:id="datefin" prefWidth="99.199951171875" text="End Date" />
+            </columns>
+        </TableView>
+        <TextField fx:id="RechercheOffer" layoutX="107.0" layoutY="58.0" promptText="recherche" />
+        <Button layoutX="267.0" layoutY="58.0" mnemonicParsing="false" onAction="#recherchebtn" text="recherche" />
+    </children>
+</AnchorPane>

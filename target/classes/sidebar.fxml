@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="home" prefHeight="144.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Sidebar">
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="1920.0">
+            <children>
+                <Pane layoutX="395.0" prefHeight="49.0" prefWidth="200.0" style="-fx-background-color: BE3511FF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                <Button fx:id="home1" layoutX="837.0" layoutY="96.0" mnemonicParsing="false" onAction="#home1" style="-fx-background-color: transparent;" text="Home">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="BtnLogOut" layoutX="1653.0" layoutY="96.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: BE3511FF;" text="Log Out" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnevent" layoutX="1365.0" layoutY="96.0" mnemonicParsing="false" onAction="#toevent" style="-fx-background-color: transparent;" text="Event">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="Dashboard" layoutX="1229.0" layoutY="96.0" mnemonicParsing="false" onAction="#Dachboard" style="-fx-background-color: transparent;" text="Dashbord">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnoffre" layoutX="1129.0" layoutY="96.0" mnemonicParsing="false" onAction="#tooffer" style="-fx-background-color: transparent;" text="Offre">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnproduct" layoutX="1014.0" layoutY="96.0" mnemonicParsing="false" onAction="#toproduct" style="-fx-background-color: transparent;" text="Product">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnblog" layoutX="934.0" layoutY="96.0" mnemonicParsing="false" onAction="#toblog" style="-fx-background-color: transparent;" text="Blog">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="44.0" fitWidth="103.0" layoutX="243.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@imageEvent/logo22.png" />
+                    </image>
+                </ImageView>
+            <Button fx:id="btnProfile" layoutX="1463.0" layoutY="96.0" mnemonicParsing="false" onAction="#profile" style="-fx-background-color: transparent;" text="Profile">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

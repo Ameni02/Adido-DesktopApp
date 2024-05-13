@@ -1,0 +1,82 @@
+/* styles.css */
+
+.root {
+    -fx-background-color: #f0f0f0;
+}
+
+.label {
+    -fx-font-size: 16px;
+    -fx-text-fill: black;
+}
+
+.text-field, .text-area {
+    -fx-pref-width: 200px;
+    -fx-background-color: white;
+    -fx-font-size: 14px; /* Increased font size for better readability */
+    -fx-border-color: orange;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px; /* Rounded corners for a modern look */
+    -fx-padding: 5px; /* Padding to give space around the text */
+}
+
+.text-field:focused, .text-area:focused {
+    -fx-border-color: orange;
+    -fx-border-width: 2px;
+}
+
+.button {
+
+    -fx-background-color: orange;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.table-view {
+    -fx-pref-width: 800px;
+    -fx-pref-height: 400px;
+    -fx-background-color: white;
+    -fx-border-color: orange;
+    -fx-border-width: 1px;
+}
+
+.table-column {
+    -fx-pref-width: 120px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.combo-box {
+    -fx-pref-width: 150px;
+    -fx-font-size: 14px; /* Increased font size for better readability */
+    -fx-background-color: white;
+    -fx-border-color: orange;
+    -fx-border-width: 1px;
+}
+
+.combo-box-popup {
+    -fx-background-color: white;
+    -fx-font-size: 14px; /* Increased font size for better readability */
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: black;
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: #ffcc80;
+}
+.hbox-root {
+    -fx-spacing: 20px;
+    -fx-padding: 10px;
+    -fx-background-color: #f0f0f0; /* Light gray background */
+    -fx-border-width: 1px;
+    -fx-border-color: #FFA500; /* Orange border */
+    -fx-border-radius: 5px;
+}
+
+.vbox-root {
+    -fx-background-color: #f0f0f0; /* Light gray background */
+    -fx-border-width: 1px;
+    -fx-border-color: #FFA500; /* Orange border */
+    -fx-border-radius: 5px;
+    -fx-padding: 20px;
+}

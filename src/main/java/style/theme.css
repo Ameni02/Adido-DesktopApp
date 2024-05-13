@@ -1,0 +1,16 @@
+.table-view {
+    -fx-background-color: #ffffff;
+}
+
+/* Change color of column headers */
+.table-view .column-header-background {
+    -fx-background-color: #0725e8;
+}
+
+.table-row-cell {
+    -fx-background-color: #c78991;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #7ac6ff;
+}

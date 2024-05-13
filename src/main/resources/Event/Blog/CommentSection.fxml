@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="176.0" prefWidth="457.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Blog.CommentSection">
+   <children>
+      <Label fx:id="commentShow" layoutX="64.0" layoutY="14.0" prefHeight="122.0" prefWidth="378.0">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Label>
+      <Label fx:id="NameUser" layoutX="9.0" layoutY="54.0" prefHeight="58.0" prefWidth="46.0" text="Label">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

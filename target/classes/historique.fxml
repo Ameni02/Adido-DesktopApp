@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="parent" prefHeight="780" prefWidth="1400" styleClass="root" stylesheets="@LightMode.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ecommerce.Historique">
+    <children>
+      <BorderPane prefHeight="1080.0" prefWidth="1920.0">
+          <top>
+              <fx:include fx:id="home" source="sidebar.fxml" />
+          </top>
+         <center>
+            <AnchorPane prefHeight="1080.0" prefWidth="1920.0" BorderPane.alignment="CENTER">
+                <children>
+
+                    <TableView fx:id="listcommande" layoutX="273.0" layoutY="139.0" prefHeight="489.0" prefWidth="827.0">
+                        <columns>
+                            <TableColumn fx:id="datecommande" minWidth="0.0" prefWidth="192.0" text="Date commande" />
+                            <TableColumn fx:id="adresse" prefWidth="47.999969482421875" text="Adresse commande" />
+                            <TableColumn fx:id="etatcommande" prefWidth="133.5999755859375" text="Etat commande" />
+                            <TableColumn fx:id="phonenumber" minWidth="5.60003662109375" prefWidth="106.4000244140625" text="Phone " />
+                            <TableColumn fx:id="addinfo" prefWidth="271.20013427734375" text="Information" />
+
+
+                        </columns>
+                    </TableView>
+                    <Label layoutX="480.0" layoutY="37.0" prefHeight="80.0" prefWidth="203.0" text="My Previous orders ">
+                        <font>
+                            <Font name="System Bold" size="23.0" />
+                        </font>
+                    </Label>
+                    <Button fx:id="backbutton" layoutX="273.0" layoutY="581.0" mnemonicParsing="false" onAction="#back" prefHeight="30.0" prefWidth="152.0" text="Back " />
+                    <Button fx:id="admin" layoutX="1002.0" layoutY="97.0" mnemonicParsing="false" onAction="#admincommand" text="admin" />
+                    <Button fx:id="pdf" layoutX="990.0" layoutY="581.0" mnemonicParsing="false" onAction="#generatePdf" prefHeight="30.0" prefWidth="96.0" text="pdf" />
+                    <Button fx:id="btnmode" layoutX="1295.0" layoutY="33.0" mnemonicParsing="false" onAction="#changeMode" text="Dark" />
+
+                </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+
+    </children>
+
+</AnchorPane>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="727.0" prefWidth="998.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Blog.DetailBlog">
+   <children>
+      <Label fx:id="titleLabel" layoutX="143.0" layoutY="91.0" prefHeight="26.0" prefWidth="148.0" text="Label">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font></Label>
+      <Label fx:id="contryLbael" layoutX="148.0" layoutY="260.0" prefHeight="26.0" prefWidth="105.0" text="Label">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font></Label>
+
+      <Text fill="#e5811c" layoutX="35.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title :" wrappingWidth="72.62030029296875">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font></Text>
+      <Text fill="#e5811c" layoutX="27.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Content :">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font></Text>
+      <Text fill="#e5811c" layoutX="30.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country :" wrappingWidth="104.58242797851562">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font></Text>
+      <Text layoutX="643.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comment section " wrappingWidth="175.7448272705078">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <ScrollPane layoutX="525.0" layoutY="99.0" prefHeight="277.0" prefWidth="412.0" style="-fx-background-color: #FAAC58;">
+         <content>
+            <GridPane fx:id="comentgrid" prefHeight="266.0" prefWidth="403.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
+      <Text layoutX="96.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert your comment via Text " wrappingWidth="326.94488525390625">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+
+      <Button fx:id="addComment" layoutX="439.0" layoutY="521.0" mnemonicParsing="false" onAction="#addComment" prefHeight="39.0" prefWidth="142.0" text="Add your comment" textFill="#e58917">
+         <font>
+            <Font size="13.0" />
+         </font></Button>
+      <TextArea fx:id="ChampsComment" layoutX="51.0" layoutY="434.0" prefHeight="96.0" prefWidth="367.0" promptText="write here">
+         <font>
+            <Font size="19.0" />
+         </font></TextArea>
+      <ImageView fx:id="imageShow" fitHeight="29.0" fitWidth="23.0" layoutX="389.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../java/image/solitaire-certi.png" />
+         </image>
+
+      </ImageView>
+      <ImageView fx:id="generateQRCodeImage" fitHeight="150.0" fitWidth="200.0" layoutX="594.0" layoutY="492.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="generateQRCode" layoutX="818.0" layoutY="522.0" mnemonicParsing="false" onAction="#generateQRCode" prefHeight="37.0" prefWidth="141.0" text="SCAN your QR code" textOverrun="CLIP">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8631578683853149" green="0.5154438018798828" blue="0.06074073910713196" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.8421052694320679" green="0.5947758555412292" blue="0.27134501934051514" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill></Button>
+      <Button layoutX="14.0" layoutY="619.0" mnemonicParsing="false" onAction="#Microbtn" prefHeight="48.0" prefWidth="73.0" text="🎤" />
+      <Label fx:id="Voice" layoutX="98.0" layoutY="578.0" prefHeight="130.0" prefWidth="304.0">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="136.0" layoutY="32.0" prefHeight="31.0" prefWidth="114.0" text="Post Detail">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Text layoutX="193.0" layoutY="567.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Via voice" wrappingWidth="132.54481506347656">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="testContent" layoutX="135.0" layoutY="174.0" prefHeight="48.0" prefWidth="304.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextArea>
+      <Separator layoutX="484.0" layoutY="64.0" orientation="VERTICAL" prefHeight="322.0" prefWidth="6.0" style="-fx-background-color: #FAAC58;" />
+      <Separator layoutX="8.0" layoutY="66.0" orientation="VERTICAL" prefHeight="322.0" prefWidth="2.0" style="-fx-background-color: #FAAC58;" />
+      <Separator layoutX="948.0" layoutY="64.0" orientation="VERTICAL" prefHeight="322.0" prefWidth="6.0" style="-fx-background-color: #FAAC58;" />
+   </children>
+</AnchorPane>

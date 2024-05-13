@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="700.0" prefWidth="1200.0" stylesheets="@imageEvent/eventcss.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Event.Alldata">
+    <children>
+      <BorderPane prefHeight="1080.0" prefWidth="1920.0">
+          <top>
+              <fx:include fx:id="home" source="../sidebar.fxml" />
+          </top>
+         <center>
+            <AnchorPane prefHeight="1080.0" prefWidth="1920.0" BorderPane.alignment="CENTER">
+                <children>
+                    <ScrollPane hbarPolicy="NEVER" layoutX="293.0" layoutY="32.0" prefHeight="654.0" prefWidth="893.0">
+                        <content>
+                            <VBox fx:id="overallocation" alignment="CENTER_LEFT" prefHeight="668.0" prefWidth="870.0" style="-fx-background-color: #FFFFFF;" stylesheets="@imageEvent/eventcss.css">
+                                <children>
+                                    <HBox prefHeight="76.0" prefWidth="1190.0" stylesheets="@imageEvent/eventcss.css">
+                                        <children>
+                                            <Button fx:id="backbtn" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="78.0" prefWidth="66.0" style="-fx-background-color: #F78633;" text="&lt;-" />
+
+
+
+
+                                            <Label fx:id="fullPostDate" prefHeight="76.0" prefWidth="158.0" text="       25/11/2069">
+                                                <font>
+                                                    <Font size="18.0" />
+                                                </font></Label>
+                                            <Label fx:id="dateend" prefHeight="75.0" prefWidth="186.0" text="           Label">
+                                                <font>
+                                                    <Font size="18.0" />
+                                                </font></Label>
+                                            <Label fx:id="NewsLabelID" prefHeight="76.0" prefWidth="137.0" />
+                                        </children>
+                                        <opaqueInsets>
+                                            <Insets />
+                                        </opaqueInsets>
+                                    </HBox>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #FFFFF;">
+                                        <children>
+                                            <Label fx:id="fullPostLabel" prefHeight="82.0" prefWidth="122.0" text="Label">
+                                                <font>
+                                                    <Font size="18.0" />
+                                                </font>
+                                            </Label>
+                                            <Text fx:id="fullPostContent" strokeType="OUTSIDE" strokeWidth="0.0" text="verognp retpgno ezrpogn ezrpg nezproigneroi gneopir gpienrg inerognp retpg" wrappingWidth="882.13671875">
+                                                <font>
+                                                    <Font size="24.0" />
+                                                </font>
+                                            </Text>
+                                            <Label fx:id="locationnnnn" prefHeight="57.0" prefWidth="106.0" text="Label">
+                                                <font>
+                                                    <Font size="18.0" />
+                                                </font>
+                                            </Label>
+                                        </children>
+                                    </VBox>
+
+                                </children>
+                            </VBox>
+                        </content>
+                    </ScrollPane>
+                    <Pane layoutX="14.0" layoutY="23.0" prefHeight="654.0" prefWidth="271.0" style="-fx-background-color: #F78633; -fx-background-radius: 20px;">
+                        <children>
+                            <ImageView fitHeight="221.0" fitWidth="222.0" layoutX="26.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@imageEvent/01.png" />
+                                </image>
+                            </ImageView>
+                            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="36.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@imageEvent/logo.png" />
+                                </image>
+                            </ImageView>
+                        </children></Pane>
+                </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+    </children>
+</AnchorPane>

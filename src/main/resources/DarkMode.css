@@ -1,0 +1,84 @@
+.root {
+    -fx-background-color: #606060;
+}
+
+.label {
+    -fx-font-size: 16px;
+    -fx-text-fill: black;
+}
+
+.text-field, .text-area {
+    -fx-pref-width: 200px;
+    -fx-background-color: #666666;
+    -fx-font-size: 14px; /* Increased font size for better readability */
+    -fx-border-color: #FFA500;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px; /* Rounded corners for a modern look */
+    -fx-padding: 5px; /* Padding to give space around the text */
+}
+
+.text-field:focused, .text-area:focused {
+    -fx-border-color: #FFA500;
+    -fx-border-width: 2px;
+}
+
+.button {
+    -fx-background-color: #FFA500;
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+}
+
+.table-view {
+    -fx-pref-width: 800px;
+    -fx-pref-height: 400px;
+    -fx-background-color: #666666; /* Set table background to dark gray */
+    -fx-border-color: #FFA500;
+    -fx-border-width: 1px;
+}
+
+.table-row-cell {
+    -fx-background-color: #808080; /* Set table row background to gray */
+}
+
+.table-column {
+    -fx-pref-width: 120px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.combo-box {
+    -fx-pref-width: 150px;
+    -fx-font-size: 14px; /* Increased font size for better readability */
+    -fx-background-color: #666666;
+    -fx-border-color: #FFA500;
+    -fx-border-width: 1px;
+}
+
+.combo-box-popup {
+    -fx-background-color: #666666;
+    -fx-font-size: 14px; /* Increased font size for better readability */
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: #CCCCCC;
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: #FFA500;
+}
+
+.hbox-root {
+    -fx-spacing: 20px;
+    -fx-padding: 10px;
+    -fx-background-color: #666666;
+    -fx-border-width: 1px;
+    -fx-border-color: #FFA500;
+    -fx-border-radius: 5px;
+}
+
+.vbox-root {
+    -fx-background-color: #666666;
+    -fx-border-width: 1px;
+    -fx-border-color: #FFA500;
+    -fx-border-radius: 5px;
+    -fx-padding: 20px;
+}

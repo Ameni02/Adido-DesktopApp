@@ -1,0 +1,147 @@
+/* Root */
+.root {
+    -fx-background-color: #ECECEC;
+}
+
+/* ScrollPane */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-padding: 10px;
+}
+
+/* VBox */
+#overallocation {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 20px;
+}
+
+/* HBox */
+.hbox {
+    -fx-spacing: 20px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* Button */
+#backbtn {
+    -fx-background-color: #F78633;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 8px 16px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(three-pass-box, #666666, 5, 0, 0, 0.5);
+}
+
+/* Labels */
+.label {
+    -fx-font-size: 18px;
+    -fx-text-fill: #333333;
+}
+
+/* Text */
+.text {
+    -fx-font-size: 20px;
+    -fx-text-fill: #666666;
+    -fx-wrap-text: true;
+}
+
+/* Pane */
+.pane {
+    -fx-background-color: #F78633;
+    -fx-background-radius: 20px;
+    -fx-padding: 20px;
+}
+
+/* ImageView */
+.image-view {
+    -fx-effect: dropshadow(three-pass-box, #666666, 10, 0, 0, 0.5);
+}
+/* HBox */
+.hbox {
+    -fx-spacing: 20px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* Button inside HBox */
+.hbox .button {
+    -fx-background-color: #F78633;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 8px 16px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(three-pass-box, #666666, 5, 0, 0, 0.5);
+}
+
+/* Label inside HBox */
+.hbox .label {
+    -fx-font-size: 18px;
+    -fx-text-fill: #333333;
+}
+/* ScrollPane */
+.scroll-pane {
+    -fx-background-color: #FFFFFF; /* Set background color */
+    -fx-padding: 10px; /* Add padding */
+    -fx-border-color: #F78633; /* Add border color */
+    -fx-border-width: 2px; /* Set border width */
+    -fx-border-radius: 5px; /* Add border radius */
+}
+
+/* Add a hover effect for the ScrollPane */
+.scroll-pane:hover {
+    -fx-background-color: #F78633; /* Change background color on hover */
+    -fx-border-color: #FFFFFF; /* Change border color on hover */
+    -fx-text-fill: white; /* Change text color on hover */
+}
+/* HBox */
+.hbox {
+    -fx-spacing: 20px; /* Set spacing between children */
+    -fx-padding: 10px; /* Add padding inside the HBox */
+    -fx-border-color: #F78633; /* Set border color */
+    -fx-border-width: 2px; /* Set border width */
+    -fx-border-radius: 5px; /* Add border radius */
+}
+
+/* Button inside HBox */
+.hbox .button {
+    -fx-background-color: #F78633; /* Set button background color */
+    -fx-text-fill: white; /* Set text color */
+    -fx-font-size: 16px; /* Set font size */
+    -fx-padding: 8px 16px; /* Set padding */
+    -fx-border-radius: 5px; /* Add border radius */
+}
+
+/* Label inside HBox */
+.hbox .label {
+    -fx-font-size: 18px; /* Set font size */
+    -fx-text-fill: #333333; /* Set text color */
+}
+/* VBox */
+.vbox {
+    -fx-background-color: #FFFFFF; /* Set background color for VBox */
+    -fx-padding: 20px; /* Add padding for spacing */
+}
+
+/* HBox inside VBox */
+.vbox .hbox {
+    -fx-spacing: 20px; /* Set spacing between children in HBox */
+    -fx-padding: 10px; /* Add padding inside the HBox */
+    -fx-border-color: #F78633; /* Set border color for the HBox */
+    -fx-border-width: 2px; /* Set border width for the HBox */
+    -fx-border-radius: 5px; /* Add border radius for the HBox */
+}
+
+/* Button inside HBox */
+.vbox .hbox .button {
+    -fx-background-color: #F78633; /* Set button background color */
+    -fx-text-fill: white; /* Set text color */
+    -fx-font-size: 16px; /* Set font size */
+    -fx-padding: 8px 16px; /* Set padding */
+    -fx-border-radius: 5px; /* Add border radius */
+}
+
+/* Label inside HBox */
+.vbox .hbox .label {
+    -fx-font-size: 18px; /* Set font size */
+    -fx-text-fill: #333333; /* Set text color */
+}

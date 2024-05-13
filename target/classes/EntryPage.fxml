@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EntryPage">
+   <children>
+      <BorderPane prefHeight="1080.0" prefWidth="1920.0">
+          <top>
+              <fx:include fx:id="home" source="sidebar.fxml" />
+          </top>
+         <center>
+            <ScrollPane prefHeight="1080.0" prefWidth="1920.0" BorderPane.alignment="CENTER">
+               <content>
+                  <AnchorPane prefHeight="1080.0" prefWidth="1920.0">
+                     <children>
+                        <AnchorPane prefHeight="819.0" prefWidth="1920.0">
+                           <children>
+                              <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@imageEvent/01.jpg" />
+                                 </image>
+                              </ImageView>
+                              <BorderPane layoutX="251.0" layoutY="27.0" prefHeight="833.0" prefWidth="1414.0">
+                                 <right>
+                                    <ImageView fitHeight="615.0" fitWidth="612.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                       <image>
+                                          <Image url="@imageEvent/01.png" />
+                                       </image>
+                                    </ImageView>
+                                 </right>
+                                 <left>
+                                    <ImageView fitHeight="545.0" fitWidth="864.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                       <image>
+                                          <Image url="@imageEvent/2222.png" />
+                                       </image>
+                                    </ImageView>
+                                 </left>
+                              </BorderPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

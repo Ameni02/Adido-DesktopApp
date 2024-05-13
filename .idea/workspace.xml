@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="234bcfa3-81a8-4271-a65a-2a33f46d99d3" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2c7gQVWdOFkaHxVQiZe435gttqc" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.FxMain.executor": "Run",
+    "Application.MainClass.executor": "Run",
+    "Maven.Adido [org.openjfx:javafx-maven-plugin:0.0.8:jlink].executor": "Run",
+    "Maven.Adido [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
+    "Maven.WorkshopJDBC [compile].executor": "Run",
+    "Maven.WorkshopJDBC [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "C:/Users/fakhr/IdeaProjects/WorkshopJDBC/src/main/java",
+    "last_opened_file_path": "C:/Users/Si Taz/Documents/GitHub/AdidoJavaFx/src/main/java/controllers/Rsetpw2.java",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.23627907",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "two.files.diff.last.used.file": "C:/Users/Si Taz/Documents/GitHub/AdidoJavaFx/src/main/java/controllers/Rsetpw2.java",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Si Taz\Documents\GitHub\AdidoJavaFx\src\main\java\services" />
+      <recent name="C:\Users\Si Taz\Documents\GitHub\AdidoJavaFx\src\main\java\controllers\User" />
+      <recent name="C:\Users\Si Taz\Documents\GitHub\AdidoJavaFx\src\main\resources" />
+      <recent name="C:\Users\Si Taz\Desktop\WorkshopJDBC\src\main\java\controllers" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="models" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="AdidoJavaFx" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="AdidoJavaFx" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="234bcfa3-81a8-4271-a65a-2a33f46d99d3" name="Changes" comment="" />
+      <created>1707468015059</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1707468015059</updated>
+      <workItem from="1707468016086" duration="8059000" />
+      <workItem from="1707985718406" duration="31000" />
+      <workItem from="1708071999251" duration="6448000" />
+      <workItem from="1711653037636" duration="6735000" />
+      <workItem from="1711674440441" duration="81210000" />
+      <workItem from="1711973927650" duration="653000" />
+      <workItem from="1711974591968" duration="337000" />
+      <workItem from="1712032382229" duration="289000" />
+      <workItem from="1712032679630" duration="6406000" />
+      <workItem from="1712064495031" duration="5092000" />
+      <workItem from="1713132115444" duration="627000" />
+      <workItem from="1713628717442" duration="9907000" />
+      <workItem from="1713737293413" duration="1897000" />
+      <workItem from="1714298567963" duration="3876000" />
+      <workItem from="1714302919737" duration="12526000" />
+      <workItem from="1714378839191" duration="2273000" />
+      <workItem from="1714957389404" duration="27933000" />
+      <workItem from="1715086727616" duration="3951000" />
+      <workItem from="1715553577980" duration="101000" />
+      <workItem from="1715599265613" duration="13738000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/controllers/HomePage.java</url>
+          <line>53</line>
+          <properties field="home1" class="controllers.HomePage" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
